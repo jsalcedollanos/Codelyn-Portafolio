@@ -251,10 +251,17 @@
                 {% if messages %}
                 {% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
                     {% for message in messages %}
-                        <div class="message">                        
-                            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}}</p>
+                        {% if message.tags == "error" %}
+                        <div class="message-error">                    
+                            <p> <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
                         </div>
-                    {% endfor %}
+                        {% else %}
+                        <div class="message">                        
+                            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>{{message}}</p>
+                        </div>
+                        {% endif %}
+                        
+                    {% endfor %}                   
                 {% endif %}
 
                 <section class="section-sobremi">            
@@ -300,12 +307,18 @@
                 <h1>No se encontraron perfiles</h1>
         {% endfor %}
         <section class="section-form">
-            <div class="contact-form">           
-                    <form action="" method="POST">
+            <div class="contact-form">                              
+                    <form action="" method="POST">                       
                         <h3>Regalame tus datos y pronto te llamare<h3>
+                        {% comment %} Mensaje de error {% endcomment %}
+                        {% if form.errors %}
+                            <div class="content-error-form">
+                                <strong id="error-form">* Errores en el formulario corrigelos!</strong>
+                            </div>
+                        {% endif %} 
                         {% comment %} Llave Csrf {% endcomment %}
                         {% csrf_token %}
-                        {{form}}
+                        {{form.as_p}}
                         <button id="btn-guardar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Guardar</button>
                     </form>
                 {% comment %} Fin {% endcomment %}

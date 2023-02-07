@@ -58,6 +58,10 @@
     text-decoration: none;
 }
 
+p{
+    font-size: 12px;
+}
+
 /* Botones */
 #btn-velocidad{
     margin-top:35px;
@@ -562,24 +566,5 @@ footer{
     border-right: .10em solid #c2c2c2;
     animation: blink 1s steps(1) infinite;
 }
-
-.rojo{
-    color: red;
-}
-
-.message{
-    padding: 20px;
-    position: relative;
-    bottom: 80px;
-    background: #00c78b;
-    color: #020202;
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
-}
-
 
 

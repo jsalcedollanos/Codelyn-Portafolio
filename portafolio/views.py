@@ -15,6 +15,8 @@ def page(request, slug):
         'JavaScript': 'Javascript',
         'CSS': '<i class="bi bi-filetype-css"></i>',
     }
+
+    
     # Obtener proyectos  
     proyectos = Proyect.objects.all()
     # Paginar Proyectos
@@ -65,10 +67,9 @@ def page(request, slug):
             messages.success(request, f'Perfecto {contacto.name} en breve te contactare para charlar mejor!')
             return redirect('/inicio/sobre-mi')
         else:
-            formulario = FormContact()
-            return render(request, 'page.html', {
-            "form": formulario,
-        })     
+            messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
+        
+         
     return render(request, 'page.html', {
         "page": page,
         "proyectos": page_proyectos,        

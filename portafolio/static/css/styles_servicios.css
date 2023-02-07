@@ -1,0 +1,129 @@
+.servicios{
+    height: 800px;
+    display: flex;
+}
+/* Mini menu de informacion */
+.min-info{
+    display:flex;
+    bottom: 50px;
+    position: relative;
+    background-color: #00c78b;
+}
+
+.min-info .mini-menu{
+    padding: 50px 50px;
+    width: 100%;
+}
+
+.min-info .mini-menu:hover{
+    color: white;
+    background-color:  #2b2b2b;
+}
+
+#min-icon{
+    margin-bottom: 15px;
+    font-size:40px;
+}
+
+
+/* Etiqueta de carta */
+#etiqueta{
+    background-color: #a50475;
+    padding: 6px;
+    position: relative;
+    float: right;
+    bottom: 60px;
+    left: 32px;
+    border-radius: 12px;
+    transform: rotate(44deg);
+}
+/* Boton de "Me interesa!" */
+#btn{
+    padding: 7px;
+    margin-top: 60px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ddd;
+    border-radius: 8px;
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+
+#btn:hover{
+    background:#00c78b;
+    transition: 0.5s;
+}
+
+/* Icono del boton */
+#terminal{
+    font-size:18px;
+    margin-right: 5px;
+    color: #a50475;
+}
+/* Contenido de card de servicio */
+.servicios .content-servicio{
+    width: 300px;
+    height: 440px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    margin-right: 65px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.servicios .content-servicio:hover{
+    width: 308px;
+    height: 450px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 233, 144, 0.5) 0px 1px 2px 0px, rgba(0, 233, 144, 0.8) 0px 2px 6px 2px;
+    transition: 0.2s;
+}
+
+.servicios .content-servicio .content-servicio-titulo{
+    padding-top: 40px;
+}
+
+.servicios .content-servicio .content-servicio-titulo span{
+    border-right: .11em solid #b6005b;
+    animation: blink 1s steps(1) infinite;
+}
+
+.servicios .content-servicio .content-servicio-info{
+    padding: 10px;
+    margin-bottom: 25px;
+    height: 170px;
+}
+
+.servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
+    padding: 20px;
+    color:black;
+    text-align: initial;
+}
+.servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
+    text-align: initial;
+    color: #000000;
+    height: 40px;
+    margin-bottom: 40px;
+}
+
+.servicios .content-servicio .content-servicio-info .content-servicio-subservicios{
+    text-align: center;
+    color: #a50475;
+    height: 40px;
+}
+
+.servicios .content-servicio .content-servicio-info span{
+    padding:10px;
+    color:#a50475 !important;
+    float: left;
+}
+
+/* .servicios .space-line{
+    height: 55px;
+    width: 20px;
+    background-color: red;
+} */

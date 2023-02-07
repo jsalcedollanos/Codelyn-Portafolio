@@ -1,0 +1,231 @@
+
+.content-perfil{
+    height: 100%;
+}
+
+.content-perfil .content-perfil-banner{
+    width: 100%;
+    height: 250px;
+}
+
+/* Bloque del banner de la imagen */
+.content-perfil #banner-perfil{
+    position: relative;
+    width:1250px;
+    height: 300px;
+    top: 85px;
+}
+/* Fin */
+
+/* Bloque de imagen de perfil con info personal */
+.content-perfil .content-perfil-imagen #imagen-perfil{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 1000px;
+    top: 55px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    margin-bottom: 13px;
+    z-index: 100;
+}
+
+.content-perfil .content-perfil-imagen #name{
+    position: relative;
+    margin-right: 1000px;
+    top: 55px;
+    font-size: 20px;
+}
+
+.content-perfil .content-perfil-imagen #title{
+    position: relative;
+    margin-right: 1000px;
+    top: 55px;
+    color:rgb(0, 148, 104);
+    font-size: 17px;
+}
+
+.content-perfil .content-perfil-imagen #dev{
+    position: relative;
+    margin-right: 1000px;
+    top: 55px;
+    font-weight: bold;
+    color:rgb(75, 75, 75);
+    font-size: 17px;
+}
+
+.content-perfil .content-perfil-imagen span{
+    color:rgb(170, 0, 94);
+    font-size: 17px;
+}
+
+
+.content-perfil .content-perfil-imagen #imagen-perfil:hover{
+    width: 160px;
+    height: 160px;
+    transition: 0.5s;
+
+}
+/* Fin del bloque */
+
+.content-perfil .content-perfil-sobremi{
+    padding-top: 80px;
+    height: 415px;
+    position: relative;
+    right: 75px;
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.content-perfil .content-perfil-sobremi p{
+    padding-top: 8px;
+    width: 600px;
+} 
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info{
+    width: 100%;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info ul li{
+    padding-top: 8px;
+    list-style: none;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info #skills{
+    width: 5px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info{
+    text-align: justify;
+}
+
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-post{
+    float: right;
+    width: 390px;
+    text-align: center;
+    height: 269px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    bottom: 285px;
+    padding: 15px;
+} 
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-post ul li{
+    width: 250px;
+    text-align: left;
+ } 
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-post p{
+    font-size: 18px
+ } 
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-post span{
+    font-size: 15px;
+    color:cadetblue;
+} 
+
+
+
+/* Contenido de formulario de contacto */
+.section-form{
+    padding: 50px 50px;
+}
+
+.section-form .contact-form h3{
+   font-size: 20px;
+   margin-bottom: 50px;
+   color: #ffffff;
+}
+
+.section-form .contact-form{
+    height: 580px;
+    margin-bottom: 50px;
+    padding-bottom: 150px;
+}
+
+.section-form .contact-form .error-msg{
+    padding-top: 30px;
+    font-size: 13px;
+    padding-bottom: 20px;
+}
+
+.section-form .contact-form form{
+    margin: 0 auto;
+    display: block;
+    padding: 50px 50px;
+    width: 275px;
+    height: 630px;
+    background-color: #2b2b2b;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.section-form .contact-form label{
+    color: white;
+    display: flex;
+    padding-bottom: 9px;
+    font-size: 12px;
+}
+
+.section-form .contact-form input{
+    height: 40px;
+    margin-bottom: 20px;
+    width: 260px;
+    display: block;
+    font-size: 12px;
+    color: #009e7c;
+    background-color: #2b2b2b;
+    border: 1px solid;
+    outline: none;
+}
+
+.section-form .contact-form textarea{
+    height: 100px;
+    margin-bottom: 20px;
+    width: 260px;
+    display: block;
+    font-size: 16px;
+    font-weight: 10px;
+    border: 1px solid;
+    color: #009e7c;
+    background-color: #2b2b2b;
+    border: 1px solid;
+}
+
+.section-form .contact-form #btn-guardar{
+    width: 260px;
+    height: 45px;
+    display: block;
+    font-size: 17px;
+    text-align: center;
+    color: #009e7c;
+    background-color: #2b2b2b;
+    border: 1px solid;
+}
+
+.section-form .contact-form #btn-guardar:hover{
+    background-color: #009e7c;
+    color: white;
+    transition: 0.2s;
+}
+
+.section-form .contact-form #celphone-form{
+    margin-bottom: 80px;
+}
+
+
+#estado-completado{
+    font-size: 11px;
+    color: rgb(0, 172, 51);
+}
+
+#estado-enproceso{
+    color: rgb(97, 0, 0);
+}
+
+#titulo-estado{
+    font-size: 11px;
+    color:black;
+    font-weight: bold;
+}

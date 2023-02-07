@@ -1,0 +1,151 @@
+[data-tooltip]{ 
+    position:relative; 
+    border-bottom: 1px dotted rgb(0, 238, 255);
+    cursor:pointer;
+    }
+    [data-tooltip]::before {
+    content : attr(data-tooltip);
+    background-color:rgba(0, 0, 0, 0.75);
+    color:rgb(255, 255, 255);
+    -webkit-font-smoothing: antialiased;
+    width:150px;
+    padding:10px;
+    height:auto;
+    border-radius:3px;
+    display:none;
+    position:absolute;
+    bottom:25px;
+    left:calc(100% - 75%);
+    pointer-events: none;
+    z-index:99;
+     }
+
+    [data-tooltip]::after{
+    content:"";
+    height:1px;
+    width:1px;
+    border:10px solid transparent;
+    border-top-color:rgba(0,0,0,.75);
+    position:absolute;
+    bottom:4px;
+    left:50%;
+    display: none;
+    }
+    [data-tooltip]:hover::before,
+    [data-tooltip]:hover::after
+    { display:block;} 
+
+.titulo{
+    font-family: 'Inconsolata', monospace;
+    margin-top: 40px;
+    margin-bottom: 110px;
+}
+
+p{
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.card_proyect{
+    height: 100%;
+    font-size: 18px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.paginacion{
+    color: red;
+}
+
+
+.card_proyect ul{
+    list-style: none;
+}
+
+
+
+.card_proyect .card_proyect_content{
+    width: 725px;
+    margin-bottom: 240px;
+}
+
+.card_proyect .card_proyect_content .card_proyect_info{
+    width: 1200px;
+    text-align: justify;
+}
+
+.card_proyect .card_proyect_content .card_proyect_info .content_online #online{
+    font-size: 10px;
+    color: rgb(0, 231, 12);
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.card_proyect .card_proyect_content .card_proyect_info .content_offline #offline{
+    font-size: 10px;
+    color: rgb(231, 0, 0);
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.card_proyect .card_proyect_content li{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.card_proyect .card_proyect_content #card_proyect_lenguage{
+    font-size: 16px;
+    color: rgb(143, 0, 79);
+}
+
+.card_proyect .card_proyect_content #card_proyect_description{
+    font-size: 20px;
+    
+}
+
+.card_proyect .card_proyect_content #card_proyect_date{
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding-top: 4px;
+    color: rgb(150, 150, 150);
+    
+}
+
+.card_proyect .card_proyect_content #progreso{
+    margin-top: 10px;
+    color: rgb(0, 219, 99);
+}
+
+.card_proyect .card_proyect_content #card_proyect_date_dev{
+    font-size: 15px;
+    padding-top: 10px;
+    color: rgb(0, 0, 0);
+    
+}
+
+.card_proyect .card_proyect_content .card_proyect_info .btn-visitar{
+    background: rgb(0, 255, 149);
+    color: black;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+
+.card_proyect img{
+    width: 600px;
+    height: 235px;
+    float: left;
+    padding-block: 45px;
+    box-shadow: rgba(0, 128, 85, 0.8) 0px 13px 27px -5px, rgba(0, 128, 85, 0.5) 0px 8px 16px -8px;
+    margin-right: 30px;
+}
+
+.card_proyect img:hover{
+    width: 720px;
+    height: 280px;
+    transition: all 300ms;
+}
+
+
+

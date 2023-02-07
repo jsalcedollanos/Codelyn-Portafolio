@@ -1,0 +1,317 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{page.title}}
+{% endblock %}
+
+
+{% block content %}
+
+
+{% comment %} Contenido de pagina de inicio {% endcomment %}
+    {% if page.slug == "inicio" %}
+    <div class="content-img">
+        <h1 class="title">
+            <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
+        </h1>  
+        <p>te mostrare todo lo que estas buscando.</p>
+        
+        <img src="../static/images/designer.jpg" class="img-service" alt="">
+             
+    </div>     
+
+    <h2 class="sub-titulo">Desarrollos web<h2>
+        
+    <section class="section-2">
+            {% comment %} <img src="../static/images/post2.jpg" class="img-service" alt=""> {% endcomment %}
+            <div id="card-1">
+                <h3><span id="card-1-titulo">{</span> Alojamientos y URL <span id="card-1-titulo">}</span></h3>
+                <img src="../static/images/www.jpg" alt="">
+                <h4>Hosting y Dominios</h4>
+                <p>Optimizacion e indexacion del sitio web con la mejor calidad</p>
+                <img src="../static/images/Hostinger_Logotype.png"  id="img-hosting" alt="">                                            
+           </div>  
+           <div id="card-1">
+                <h3><span id="card-1-titulo">{</span> Web a medidas <span id="card-1-titulo">}</span></h3>
+                <img src="../static/images/optimizacion.jpg"  alt="">
+                <h4>Lenguajes</h4>
+                <ul class="list-unstyled">
+                    <li>Html</li>
+                    <li>Css</li>
+                    <li>JavaScript</li>
+                    <li>PHP</li>
+                    <span><li>Python</li></span>
+                </ul>
+           </div>  
+
+           <div id="card-1">
+                <h3><span id="card-1-titulo">{</span> Interacciones Cliente <span id="card-1-titulo">}</span></h3>
+                <img src="../static/images/cliente.jpg" alt="">
+                <h4>Chat directo</h4>
+                <p>Reuniones, chat directos con el cliente abarcando todas las ideas y requerimientos sin moverte de tu comodidad.</p>
+            </div> 
+            
+            <div id="card-1">
+                <h3><span id="card-1-titulo">{</span> Diseño <span id="card-1-titulo">}</span></h3>
+                <img src="../static/images/cliente.jpg" alt="">
+                <h4>Diseños modernos</h4>
+                <p>Valoro la estructura de contenido simple, los patrones de diseño limpios y las interacciones bien pensadas..</p>
+                <strong>Herramientas:</strong>
+                <p>Font Awesome, Figma</p>
+            </div> 
+    </section>
+
+    <section class="section-velocidad">
+        <div class="section-velocidad-content">
+            <h2>La velocidad es importante</h2>
+            <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
+            <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button>
+        </div>
+        <div class="section-velocidad-imagen">
+            <img src="../static/images/speed.png" alt="">
+        </div>
+
+    </section>
+
+    <section class="section-3">
+        <h1>Mis Proyectos</h1>
+        <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
+            me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
+            sin sobrecargar la web.
+        </p>
+        <img id="section-3-perfil" src="../static/images/github.png" alt="">
+        <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="#">  Visitar <span id="section-3-visitar">}</span></a></p>
+    </section>
+
+    <a class="icon-whatsapp" href="" target="_blank">
+        <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
+    </a>
+
+    {% endif %}
+{% comment %} fin del contenido de pagina de inicio {% endcomment %}
+
+
+{% comment %} 
+    Contenido de Portafolio, solo cargara si es un portafolio
+{% endcomment %}  
+    
+    {% if page.slug == 'portafolio' %}   
+    {% include 'paginacion.html' %}
+        <div class="titulo">
+            <p>{{page.content|safe}}</p>
+        </div> 
+        
+        <div class="card_proyect">
+            {% for proyecto in proyectos %}
+                <ul>                         
+                    <div class="card_proyect_content"> 
+                        <img src="{{proyecto.image.url}}" alt="{{proyecto.title}}">    
+                        <div class="card_proyect_info">
+                            {% if proyecto.status == 1 %}
+                                    <div class="content_online"><span data-tooltip="Servicio Online" id="online">Online</span></div>
+                                {% else %}
+                                    <div class="content_offline"><span data-tooltip="Servicio Offline" id="offline">Offline</span></div>
+                            {% endif %}
+                            <li> {{proyecto.name}}   
+                                <span id="card_proyect_lenguage">
+                                    {% if proyecto.lenguage == 'Wordpress' %}
+                                            CRM: {{lenguaje.Wordpress|safe}}
+                                    {% endif %}
+                       
+                                    {% if proyecto.lenguage == 'PHP' %}
+                                        Lenguaje: {{lenguaje.PHP|safe}}
+                                    {% endif %}
+
+                                    {% if proyecto.lenguage == "Python" %}
+                                        Lenguaje: {{lenguaje.Python|safe}}
+                                    {% endif %}                                  
+                                </span>
+                            </li>
+                            <p id="card_proyect_description">{{proyecto.description|safe}}</p>
+                            {% if proyecto.progress == 1 %}
+                                <p id="progreso">Progreso: <span>Completado</span> </p>
+                            {% else %}
+                                <p id="progreso">Progreso: <span>En proceso</span> </p>
+                            {% endif %}                            
+                            <p id="card_proyect_date_dev">Desarrollador: {{proyecto.user}}</p>
+                            <p id="card_proyect_date">Publicado: {{proyecto.created_at}}</p>                          
+                            <a name="" id="" class="btn-visitar" href="#" role="button">Visitar</a>
+                        </div>                          
+                    </div>      
+                </ul>  
+            {% endfor %} 
+
+            {% include 'paginacion.html' %}
+            
+        </div>    
+    
+        
+    {% endif %}
+{% comment %} Fin de validacion de portafolio {% endcomment %}
+
+
+{% comment %} Bloque de servicios {% endcomment %}
+        {% if page.slug == 'servicios' %}
+            <section class="min-info">
+                <div class="mini-menu">
+                    <i id="min-icon" class="fa-sharp fa-solid fa-shield-halved fa-beat" style="--fa-animation-duration: 0.5s;"></i>
+                    <h3>Proteccion de tu sitio web<h3>
+                </div>
+                <div class="mini-menu">
+                    <i id="min-icon" class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 2s;"></i>
+                    <h3>La mejor configuracion<h3>
+                </div>
+                <div class="mini-menu">
+                    <i id="min-icon" class="fa-sharp fa-solid fa-shop fa-flip" style="--fa-animation-duration: 2s;"></i>
+                    <h3>Tienda virtual moderna<h3>
+                </div>
+                <div class="mini-menu">
+                    <i id="min-icon" class="fa-sharp fa-solid fa-palette fa-flip" style="--fa-animation-duration: 2s;"></i>
+                    <h3>Diseños modernos<h3>
+                </div>
+            </section>
+            <div class="titulo">
+                <p>{{page.content|safe}}</p>
+            </div> 
+            <section class="servicios">
+                {% for servicio in servicios %}
+                <div class="content-servicio">                   
+                    <div class="content-servicio-titulo">
+                        <h2><span>{<span>{{servicio.name}}<span>}</span></h2><span id="etiqueta" class="fa-fade">Profesional</span>
+                    </div>
+                    <div class="content-servicio-info">
+                        <p class="content-servicio-descripcion">{{servicio.description}}</p>
+                        <p class="content-servicio-subservicios">{{servicio.subservices|safe}}</p>
+                    </div>
+                    <div class="space-line"></div>
+                    <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button>
+                </div>
+                {% endfor %}
+            </section>
+        {% endif %}
+{% comment %} Fin del Bloque de servicios {% endcomment %}
+
+
+{% comment %} Bloque de cursos {% endcomment %}
+        {% if page.slug == 'cursos' %}
+
+            <section class="section-cursos">
+                
+                    {% for curso in cursos %}
+                        {% if curso.status == 0 %}
+                            <div class="card-curso-agotado" style="display:block;"><span id="etiqueta">Agotado</span>
+                                <div id="content-curso">
+                                    <h3><span id="card-1-titulo">{</span> {{curso.title}} <span id="card-1-titulo">}</span></h3>
+                                    {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
+                                    <h4>Descripcion</h4>
+                                    <p>{{curso.description|safe}}</p>
+                                </div>
+                                
+                                <div id="section-curso-img">
+                                    <img src="{{curso.image.url}}" alt="">
+                                </div>                                                                      
+                            </div>  
+
+                            {% else %}
+                            <div class="card-curso"><span id="etiqueta">Free</span>
+                                <div id="content-curso">
+                                    <h3><span id="card-1-titulo">{</span> {{curso.title}} <span id="card-1-titulo">}</span></h3>
+                                    {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
+                                    <h4>Descripcion</h4>
+                                    <p>{{curso.description|safe}}</p>
+                                </div>
+                                
+                                <div id="section-curso-img">
+                                    <img src="{{curso.image.url}}" alt="">
+                                </div>                                                                      
+                            </div>
+
+
+                        {% endif %}
+
+                        {% comment %} Validacion de lista vacia {% endcomment %}
+                        {% empty %}
+                        <div class="titulo-cursos">
+                            <p>{{page.content|safe}}</p>
+                        </div> 
+                        <img src="../static/images/construccion2.png">
+                        {% comment %} Fin de validacion {% endcomment %}
+                    {% endfor %} 
+                             
+                </section>
+        {% endif %}
+{% comment %} Fin de bloque de cursos {% endcomment %}
+
+
+{% comment %} Bloque de pagina SOBRE MI {% endcomment %}
+    {% if page.slug == "sobre-mi" %}
+        {% for perfil in perfiles %}
+            {% if perfil in perfiles %}
+                {% if messages %}
+                {% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
+                    {% for message in messages %}
+                        <div class="message">                        
+                            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <section class="section-sobremi">            
+                    <div class="content-perfil">
+                        <div class="content-perfil-banner">
+                            <img id="banner-perfil" src="../static/images/banner-perfil.png" alt="">
+                        </div>
+                        
+                        <div class="content-perfil-imagen">
+                            <img id="imagen-perfil" src="{{perfil.image.url}}" alt="">
+                            <p id="name"><strong>{{perfil.name}} {{perfil.surname}}</strong></p>
+                            <p id="title"><span>{</span> {{perfil.title}} <span>}</span></p>
+                            <p id="dev">Desarrollador web</p>
+                        </div>
+                        <div class="content-perfil-sobremi">
+                            <div class="content-perfil-sobremi-info">
+                                <h3>Sobre mi</h3>
+                                <p>{{perfil.description|safe}}</p>
+                                <h3>Habilidades y mas</h3>
+                                <ul> <li><p id="skills">{{perfil.skills|safe}}</p></li> </ul>                            
+                            <div>
+                            <div class="content-perfil-sobremi-post">
+                                <h3>Proyectos destacados</h3>
+                                <ul>
+                                {% for proyecto in proyectos %}
+                                    <li>
+                                        {% if proyecto.progress == True %}
+                                            <h3>{{proyecto.name}}</h3> <span id="titulo-estado">Estado:</span> <span id="estado-completado">Completado</span>
+                                        {% else %}
+                                            <h3>{{proyecto.name}}</h3> <span id="estado-completado">En Proceso.</span>
+                                        {% endif %}                                    
+                                    </br>
+                                        <span id="date">{{proyecto.created_at}}</span>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>    
+                </section>
+            {% endif %}
+                {% empty %}
+                <h1>No se encontraron perfiles</h1>
+        {% endfor %}
+        <section class="section-form">
+            <div class="contact-form">           
+                    <form action="" method="POST">
+                        <h3>Regalame tus datos y pronto te llamare<h3>
+                        {% comment %} Llave Csrf {% endcomment %}
+                        {% csrf_token %}
+                        {{form}}
+                        <button id="btn-guardar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Guardar</button>
+                    </form>
+                {% comment %} Fin {% endcomment %}
+            </div>
+        </section>
+    {% endif %}
+{% comment %} Fin del bloque {% endcomment %}
+{% endblock %}
+

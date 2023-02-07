@@ -1,0 +1,172 @@
+.section-cursos{
+    display:block;
+    height: 100%;
+}
+
+.section-cursos .titulo-cursos{
+    font-size:30px;
+    padding-bottom: 20px;
+    color:#a50475;
+    font-family: 'Inconsolata', monospace;
+}
+
+.section-cursos p{
+    font-size: 25px;
+    color:rgb(24, 24, 24);
+    
+}
+
+.section-cursos span{
+    font-size: 70px;
+    color:#009e7c !important;
+}
+
+/* Seccion de curso disponible */
+.section-cursos  .card-curso{
+    height: 200px;
+    margin-bottom: 35px;
+    width: 700px;
+    border-radius: 20px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.section-cursos .card-curso #etiqueta{
+    width: 65px;
+    position: relative;
+    height: 7px;
+    font-size: 15px;
+    color: rgb(255, 255, 255) !important;
+    display: block;
+    top: 6px;
+    padding-bottom: 9px;
+    left: 15px;
+    float: right;
+    transform: rotate(29deg);
+    border-radius: 4px;
+    background: #009e7c;
+    z-index: 100;
+}
+
+.section-cursos .card-curso #content-curso{
+    height: 170px;
+    width: 455px;
+    text-align: justify;
+    float: left;
+    padding-top: 30px;
+    margin-left: 20px;
+    border-radius: 30px;
+}
+
+.section-cursos .card-curso h3{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.section-cursos .card-curso h4{
+    color:#a50475;
+    padding-top: 5px;
+}
+
+.section-cursos .card-curso p{
+    font-size: 17px;
+    padding-block: 1px;
+}
+
+.section-cursos .card-curso #card-1-titulo{
+    font-size: 20px;
+}
+
+.section-cursos .card-curso #section-curso-img{
+    width: 195px;
+    height: 195px;
+    float: right;
+    top: -16px;
+    position: relative;
+    border-radius: 20px;
+    /* background-color: #009e7c; */
+}
+
+.section-cursos .card-curso img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+/* Fin de seccion de curso disponible */
+
+
+
+
+
+/* Seccion de curso no disponible */
+.section-cursos  .card-curso-agotado{
+    height: 200px;
+    margin-bottom: 35px;
+    width: 700px;
+    border-radius: 20px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.section-cursos .card-curso-agotado #etiqueta{
+    width: 65px;
+    position: relative;
+    height: 7px;
+    font-size: 15px;
+    color: rgb(255, 255, 255) !important;
+    display: block;
+    top: 6px;
+    padding-bottom: 9px;
+    left: 15px;
+    float: right;
+    transform: rotate(29deg);
+    border-radius: 4px;
+    background: #009e7c;
+    z-index: 100;
+}
+
+.section-cursos .card-curso-agotado #content-curso{
+    height: 170px;
+    width: 455px;
+    text-align: justify;
+    float: left;
+    padding-top: 30px;
+    margin-left: 20px;
+    border-radius: 30px;
+}
+
+.section-cursos .card-curso-agotado h3{
+    font-size: 20px;
+    color:#ddd;
+    margin-top: 10px;
+}
+
+.section-cursos .card-curso-agotado h4{
+    color:#ddd;
+    padding-top: 5px;
+}
+
+.section-cursos .card-curso-agotado p{
+    font-size: 17px;
+    color:#ddd;
+    padding-block: 1px;
+}
+
+.section-cursos .card-curso-agotado #card-1-titulo{
+    font-size: 20px;
+    color:#ddd;
+}
+
+.section-cursos .card-curso-agotado #section-curso-img{
+    width: 195px;
+    height: 195px;
+    float: right;
+    top: -16px;
+    position: relative;
+    border-radius: 20px;
+}
+
+.section-cursos .card-curso-agotado img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+/* Fin de seccion de curso no disponible */

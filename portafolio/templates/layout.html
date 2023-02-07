@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '../static/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_portafolio.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_cursos.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_sobremi.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_servicios.css' %}">
+     <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
+     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Jhonny Salcedo |
+        {% block title %}
+                
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    
+
+    <!-- Cabecera de la pagina -->
+    <header>
+        <label for="check" class="mostrar-menu">
+            &#8801
+        </label>
+        <input type="checkbox" id="check">
+        <!-- Nav bar -->            
+        <nav class="menu">     
+            {% for page  in pages reversed %}          
+                <a href="{% url 'page' page.2 %}"> {{page.1}} </a>              
+            {% endfor %}
+            <label for="check" class="esconder-menu">
+                &#215
+            </label>
+        </nav>            
+    </header>
+
+    {% comment %} Banner {% endcomment %}
+    {% if page.slug == 'inicio' or page.slug == 'sobre-mi' %}
+    <section class="banner">
+        <div class="content-banner">
+            <h1 class="logotipo">Bienvenido, Soy Jhonny Salcedo</h1> 
+            <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+        </div>
+    </section>
+    {% elif page.slug != "" %}
+    <section class="banner">
+        <div class="content-banner">
+            <h1 class="logotipo">{{page.title}}</h1> 
+            <p class="descripcion"><span class="signo1">{</span>Estos son mis {{page.slug}} como desarrollador <span class="full-stack">Front-end</span> <span class="signo2">}</span></p>        
+        </div>
+    </section>
+    {% else %}
+    <p>No se encontro elementos</p>
+    {% endif %}
+    {% comment %} Fin del banner {% endcomment %}
+   
+
+    <div class="content">
+            
+            {% block content %}
+
+            {% endblock %} 
+
+    </div>
+    
+
+        <section class="content-social"> 
+            <div id="content-social-sigueme">
+                <h3>Sigueme en mis redes sociales</h3>
+            </div>
+            <img id="logo-facebook" src="../static/images/facebook.png" alt="">  
+            <img id="logo-instagram" src="../static/images/instagram.png" alt="">  
+            <img id="logo-linkedin" src="../static/images/linkedin.png" alt="">  
+        </section>
+
+    
+
+
+    <footer>        
+        <p class="footer-message">  
+            Todos los derechos reservados por Condelyn
+            Desarrollado por: </br><span class="copyRight"> Codelyn&copy; </span>
+        </p> 
+    </footer>
+</body>
+</html>

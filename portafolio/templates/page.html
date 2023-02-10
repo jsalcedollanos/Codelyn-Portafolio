@@ -98,7 +98,7 @@
     
     {% if page.slug == 'portafolio' %}   
     {% include 'paginacion.html' %}
-        <div class="titulo">
+        <div class="portafolio">
             <p>{{page.content|safe}}</p>
         </div> 
         
@@ -136,12 +136,11 @@
                             {% endif %}                            
                             <p id="card_proyect_date_dev">Desarrollador: {{proyecto.user}}</p>
                             <p id="card_proyect_date">Publicado: {{proyecto.created_at}}</p>                          
-                            <a name="" id="" class="btn-visitar" href="#" role="button">Visitar</a>
+                            <a id="btn-visitar" href="{{proyecto.slug}}" target="_blank"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Visitar</a>
                         </div>                          
                     </div>      
                 </ul>  
             {% endfor %} 
-
             {% include 'paginacion.html' %}
             
         </div>    
@@ -182,7 +181,7 @@
                     </div>
                     <div class="content-servicio-info">
                         <p class="content-servicio-descripcion">{{servicio.description}}</p>
-                        <p class="content-servicio-subservicios">{{servicio.subservices|safe}}</p>
+                        <p id="content-servicio-subservicios">{{servicio.subservices|safe}}</p>
                     </div>
                     <div class="space-line"></div>
                     <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button>
@@ -278,7 +277,6 @@
                         </div>
                         <div class="content-perfil-sobremi">
                             <div class="content-perfil-sobremi-info">
-                                <h3>Sobre mi</h3>
                                 <p>{{perfil.description|safe}}</p>
                                 <h3>Habilidades y mas</h3>
                                 <ul> <li><p id="skills">{{perfil.skills|safe}}</p></li> </ul>                            

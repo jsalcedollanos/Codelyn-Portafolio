@@ -5,6 +5,8 @@
 
 .content-perfil{
     height: 100%;
+    bottom: 135px;
+    position: relative;
 }
 
 .content-perfil .content-perfil-banner{
@@ -119,6 +121,7 @@
 
 .content-perfil .content-perfil-sobremi p{
     padding-top: 8px;
+    font-size:15px;
     width: 600px;
 } 
 
@@ -147,7 +150,7 @@
     height: 269px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     position: relative;
-    bottom: 285px;
+    bottom: 448px;
     padding: 15px;
 } 
 

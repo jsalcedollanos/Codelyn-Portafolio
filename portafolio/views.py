@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -34,7 +34,7 @@ def page(request, slug):
         'servicios':'servicios/',
         'portafolio':'portafolio/'
     }
-    page = Page.objects.get(slug=slug)
+    page = get_object_or_404(Page, slug=slug)
 
     # listar Cursos
     cursos = Curso.objects.all()

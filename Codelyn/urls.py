@@ -19,9 +19,7 @@ from portafolio import views
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio', views.page, name="page"),
-    path('inicio/<str:slug>', views.page, name="page"), 
-    path('crear-contacto', views.crearContacto, name="crear")      
+    path('<str:slug>', views.page, name="page"),    
 ]
 
 # Configurar titulo de panel admin

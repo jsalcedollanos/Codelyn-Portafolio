@@ -242,8 +242,8 @@ header{
 
 .content .content-img .img-service{
     padding-top: 20px;
-    height: 250px;
-    width: 373px;
+    height: 340px;
+    width: 480px;
 }
 
 .content .content-img p{
@@ -274,7 +274,7 @@ header{
 .section-2 #card-1{
     margin: 30px;
     border-radius: 20px;
-    height: 500px;
+    height: 105%;
     width: 270px;
     font-size: 13px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -283,7 +283,7 @@ header{
 .section-2 #card-1:hover{
     box-shadow: rgba(0, 128, 85, 0.8) 0px 13px 27px -5px, rgba(0, 128, 85, 0.5) 0px 8px 16px -8px;
     height: 105%;
-    width: 280px;
+    width: 270px;
     transition: 0.3s;
 }
 
@@ -319,6 +319,7 @@ header{
 
 .section-2 #card-1 p{
     padding-bottom: 5px;
+    padding: 20px 20px;
 }
 
 .section-2 #card-1 strong{
@@ -383,6 +384,7 @@ header{
 .section-3 p{
     margin-left: 150px;
     margin-right: 100px;
+    font-size: 20px;
     color: #ffffff;
     margin-bottom: 50px;
 }

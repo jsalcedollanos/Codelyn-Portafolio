@@ -11,6 +11,7 @@ class Proyect(models.Model):
     user = models.ForeignKey(User, verbose_name="Desarrollador", on_delete=models.CASCADE)
     image = models.ImageField(default='null', upload_to="proyect")
     progress = models.BooleanField(default=True, verbose_name="progreso")
+    slug = models.URLField(null=True, blank=True, default="https://", max_length=200, verbose_name="Enlace")
     description = RichTextField(verbose_name="descripcion")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Fecha creacion")
     updated_at = models.DateTimeField(auto_now_add=True, verbose_name="Fecha actualizacion")
@@ -66,7 +67,7 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextField(verbose_name="contenido")
     image = models.ImageField(default='null', upload_to="articles")
-    public = models.BooleanField()
+    public = models.BooleanField(verbose_name="¿Publicado?")
     user = models.ForeignKey(User, verbose_name="usuario", on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, verbose_name="categorias")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
@@ -101,7 +102,7 @@ class Page(models.Model):
 
 class Perfil(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre Completo")
-    surname = models.CharField(max_length=50, verbose_name="Apellidos")
+    lastname = models.CharField(max_length=50, verbose_name="Apellidos")
     title = models.CharField(max_length=50, verbose_name="Titulo")
     email = models.EmailField(max_length=100, verbose_name="Correo")
     telephone = models.IntegerField()

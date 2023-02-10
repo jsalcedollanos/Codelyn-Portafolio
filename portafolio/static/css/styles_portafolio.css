@@ -35,10 +35,14 @@
     [data-tooltip]:hover::after
     { display:block;} 
 
-.titulo{
+.portafolio{
     font-family: 'Inconsolata', monospace;
     margin-top: 40px;
     margin-bottom: 110px;
+}
+
+.portafolio p{
+    font-size: 20px;
 }
 
 p{
@@ -99,8 +103,8 @@ p{
     color: rgb(143, 0, 79);
 }
 
-.card_proyect .card_proyect_content #card_proyect_description{
-    font-size: 20px;
+.card_proyect .card_proyect_content .card_proyect_info P{
+    font-size: 15px;
     
 }
 
@@ -124,12 +128,6 @@ p{
     
 }
 
-.card_proyect .card_proyect_content .card_proyect_info .btn-visitar{
-    background: rgb(0, 255, 149);
-    color: black;
-    border-radius: 12px;
-    text-decoration: none;
-}
 
 
 .card_proyect img{
@@ -148,4 +146,23 @@ p{
 }
 
 
+.card_proyect_content .card_proyect_info #btn-visitar{
+    width: 260px;
+    padding: 10px 10px;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    float: left;
+    border-radius: 15px;
+    background-color: #c7c7c7;
+}
 
+.card_proyect_content .card_proyect_info #btn-visitar:link{
+    color: black;
+}
+
+.card_proyect_content .card_proyect_info #btn-visitar:hover{
+    background-color: #009e7c;
+    color: white;
+    transition: 0.2s;
+}

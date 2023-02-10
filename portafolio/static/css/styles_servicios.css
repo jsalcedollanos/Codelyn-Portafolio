@@ -2,6 +2,10 @@
     height: 800px;
     display: flex;
 }
+
+.titulo{
+    padding-bottom: 100px;
+}
 /* Mini menu de informacion */
 .min-info{
     display:flex;
@@ -101,19 +105,15 @@
 .servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
     padding: 20px;
     color:black;
+    font-size:16px;
     text-align: initial;
-}
-.servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
-    text-align: initial;
-    color: #000000;
-    height: 40px;
-    margin-bottom: 40px;
+    padding-bottom: 20px;
 }
 
-.servicios .content-servicio .content-servicio-info .content-servicio-subservicios{
-    text-align: center;
+
+.servicios .content-servicio .content-servicio-info p{
+    text-align: left;
     color: #a50475;
-    height: 40px;
 }
 
 .servicios .content-servicio .content-servicio-info span{

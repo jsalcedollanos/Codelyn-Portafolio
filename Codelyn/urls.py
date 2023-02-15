@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from portafolio import views
 from django.conf import settings
+from django.conf.urls import handler404
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:slug>', views.page, name="page"),    
+    path('<str:slug>', views.page, name="page") 
 ]
 
 # Configurar titulo de panel admin

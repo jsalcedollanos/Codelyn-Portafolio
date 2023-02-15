@@ -1,11 +1,19 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
-from django.db.models import Q
+""" from django.db.models import Q """
 from django.core.paginator import Paginator
 from django.contrib import messages
 from portafolio.forms import FormContact 
+   
+def handling_404(request, exception):
+    return render(request, 'not-found-404.html', {
+
+    })
+
 
 def page(request, slug):
+
+     
 
     lenguaje = {
         'Python': '<i class="bi bi-filetype-py"></i>',
@@ -28,14 +36,11 @@ def page(request, slug):
 
     # Mostrar perfil
     perfiles = Perfil.objects.all()
-    
-    # Listar slugs (paginas)
-    slugs = {
-        'servicios':'servicios/',
-        'portafolio':'portafolio/'
-    }
-    page = get_object_or_404(Page, slug=slug)
 
+    #Listar slugs    
+    page = Page.objects.get(slug=slug) 
+    
+    
     # listar Cursos
     cursos = Curso.objects.all()
 
@@ -69,23 +74,22 @@ def page(request, slug):
         else:
             messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
         
-         
+        
     return render(request, 'page.html', {
         "page": page,
         "proyectos": page_proyectos,        
         "lenguaje": lenguaje,
-        "slugs":slugs,
+        """ "slugs":slugs, """
         "cursos": cursos,
         "perfiles": perfiles,
         "servicios": servicios,
         "form": formulario,
     })
         
-def crearContacto(request):
-    
-    formulario = FormContact() 
-        
-    return render(request, "crear-contacto.html", {
-            'form':formulario
+
+def redes(request):
+    sociales = Perfil.objects.all()
+    return render(request, 'layout.html', {
+        'sociales':sociales
     })
 

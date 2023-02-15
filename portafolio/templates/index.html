@@ -6,11 +6,8 @@
 {% endblock %}
 
 
-    {% block content %}
-
-        
-
-    
+{% block content %}
+    {% if page.slug == "inicio" %}
         <div class="content-img">
             <h1 class="title">
                 <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
@@ -18,7 +15,7 @@
             <p>te mostrare todo lo que estas buscando.</p>
             
             <img src="../static/images/designer.jpg" class="img-service" alt="">
-                 
+                
         </div>     
 
         <h2 class="sub-titulo">Desarrollos web<h2>
@@ -31,8 +28,8 @@
                     <h4>Hosting y Dominios</h4>
                     <p>Optimizacion e indexacion del sitio web con la mejor calidad</p>
                     <img src="../static/images/Hostinger_Logotype.png"  id="img-hosting" alt="">                                            
-               </div>  
-               <div id="card-1">
+            </div>  
+            <div id="card-1">
                     <h3><span id="card-1-titulo">{</span> Web a medidas <span id="card-1-titulo">}</span></h3>
                     <img src="../static/images/optimizacion.jpg"  alt="">
                     <h4>Lenguajes</h4>
@@ -43,9 +40,9 @@
                         <li>PHP</li>
                         <span><li>Python</li></span>
                     </ul>
-               </div>  
+            </div>  
 
-               <div id="card-1">
+            <div id="card-1">
                     <h3><span id="card-1-titulo">{</span> Interacciones Cliente <span id="card-1-titulo">}</span></h3>
                     <img src="../static/images/cliente.jpg" alt="">
                     <h4>Chat directo</h4>
@@ -81,27 +78,14 @@
                 sin sobrecargar la web.
             </p>
             <img id="section-3-perfil" src="../static/images/github.png" alt="">
-            <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="#">  Visitar <span id="section-3-visitar">}</span></a></p>
+            <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
         </section>
-        
-        {% comment %} <div class="content-proyect">
-           <h2> Proyectos destacados </h2>
-           {% for proyecto in proyectos %}
-           <ul class="nav justify-content-center  ">
-               <li class="nav-item">
-                   <h3>{{proyecto.name}}<strong id="online"><span id="circle"> </span>Online</strong></h3>
-                    <p id="lenguage"> Lenguaje: <span>{{proyecto.lenguage}}</span> </p>
-                   <span id="date">{{proyecto.create_at}}</span>
-                   <a name="" id="btn-vermas" class="btn btn-primary" href="" role="button">Ver mas</a>
-               </li>
-               <div class="space-white"></div>
-           </ul>
-           {% endfor %}
-        </div> {% endcomment %}
 
-        <a class="icon-whatsapp" href="" target="_blank">
+        <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
             <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
         </a>
 
+    {% endif %}
+        {% comment %} fin del contenido de pagina de inicio {% endcomment %}
 
-    {% endblock %}
+{% endblock %}

@@ -14,6 +14,8 @@
     }
   }
 
+
+
 /* Mnesajes emergentes */
 [data-tooltip]{ 
     position:relative; 
@@ -218,9 +220,80 @@ header{
     }
 }
 
+/* Estilos contenido de articulos recientes */
+.articulos-recientes{
+    height: 1100px;
+    margin-bottom: 40px;
+}
+
+.articulos-recientes h1{
+    font-size: 35px;
+    display: flex;
+}
+
+.articulos-recientes .content-articulos{
+    position:absolute;
+    text-align: justify;
+    width: 980px;
+    height: 100%;
+}
+
+.articulos-recientes .content-articulos .paginacion-articulos{
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 20px ;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 12px;
+}
 
 
+.articulos-recientes .content-articulos .card-articulo{
+    padding: 20px;
+    margin: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 20px;
+    padding: 30px;
+}
 
+.articulos-recientes .content-articulos .card-articulo #fecha-publicado{
+    font-size: 15px;
+    color: #444;
+}
+
+.articulos-recientes .content-articulos .card-articulo #titulo-articulo{
+    font-size: 35px;
+    color: black;
+}
+
+.articulos-recientes .content-articulos .card-articulo #descripcion-articulo{
+    font-size: 18px;
+    color: black;
+    width: 600px;
+    padding-top: 12px;
+}
+
+.articulos-recientes .content-articulos .card-articulo #btn-vermas{
+    padding: 7px;
+    margin-top: 20px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ddd;
+    border-radius: 8px;
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.articulos-recientes .content-articulos .card-articulo #imagen-articulo{
+    float: right;
+    position: relative;
+    bottom: 130px;
+    height: 200px;
+    width: 200px;
+}
 
 /* Estilos contenido central */
 .content{

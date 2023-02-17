@@ -1,10 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
-""" from django.db.models import Q """
 from django.core.paginator import Paginator
 from django.contrib import messages
 from portafolio.forms import FormContact 
-   
+from django.views.generic import (View, TemplateView, ListView, DetailView)
 def handling_404(request, exception):
     return render(request, 'not-found-404.html', {
 
@@ -24,7 +23,16 @@ def page(request, slug):
         'CSS': '<i class="bi bi-filetype-css"></i>',
     }
 
-    
+
+    # Articulos
+    articulos = Article.objects.all()
+    # Paginar Articulos
+    paginator_articulos = Paginator(articulos, 3)
+    # Recoger numero pagina
+    page_number = request.GET.get('page')
+    page_obj = paginator_articulos.get_page(page_number)
+
+
     # Obtener proyectos  
     proyectos = Proyect.objects.all()
     # Paginar Proyectos
@@ -37,8 +45,12 @@ def page(request, slug):
     # Mostrar perfil
     perfiles = Perfil.objects.all()
 
-    #Listar slugs    
-    page = Page.objects.get(slug=slug) 
+    #pages = Page.objects.get(slug)
+    if slug == slug:
+        #Listar slugs
+        page = Page.objects.get(slug=slug)    
+    else:
+        return render(request, '404.html') 
     
     
     # listar Cursos
@@ -70,7 +82,7 @@ def page(request, slug):
             contacto.save()
             #Mensaje flash de successful
             messages.success(request, f'Perfecto {contacto.name} en breve te contactare para charlar mejor!')
-            return redirect('/inicio/sobre-mi')
+            return redirect('/sobre-mi')
         else:
             messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
         
@@ -79,7 +91,7 @@ def page(request, slug):
         "page": page,
         "proyectos": page_proyectos,        
         "lenguaje": lenguaje,
-        """ "slugs":slugs, """
+        "articulos": page_obj,
         "cursos": cursos,
         "perfiles": perfiles,
         "servicios": servicios,
@@ -92,4 +104,17 @@ def redes(request):
     return render(request, 'layout.html', {
         'sociales':sociales
     })
+
+""" class Error404View(TemplateView):
+    templante_name = "404.html" """
+    
+def handler404(request, exception):
+    return render(request, '404.html')
+
+def articulo(request, article_id):
+    articulos = get_object_or_404(Article, id=article_id)
+    return render(request, 'articulo.html', {
+        'articulo':articulos,
+    })
+
 

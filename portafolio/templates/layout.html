@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{% static '../static/css/styles_cursos.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_sobremi.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_servicios.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_error.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_articulo.css' %}">
+
      <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
      <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
      <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
@@ -57,12 +60,18 @@
     {% elif page.slug != "" %}
     <section class="banner">
         <div class="content-banner">
-            <h1 class="logotipo">{{page.title}}</h1> 
+            <h1 class="logotipo">{{articulo.title}}</h1> 
+            <p class="descripcion"><span class="signo1">{</span>{{articulo.created_at}} - Desarrollador:  <span class="full-stack">{{articulo.user}}</span> <span class="signo2">}</span></p>        
+        </div>
+    </section>
+
+    {% else %}
+    <section class="banner">
+        <div class="content-banner">
+            <h1>Articulos</h1> 
             <p class="descripcion"><span class="signo1">{</span>Estos son mis {{page.slug}} como desarrollador <span class="full-stack">Front-end</span> <span class="signo2">}</span></p>        
         </div>
     </section>
-    {% else %}
-    <p>No se encontro elementos</p>
     {% endif %}
     {% comment %} Fin del banner {% endcomment %}
    

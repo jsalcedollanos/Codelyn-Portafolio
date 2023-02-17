@@ -1,0 +1,17 @@
+{% comment %} Paginacion de articulos {% endcomment %}
+{% load static %}
+<div class="paginacion-articulos">
+    <span>
+        {% if  articulos.has_previous %}
+            <a href="?page=1">&laquo; Primero</a>
+            <a href="?page{{  articulos.previous_page_number }}">Anterior</a>
+        {% endif %}
+        <span class="current">
+            Pagina {{  articulos.number }} de {{  articulos.paginator.num_pages }}.
+        </span>
+        {% if  articulos.has_next %}
+            <a href="?page={{  articulos.next_page_number }}">Siguiente</a>
+            <a href="?page={{  articulos.paginator.num_pages }}">Ultima &raquo;</a>
+        {% endif %}
+    </span>
+</div>

@@ -64,7 +64,8 @@ class Category(models.Model):
     
 
 class Article(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=60)
+    description = models.TextField(max_length=200 ,verbose_name="descripcion")
     content = RichTextField(verbose_name="contenido")
     image = models.ImageField(default='null', upload_to="articles")
     public = models.BooleanField(verbose_name="¿Publicado?")

@@ -77,14 +77,25 @@ WSGI_APPLICATION = 'Codelyn.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+"""
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'codelyn', #Nombre de la base de datos
+        'USER': 'root', # Usuario
+        'PASSWORD': '', # Contraseña
+        'HOST': '127.0.0.1', # servidor
+        'PORT': '3306', # Puerto denuestra BD
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

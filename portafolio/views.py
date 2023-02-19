@@ -117,4 +117,10 @@ def articulo(request, article_id):
         'articulo':articulos,
     })
 
+def curso_detail(request, curso_id):
+    cursos = get_object_or_404(Curso, id=curso_id)
+    return render(request, 'curso_detail.html', {
+        'curso':cursos
+    })
+
 

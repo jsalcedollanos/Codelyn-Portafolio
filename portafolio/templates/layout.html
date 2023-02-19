@@ -40,8 +40,10 @@
         <input type="checkbox" id="check">
         <!-- Nav bar -->            
         <nav class="menu">     
-            {% for page  in pages reversed %}          
-                <a href="{% url 'page' page.2 %}"> {{page.1}} </a>              
+            {% for page  in pages reversed %} 
+                {% if page.3 == True %}         
+                    <a href="{% url 'page' page.2 %}"> {{page.1}} </a> 
+                {% endif %}             
             {% endfor %}
             <label for="check" class="esconder-menu">
                 &#215
@@ -50,29 +52,61 @@
     </header>
 
     {% comment %} Banner {% endcomment %}
-    {% if page.slug == 'inicio' or page.slug == 'sobre-mi' %}
-    <section class="banner">
-        <div class="content-banner">
-            <h1 class="logotipo">Bienvenido, Soy Jhonny Salcedo</h1> 
-            <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
-        </div>
-    </section>
-    {% elif page.slug != "" %}
-    <section class="banner">
-        <div class="content-banner">
-            <h1 class="logotipo">{{articulo.title}}</h1> 
-            <p class="descripcion"><span class="signo1">{</span>{{articulo.created_at}} - Desarrollador:  <span class="full-stack">{{articulo.user}}</span> <span class="signo2">}</span></p>        
-        </div>
-    </section>
+    {% if page.slug == 'inicio' %}
+        <section class="banner">
+            <div class="content-banner">
+                <h1 class="logotipo">Bienvenido, Soy Jhonny Salcedo</h1> 
+                <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+            </div>
+        </section>
+    
+    
+    {% elif page.slug == 'sobre-mi' %}
+        <section class="banner">
+            <div class="content-banner">
+                <h1 class="logotipo">Jhonny Salcedo Llanos</h1> 
+                <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+            </div>
+        </section>
+    
+
+    {% elif page.slug == 'cursos' %}
+        <section class="banner">
+            <div class="content-banner">
+                <h1 class="logotipo">Desarrollo web</h1> 
+                <p class="descripcion"><span class="signo1">{</span>Cursos de desarrollo web  <span class="full-stack">HTML,CSS,JS,PYTHON</span> front-end y Backend<span class="signo2">}</span></p>
+            </div>
+        </section>
+    
+
+    {% elif page.slug == 'portafolio' %}
+        <section class="banner">
+            <div class="content-banner">
+                <h1 class="logotipo">Portafolio de proyectos</h1> 
+                <p class="descripcion"><span class="signo1">{</span>Diversos proyectos: <span class="full-stack">Django-Python , Laravel-PHP , WordPress</span> Web a medida y CMR<span class="signo2">}</span></p>
+            </div>
+        </section>
+    
+
+    {% elif page.slug == 'servicios' %}
+        <section class="banner">
+            <div class="content-banner">
+                <h1 class="logotipo">Servicios en desarrollo web</h1> 
+                <p class="descripcion"><span class="signo1">{</span>Potentes aplicaciones web <span class="full-stack">Diseños, Estructuras y mas</span> <span class="signo2">}</span></p>
+            </div>
+        </section>
+    
 
     {% else %}
     <section class="banner">
         <div class="content-banner">
-            <h1>Articulos</h1> 
-            <p class="descripcion"><span class="signo1">{</span>Estos son mis {{page.slug}} como desarrollador <span class="full-stack">Front-end</span> <span class="signo2">}</span></p>        
+            <h1 class="logotipo">{{articulo.title}}</h1> 
+            <p class="descripcion"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
         </div>
     </section>
     {% endif %}
+        
+    
     {% comment %} Fin del banner {% endcomment %}
    
 

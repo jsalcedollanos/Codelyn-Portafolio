@@ -25,7 +25,8 @@ from django.conf.urls import handler404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<str:slug>', views.page, name="page"),
-    path('articulo/<int:article_id>', views.articulo, name="articulo")
+    path('articulo/<int:article_id>', views.articulo, name="articulo"),
+    path('curso/<int:curso_id>', views.curso_detail, name="curso_detail")
 ]
 
 #handler404 = Error404View.as_view()

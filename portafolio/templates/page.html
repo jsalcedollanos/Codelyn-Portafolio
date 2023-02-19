@@ -42,14 +42,19 @@
                 </div>
                 {% comment %} Fin de paginacion de articulos {% endcomment %}
 
-            {% for articulo in articulos %}           
-                <div class="card-articulo">
-                    <h1 id="titulo-articulo">{{articulo.title}}</h1>
-                    <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
-                    <p id="descripcion-articulo">{{articulo.description|safe}}</p>
-                    <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
-                    <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">    
-                </div>
+            {% for articulo in articulos %}  
+                {% if articulo.public == 1 %}
+                    <div class="card-articulo">
+                        <h1 id="titulo-articulo">{{articulo.title}}</h1>
+                        <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
+                        <p id="descripcion-articulo">{{articulo.description|safe}}</p>
+                        <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
+                        <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">    
+                    </div>
+                {% else %}
+                {% comment %} Validacion personalizada {% endcomment %}
+                {% endif %}         
+                
             {% endfor %}
 
             {% comment %} Paginacion de articulos {% endcomment %}
@@ -74,48 +79,8 @@
         
     </section>
     {% comment %} Fin del bloque de articulos recientes {% endcomment %}
-    
-    <h2 class="sub-titulo">Desarrollos web<h2>
-        
-    <section class="section-2">
-            {% comment %} <img src="../static/images/post2.jpg" class="img-service" alt=""> {% endcomment %}
-            <div id="card-1">
-                <h3><span id="card-1-titulo">{</span> Alojamientos y URL <span id="card-1-titulo">}</span></h3>
-                <img src="../static/images/www.jpg" alt="">
-                <h4>Hosting y Dominios</h4>
-                <p>Optimizacion e indexacion del sitio web con la mejor calidad</p>
-                <img src="../static/images/Hostinger_Logotype.png"  id="img-hosting" alt="">                                            
-           </div>  
-           <div id="card-1">
-                <h3><span id="card-1-titulo">{</span> Web a medidas <span id="card-1-titulo">}</span></h3>
-                <img src="../static/images/optimizacion.jpg"  alt="">
-                <h4>Lenguajes</h4>
-                <ul class="list-unstyled">
-                    <li>Html</li>
-                    <li>Css</li>
-                    <li>JavaScript</li>
-                    <li>PHP</li>
-                    <span><li>Python</li></span>
-                </ul>
-           </div>  
 
-           <div id="card-1">
-                <h3><span id="card-1-titulo">{</span> Interacciones Cliente <span id="card-1-titulo">}</span></h3>
-                <img src="../static/images/cliente.jpg" alt="">
-                <h4>Chat directo</h4>
-                <p>Reuniones, chat directos con el cliente abarcando todas las ideas y requerimientos sin moverte de tu comodidad.</p>
-            </div> 
-            
-            <div id="card-1">
-                <h3><span id="card-1-titulo">{</span> Diseño <span id="card-1-titulo">}</span></h3>
-                <img src="../static/images/cliente.jpg" alt="">
-                <h4>Diseños modernos</h4>
-                <p>Valoro la estructura de contenido simple, los patrones de diseño limpios y las interacciones bien pensadas..</p>
-                <strong>Herramientas:</strong>
-                <p>Font Awesome, Figma</p>
-            </div> 
-    </section>
-
+    {% comment %} Bloque de Velocidad de carga {% endcomment %}
     <section class="section-velocidad">
         <div class="section-velocidad-content">
             <h2>La velocidad es importante</h2>
@@ -125,9 +90,10 @@
         <div class="section-velocidad-imagen">
             <img src="../static/images/speed.png" alt="">
         </div>
-
     </section>
+    {% comment %} Fin del bloque de velocidad de carga {% endcomment %}
 
+    {% comment %} Bloque de GITHUB {% endcomment %}
     <section class="section-3">
         <h1>Mis Proyectos</h1>
         <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
@@ -137,6 +103,7 @@
         <img id="section-3-perfil" src="../static/images/github.png" alt="">
         <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
     </section>
+    {% comment %} Fin del bloque de GITHUB {% endcomment %}
 
     <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
         <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
@@ -225,24 +192,70 @@
                 </div>
             </section>
             <div class="titulo">
-                <p>{{page.content|safe}}</p>
+                {% comment %} <p>{{page.content|safe}}</p> {% endcomment %}
             </div> 
-            <section class="servicios">
-                {% for servicio in servicios %}
-                <div class="content-servicio">                   
-                    <div class="content-servicio-titulo">
-                        <h2><span>{<span>{{servicio.name}}<span>}</span></h2><span id="etiqueta" class="fa-fade">Profesional</span>
-                    </div>
-                    <div class="content-servicio-info">
-                        <p class="content-servicio-descripcion">{{servicio.description}}</p>
-                        <p id="content-servicio-subservicios">{{servicio.subservices|safe}}</p>
-                    </div>
-                    <div class="space-line"></div>
-                    <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button>
+
+        {% comment %} Bloque de diseño web {% endcomment %}
+        <h2 class="sub-titulo">¿Como lo hago?<h2>        
+        <section class="section-2">
+                {% comment %} <img src="../static/images/post2.jpg" class="img-service" alt=""> {% endcomment %}
+                <div id="card-1">
+                    <h3><span id="card-1-titulo">{</span> Alojamientos y URL <span id="card-1-titulo">}</span></h3>
+                    <img src="../static/images/www.jpg" alt="">
+                    <h4>Hosting y Dominios</h4>
+                    <p>Optimizacion e indexacion del sitio web con la mejor calidad</p>
+                    <img src="../static/images/Hostinger_Logotype.png"  id="img-hosting" alt="">                                            
+               </div>  
+               <div id="card-1">
+                    <h3><span id="card-1-titulo">{</span> Web a medidas <span id="card-1-titulo">}</span></h3>
+                    <img src="../static/images/optimizacion.jpg"  alt="">
+                    <h4>Lenguajes</h4>
+                    <ul class="list-unstyled">
+                        <li>Html</li>
+                        <li>Css</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <span><li>Python</li></span>
+                    </ul>
+               </div>  
+    
+               <div id="card-1">
+                    <h3><span id="card-1-titulo">{</span> Interacciones Cliente <span id="card-1-titulo">}</span></h3>
+                    <img src="../static/images/cliente.jpg" alt="">
+                    <h4>Chat directo</h4>
+                    <p>Reuniones, chat directos con el cliente abarcando todas las ideas y requerimientos sin moverte de tu comodidad.</p>
+                </div> 
+                
+                <div id="card-1">
+                    <h3><span id="card-1-titulo">{</span> Diseño <span id="card-1-titulo">}</span></h3>
+                    <img src="../static/images/cliente.jpg" alt="">
+                    <h4>Diseños modernos</h4>
+                    <p>Valoro la estructura de contenido simple, los patrones de diseño limpios y las interacciones bien pensadas..</p>
+                    <strong>Herramientas:</strong>
+                    <p>Font Awesome, Figma</p>
+                </div> 
+        </section>
+    
+        <div class="line-blank"></div>
+
+        {% comment %} Bloque de servicios prestados {% endcomment %}
+        <h1>Servicios y desarrollos web</h1>
+        <section class="servicios">
+            {% for servicio in servicios %}
+            <div class="content-servicio">                   
+                <div class="content-servicio-titulo">
+                    <h2><span>{<span>{{servicio.name}}<span>}</span></h2>{% comment %} <span id="etiqueta" class="fa-fade">Profesional</span> {% endcomment %}
                 </div>
-                {% endfor %}
-            </section>
-        {% endif %}
+                <div class="content-servicio-info">
+                    <p class="content-servicio-descripcion">{{servicio.description}}</p>
+                    <p id="content-servicio-subservicios">{{servicio.subservices|safe}}</p>
+                </div>
+                <div class="space-line"></div>
+                <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button>
+            </div>
+            {% endfor %}
+        </section>
+    {% endif %}
 {% comment %} Fin del Bloque de servicios {% endcomment %}
 
 
@@ -250,7 +263,7 @@
         {% if page.slug == 'cursos' %}
 
             <section class="section-cursos">
-                
+                    {% comment %} Card de curso {% endcomment %}
                     {% for curso in cursos %}
                         {% if curso.status == 0 %}
                             <div class="card-curso-agotado" style="display:block;"><span id="etiqueta">Agotado</span>
@@ -273,20 +286,19 @@
                                     {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
                                     <h4>Descripcion</h4>
                                     <p>{{curso.description|safe}}</p>
-                                </div>
-                                
+                                    
+                                </div>                                
                                 <div id="section-curso-img">
                                     <img src="{{curso.image.url}}" alt="">
-                                </div>                                                                      
+                                </div>  
+                              <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Guardar</button> </a>                                                                
                             </div>
-
-
                         {% endif %}
 
                         {% comment %} Validacion de lista vacia {% endcomment %}
                         {% empty %}
-                        <div class="titulo-cursos">
-                            <p>{{page.content|safe}}</p>
+                        <div class="error-cursos">
+                            <p>Upps... Lo siento, en el momento me encuentro desarrollando cursos de forma gratuita para tu formacion...</p>
                         </div> 
                         <img src="../static/images/construccion2.png">
                         {% comment %} Fin de validacion {% endcomment %}

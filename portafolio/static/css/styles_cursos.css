@@ -3,10 +3,27 @@
     height: 100%;
 }
 
-.section-cursos .titulo-cursos{
+/* Botones */
+#btn-empezar{
+    float: left;
+    position: relative;
+    bottom: 20px;
+    padding: 10px;
+    width: 200px;
+    margin-left: 20px;
+}
+
+#btn-empezar:hover{
+    background: #009e7c;
+    transition: 0.5s;
+}
+
+.section-cursos .error-cursos p{
     font-size:30px;
     padding-bottom: 20px;
     color:#a50475;
+    display: flex;
+    width: 800px;
     font-family: 'Inconsolata', monospace;
 }
 
@@ -23,12 +40,13 @@
 
 /* Seccion de curso disponible */
 .section-cursos  .card-curso{
-    height: 200px;
+    height: 240px;
     margin-bottom: 35px;
     width: 700px;
     border-radius: 20px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
+
 
 .section-cursos .card-curso #etiqueta{
     width: 65px;
@@ -39,7 +57,7 @@
     display: block;
     top: 6px;
     padding-bottom: 9px;
-    left: 15px;
+    left: 63px;
     float: right;
     transform: rotate(29deg);
     border-radius: 4px;
@@ -58,9 +76,12 @@
 }
 
 .section-cursos .card-curso h3{
-    font-size: 20px;
-    margin-top: 10px;
+    font-size: 25px;
+    margin-bottom: 10px;
+    color:#a50475;
 }
+
+
 
 .section-cursos .card-curso h4{
     color:#a50475;
@@ -80,15 +101,15 @@
     width: 195px;
     height: 195px;
     float: right;
-    top: -16px;
+    top: -22px;
     position: relative;
     border-radius: 20px;
     /* background-color: #009e7c; */
 }
 
 .section-cursos .card-curso img{
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border-radius: 20px;
 }
 /* Fin de seccion de curso disponible */

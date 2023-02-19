@@ -25,7 +25,7 @@ class Proyect(models.Model):
 
 class Curso(models.Model):
     title = models.CharField(max_length=200, verbose_name = "titulo")
-    description = RichTextField(verbose_name="descripcion")
+    description = models.TextField(max_length=200 ,verbose_name="descripcion")
     image = models.ImageField(default='null', upload_to="cursos")
     user = models.ForeignKey(User, verbose_name="Desarrollador", on_delete=models.CASCADE)
     status = models.BooleanField(default=True, verbose_name="estado")

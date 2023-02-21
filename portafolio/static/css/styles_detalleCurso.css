@@ -1,0 +1,145 @@
+/* Banner curso */
+header{
+    padding: 0 50px;
+    background-color: #2b2b2b;
+    justify-content: space-between;
+}
+
+.banner-curso{
+    background-color: #2b2b2b;
+    text-align: center;
+    background-position: center;
+}
+
+.content-banner-curso .logotipo-curso{
+    font-weight: lighter;
+    color:#ddd;
+    padding-top: 100px;
+    margin-bottom: 30px;
+    /* margin-left:50px; */
+    font-family: 'Inconsolata', monospace;
+    font-size: 70px;
+}
+
+.content-banner-curso .descripcion-curso{
+    color: #ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 27px;
+    text-align: justify;
+    background-color: #009e7c;
+    padding: 15px;
+    padding-bottom: 100px;
+    padding-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.content-banner-curso .descripcion-curso .full-stack{
+    color: #2b2b2b;
+}
+
+.content-banner-curso .descripcion-curso .signo1{
+    color: #009e7c;
+}
+
+.content-banner-curso .descripcion-curso .signo2{
+    color: #009e7c;
+    border-right: .15em solid #c2c2c2;
+    animation: blink 1s steps(1) infinite;
+}
+
+
+
+.detalle-curso{
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 200px;
+}
+
+
+
+.detalle-curso .content-detalle{
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 90px;
+    text-align: left;
+}
+
+.detalle-curso .content-detalle .content-titulo{
+    display: block;
+    margin-bottom: 40px;
+}
+
+.detalle-curso .content-detalle .content-titulo h1{
+    font-size: 45px;
+    
+}
+
+.detalle-curso .content-detalle .content-contenido{
+    display: block;
+    width: 500px;
+    height: 100%;
+}
+
+.detalle-curso .content-detalle .content-contenido p{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.detalle-curso .content-detalle .content-contenido{
+    padding-bottom: 30px;
+}
+
+/* ACORDEON */
+.acordeon{
+    margin: 10px;
+    width: 550px;
+    font-size: 20px;
+    background-color: #2b2b2b;
+    color: #2b2b2b;
+    border-radius: 6px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.h2{
+    color: #00c78b;
+}
+
+
+
+.acordeon .contenido{
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #bec1c0;
+}
+
+.acordeon .contenido:hover{
+    background-color: #00c78b;
+    color: #2b2b2b;
+}
+
+details:hover{
+    background-color: #565555;
+    transition: 0.7s;
+}
+
+summary{
+    transition: 2ms;
+}
+
+details[open]{
+    background-color: #2b2b2b;
+}
+
+
+
+
+
+
+

@@ -9,21 +9,53 @@
 {% block content %}
 
 
-{% comment %} Contenido de pagina de inicio {% endcomment %}
+    {% comment %} Contenido de pagina de inicio {% endcomment %}
     {% if page.slug == "inicio" %}
-    <div class="content-img">
-        <h1 class="title">
-            <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
-        </h1>  
-        <p>te mostrare todo lo que estas buscando.</p>
-        
-        <img src="../static/images/designer.jpg" class="img-service" alt="">
-             
-    </div> 
-    {% comment %} Articulos recientes {% endcomment %}
-    <section class="articulos-recientes">
-        <h1>Ultimos articulos</h1>
-        <div class="content-articulos"> 
+            <div class="content-img">
+                <h1 class="title">
+                    <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
+                </h1>  
+                <p>te mostrare todo lo que estas buscando.</p>
+                
+                <img src="../static/images/designer.jpg" class="img-service" alt="">              
+            </div> 
+        {% comment %} Articulos recientes {% endcomment %}
+        <section class="articulos-recientes">
+            <h1>Ultimos articulos</h1>
+            <div class="content-articulos"> 
+                    {% comment %} Paginacion de articulos {% endcomment %}
+                    <div class="paginacion-articulos">
+                        <span>
+                            {% if  articulos.has_previous %}
+                                <a href="?page=1">&laquo; Primero</a>
+                                <a href="?page{{  articulos.previous_page_number }}">Anterior</a>
+                            {% endif %}
+                            <span class="current">
+                                Pagina {{  articulos.number }} de {{  articulos.paginator.num_pages }}.
+                            </span>
+                            {% if  articulos.has_next %}
+                                <a href="?page={{  articulos.next_page_number }}">Siguiente</a>
+                                <a href="?page={{  articulos.paginator.num_pages }}">Ultima &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% comment %} Fin de paginacion de articulos {% endcomment %}
+
+                {% for articulo in articulos %}  
+                    {% if articulo.public == 1 %}
+                        <div class="card-articulo">
+                            <h1 id="titulo-articulo">{{articulo.title}}</h1>
+                            <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
+                            <p id="descripcion-articulo">{{articulo.description|safe}}</p>
+                            <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
+                            <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">    
+                        </div>
+                    {% else %}
+                    {% comment %} Validacion personalizada {% endcomment %}
+                    {% endif %}         
+                    
+                {% endfor %}
+
                 {% comment %} Paginacion de articulos {% endcomment %}
                 <div class="paginacion-articulos">
                     <span>
@@ -41,73 +73,40 @@
                     </span>
                 </div>
                 {% comment %} Fin de paginacion de articulos {% endcomment %}
-
-            {% for articulo in articulos %}  
-                {% if articulo.public == 1 %}
-                    <div class="card-articulo">
-                        <h1 id="titulo-articulo">{{articulo.title}}</h1>
-                        <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
-                        <p id="descripcion-articulo">{{articulo.description|safe}}</p>
-                        <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
-                        <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">    
-                    </div>
-                {% else %}
-                {% comment %} Validacion personalizada {% endcomment %}
-                {% endif %}         
-                
-            {% endfor %}
-
-            {% comment %} Paginacion de articulos {% endcomment %}
-            <div class="paginacion-articulos">
-                <span>
-                    {% if  articulos.has_previous %}
-                        <a href="?page=1">&laquo; Primero</a>
-                        <a href="?page{{  articulos.previous_page_number }}">Anterior</a>
-                    {% endif %}
-                    <span class="current">
-                        Pagina {{  articulos.number }} de {{  articulos.paginator.num_pages }}.
-                    </span>
-                    {% if  articulos.has_next %}
-                        <a href="?page={{  articulos.next_page_number }}">Siguiente</a>
-                        <a href="?page={{  articulos.paginator.num_pages }}">Ultima &raquo;</a>
-                    {% endif %}
-                </span>
             </div>
-            {% comment %} Fin de paginacion de articulos {% endcomment %}
-        </div>
-        
-        
-    </section>
-    {% comment %} Fin del bloque de articulos recientes {% endcomment %}
+            
+            
+        </section>
+        {% comment %} Fin del bloque de articulos recientes {% endcomment %}
 
-    {% comment %} Bloque de Velocidad de carga {% endcomment %}
-    <section class="section-velocidad">
-        <div class="section-velocidad-content">
-            <h2>La velocidad es importante</h2>
-            <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
-            <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button>
-        </div>
-        <div class="section-velocidad-imagen">
-            <img src="../static/images/speed.png" alt="">
-        </div>
-    </section>
-    {% comment %} Fin del bloque de velocidad de carga {% endcomment %}
+        {% comment %} Bloque de Velocidad de carga {% endcomment %}
+        <section class="section-velocidad">
+            <div class="section-velocidad-content">
+                <h2>La velocidad es importante</h2>
+                <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
+                <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button>
+            </div>
+            <div class="section-velocidad-imagen">
+                <img src="../static/images/speed.png" alt="">
+            </div>
+        </section>
+        {% comment %} Fin del bloque de velocidad de carga {% endcomment %}
 
-    {% comment %} Bloque de GITHUB {% endcomment %}
-    <section class="section-3">
-        <h1>Mis Proyectos</h1>
-        <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
-            me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
-            sin sobrecargar la web.
-        </p>
-        <img id="section-3-perfil" src="../static/images/github.png" alt="">
-        <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
-    </section>
-    {% comment %} Fin del bloque de GITHUB {% endcomment %}
+        {% comment %} Bloque de GITHUB {% endcomment %}
+        <section class="section-3">
+            <h1>Mis Proyectos</h1>
+            <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
+                me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
+                sin sobrecargar la web.
+            </p>
+            <img id="section-3-perfil" src="../static/images/github.png" alt="">
+            <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
+        </section>
+        {% comment %} Fin del bloque de GITHUB {% endcomment %}
 
-    <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
-        <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
-    </a>
+        <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
+            <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
+        </a>
 
     {% endif %}
 {% comment %} fin del contenido de pagina de inicio {% endcomment %}

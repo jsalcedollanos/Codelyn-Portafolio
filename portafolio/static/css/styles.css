@@ -138,6 +138,7 @@ header{
 
 /* Estilos barra de navegacion */
 
+
 .menu{
     text-align: center;
     width: 100%;
@@ -218,6 +219,36 @@ header{
     #check:checked ~ .menu{
         right: 0;
     }
+
+    /* footer redes */
+
+    .logo-redes{
+        display: flex;
+        position: relative;
+        right: 56px;
+    }
+
+    .content-social #logo-facebook{
+        width: 80px;
+        height: 80px;
+        left: 45px;
+        position: relative;
+    }
+
+    .content-social #logo-instagram{
+        width: 80px;
+        height: 80px;
+        left: 15px;
+        position: relative;
+    }
+
+    .content-social #logo-linkedin{
+        width: 80px;
+        height: 80px;
+        right: 20px;
+        position: relative;
+    }
+
 }
 
 /* Estilos contenido de articulos recientes */
@@ -581,7 +612,7 @@ header{
     margin: 0 auto;
     justify-content: space-between;
     background-position: center;
-    width:890px;
+    width: 800px;
     height: 124px;
     position: relative;
     margin-bottom: -80px;

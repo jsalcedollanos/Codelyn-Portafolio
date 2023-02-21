@@ -25,7 +25,7 @@ class Proyect(models.Model):
 
 class Curso(models.Model):
     title = models.CharField(max_length=200, verbose_name = "titulo")
-    description = models.TextField(max_length=200 ,verbose_name="descripcion")
+    description = models.TextField(max_length=200,verbose_name="descripcion")
     image = models.ImageField(default='null', upload_to="cursos")
     user = models.ForeignKey(User, verbose_name="Desarrollador", on_delete=models.CASCADE)
     status = models.BooleanField(default=True, verbose_name="estado")
@@ -40,13 +40,38 @@ class Curso(models.Model):
         return self.title
     
 class Contenido(models.Model):
-    curso = models.OneToOneField(Curso, verbose_name="cursos", on_delete=models.DO_NOTHING)
+    curso = models.ForeignKey(Curso, verbose_name="cursos", on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200, verbose_name = "titulo")
     description = RichTextField(verbose_name="descripcion")
     image = models.ImageField(default='null', upload_to="cursos")
     status = models.BooleanField(default=True, verbose_name="estado")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class Meta:
+        verbose_name = "Contenido"
+        verbose_name_plural = "Contenidos"
+
+    def __str__(self):
+        return self.title
+
+class Clases(models.Model):
+    curso = models.ForeignKey(Curso, default=1, verbose_name="curso", on_delete=models.CASCADE)
+    contenido = models.ForeignKey(Contenido, verbose_name="contenido", on_delete=models.DO_NOTHING)
+    title_class = models.CharField(max_length=200, verbose_name = "titulo clase")
+    description = models.TextField(max_length=400, verbose_name="descripcion")
+    url = models.URLField(null=True, blank=True, max_length=300, verbose_name="url video")
+    status = models.BooleanField(default=True, verbose_name="estado")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class Meta:
+        verbose_name = "Clase"
+        verbose_name_plural = "Clases"
+
+    def __str__(self):
+        return self.title_class
+
 
 
 class Category(models.Model):
@@ -155,4 +180,6 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
     

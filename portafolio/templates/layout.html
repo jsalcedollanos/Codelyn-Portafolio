@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static '../static/css/styles_servicios.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_error.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_articulo.css' %}">
-
+    <link rel="stylesheet" href="{% static '../static/css/styles_detalleCurso.css' %}">
      <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
      <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
      <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
@@ -27,11 +27,10 @@
                 
         {% endblock %}
     </title>
-</head>
-<body>
-
     
+</head>
 
+<body>
     <!-- Cabecera de la pagina -->
     <header>
         <label for="check" class="mostrar-menu">
@@ -95,13 +94,22 @@
                 <p class="descripcion"><span class="signo1">{</span>Potentes aplicaciones web <span class="full-stack">Diseños, Estructuras y mas</span> <span class="signo2">}</span></p>
             </div>
         </section>
-    
+    {% endif %}
 
-    {% else %}
+    {% if articulo.id > 0 %}
     <section class="banner">
         <div class="content-banner">
             <h1 class="logotipo">{{articulo.title}}</h1> 
             <p class="descripcion"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if curso.id > 0 %}
+    <section class="banner-curso">
+        <div class="content-banner-curso">
+            <h1 class="logotipo-curso">{{curso.title}}</h1> 
+            <p class="descripcion-curso"><span class="signo1"></span><span class="full-stack">{{curso.description}}</span><span class="signo2">{{articulo.created_at}}</span></p>
         </div>
     </section>
     {% endif %}
@@ -122,10 +130,12 @@
         <section class="content-social"> 
             <div id="content-social-sigueme">
                 <h3>Sigueme en mis redes sociales</h3>
-            </div>            
+            </div> 
+            <div class="logo-redes">           
                 <a href="https://www.facebook.com/profile.php?id=100085207243161" target="_blank"> <img id="logo-facebook" src="../static/images/facebook.png" alt=""> </a> 
                 <a href="https://www.linkedin.com/in/jhonny-salcedo-llanos-6b16a7232/" target="_blank"><img id="logo-instagram" src="../static/images/instagram.png" alt=""></a>  
                 <a href="https://www.linkedin.com/in/jhonny-salcedo-llanos-6b16a7232/" target="_blank"><img id="logo-linkedin" src="../static/images/linkedin.png" alt=""></a>                        
+            </div>
         </section>
 
     
@@ -137,5 +147,7 @@
             Desarrollado por: </br><span class="copyRight"> Codelyn&copy; </span>
         </p> 
     </footer>
+
+    <script type="text/javascript" src="{% static '../static/js/acordeon.js' %}"></script>
 </body>
 </html>

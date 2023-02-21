@@ -1,9 +1,39 @@
 {% extends 'layout.html' %}
 {% load static %}
+{# Load the tag library #}
+
+
 {% block title %}
 
 {% endblock %}
 
 {% block content %}
-{{curso.title}}
+
+<section class="detalle-curso">
+    <div class="content-detalle">
+        <div class="content-titulo">
+            <h1>Contenido</h1>
+        </div>
+            <div class="content-contenido">     
+                {% for contenido in contenidos %}      
+                  <details class="acordeon">
+                    <summary class="h2" value="{{contenido.id}}">{{contenido.title}} - {{contenido.id}} </summary>  
+                      {% for clase in clases %}                    
+                          <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} ID:{{clase.id}} </div>
+                      {% endfor %}
+                    </details>
+                {% endfor %}
+            </div>
+
+            {% for idClase in idClases %}
+              {{idClase}}
+              {% if idClase %}
+              {{idClase}}
+              {% else %}
+              Nose
+              {% endif %}
+            {% endfor %}
+    </div>
+</section>
+
 {% endblock %}

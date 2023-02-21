@@ -119,8 +119,16 @@ def articulo(request, article_id):
 
 def curso_detail(request, curso_id):
     cursos = get_object_or_404(Curso, id=curso_id)
+    contenidos = Contenido.objects.all()
+    #idContenido = Contenido.objects
+    idClases = Clases.objects.values_list('id','contenido')
+    clases = Clases.objects.all()
+    #idClase = get_object_or_404(Clases, id)
     return render(request, 'curso_detail.html', {
-        'curso':cursos
+        'curso':cursos,
+        'contenidos': contenidos,
+        'clases':clases,
+        'idClases':idClases
     })
 
 

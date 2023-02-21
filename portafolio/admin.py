@@ -43,6 +43,16 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('name','lastName','email','phone','created_at')
     ordering = ('created_at',)
 
+class ContenidoAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at', 'updated_at')
+    list_display = ('curso','title','status','created_at')
+    ordering = ('created_at',)
+
+class ClasesAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at', 'updated_at')
+    list_display = ('curso','contenido','title_class','url','status','created_at')
+    ordering = ('created_at',)
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Proyect, ProyectAdmin)
@@ -51,6 +61,8 @@ admin.site.register(Curso, CursoAdmin)
 admin.site.register(Perfil, PerfilAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Contenido,ContenidoAdmin)
+admin.site.register(Clases,ClasesAdmin)
 
 # Configurar titulo de panel admin
 admin.site.site_header = "Codelyn"

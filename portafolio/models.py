@@ -56,7 +56,7 @@ class Contenido(models.Model):
         return self.title
 
 class Clases(models.Model):
-    curso = models.ForeignKey(Curso, default=1, verbose_name="curso", on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, verbose_name="curso", on_delete=models.CASCADE)
     contenido = models.ForeignKey(Contenido, verbose_name="contenido", on_delete=models.DO_NOTHING)
     title_class = models.CharField(max_length=200, verbose_name = "titulo clase")
     description = models.TextField(max_length=400, verbose_name="descripcion")

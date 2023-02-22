@@ -123,12 +123,16 @@ def curso_detail(request, curso_id):
     #idContenido = Contenido.objects
     idClases = Clases.objects.values_list('id','contenido')
     clases = Clases.objects.all()
+    canClases = Clases.objects.all().count()
+    canContenido = Contenido.objects.all().count()
     #idClase = get_object_or_404(Clases, id)
     return render(request, 'curso_detail.html', {
         'curso':cursos,
         'contenidos': contenidos,
         'clases':clases,
-        'idClases':idClases
+        'idClases':idClases,
+        'canClases':canClases,
+        'canContenido':canContenido,
     })
 
 

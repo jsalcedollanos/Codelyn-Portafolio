@@ -12,27 +12,23 @@
 <section class="detalle-curso">
     <div class="content-detalle">
         <div class="content-titulo">
-            <h1>Contenido</h1>
+            <h1>Contenido de {{curso.title}}</h1>
+            <span>Total de Contenidos: {{canContenido}}</span>
+            <span>Total de Clases: {{canClases}}</span>
+            <span>Horas de Contenido: ???</span>
         </div>
-            <div class="content-contenido">     
-                {% for contenido in contenidos %}      
+            <div class="content-contenido"> 
+                {% for contenido in contenidos %}       
                   <details class="acordeon">
-                    <summary class="h2" value="{{contenido.id}}">{{contenido.title}} - {{contenido.id}} </summary>  
-                      {% for clase in clases %}                    
-                          <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} ID:{{clase.id}} </div>
-                      {% endfor %}
+                        <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
+                        {% for clase in clases %}
+                          {% if clase.contenido.title == contenido.title %}
+                            <a href="#">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}}</div> </a>
+                          {% endif %}
+                        {% endfor %}
                     </details>
                 {% endfor %}
             </div>
-
-            {% for idClase in idClases %}
-              {{idClase}}
-              {% if idClase %}
-              {{idClase}}
-              {% else %}
-              Nose
-              {% endif %}
-            {% endfor %}
     </div>
 </section>
 

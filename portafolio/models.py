@@ -133,6 +133,7 @@ class Perfil(models.Model):
     email = models.EmailField(max_length=100, verbose_name="Correo")
     telephone = models.IntegerField()
     description = RichTextField(verbose_name="Descripcion")
+    diplomas = RichTextField(default="null" ,verbose_name="Diplomas")
     facebook = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     github = models.URLField(blank=True, null=True)

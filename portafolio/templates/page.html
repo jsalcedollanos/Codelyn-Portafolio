@@ -309,84 +309,89 @@
 
 
 {% comment %} Bloque de pagina SOBRE MI {% endcomment %}
-    {% if page.slug == "sobre-mi" %}
-        {% for perfil in perfiles %}
-            {% if perfil in perfiles %}
-                {% if messages %}
-                {% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
-                    {% for message in messages %}
-                        {% if message.tags == "error" %}
-                        <div class="message-error">                    
-                            <p> <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
-                        </div>
-                        {% else %}
-                        <div class="message">                        
-                            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>{{message}}</p>
-                        </div>
-                        {% endif %}
-                        
-                    {% endfor %}                   
+    {% if page.slug == "sobre-mi" %}    
+        {% if messages %}
+            {% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
+            {% for message in messages %}
+                {% if message.tags == "error" %}
+                    <div class="message-error">                    
+                        <p> <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
+                    </div>
+                    {% else %}
+                    <div class="message">                        
+                        <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>{{message}}</p>
+                    </div>
                 {% endif %}
+            {% endfor %}                   
+        {% endif %}
 
-                <section class="section-sobremi">            
-                    <div class="content-perfil">
-                        <div class="content-perfil-banner">
-                            <img id="banner-perfil" src="../static/images/banner-perfil.png" alt="">
+        <section class="section-sobremi">   
+            {% for perfil in perfiles %}         
+                <div class="content-perfil">
+                    <div class="content-perfil-banner">
+                        <img id="banner-perfil" src="../static/images/banner-perfil.png" alt="">
+                    </div>
+                    
+                    <div class="content-perfil-imagen">
+                        <img id="imagen-perfil" src="{{perfil.image.url}}" alt="">
+                        <p id="name"><strong>{{perfil.name}} {{perfil.lastname}}</strong></p>
+                        <p id="title"><span>{</span> {{perfil.title}} <span>}</span></p>
+                        <p id="dev">Desarrollador web</p>
+                    </div>
+                    <div class="content-perfil-sobremi">
+                        <div class="content-perfil-sobremi-info">
+                            <p>{{perfil.description|safe}}</p>
+                            <h2> Diplomas </h2>
+                            <ul> <li><p id="diplomas">{{perfil.diplomas|safe}}</p></li> </ul> 
+                            <h2>Habilidades y mas</h2>
+                            <ul> <li><p id="skills">{{perfil.skills|safe}}</p></li> </ul>                            
                         </div>
+                    </div>
+                    
+                    {% comment %}<div class="content-perfil-sobremi-post">
+                        <h2>Proyectos destacados</h2>
+                        <ul>
+                            {% for proyecto in proyectos %}
+                                <li>
+                                    {% if proyecto.progress == True %}
+                                        <h3>{{proyecto.name}}</h3> <span id="titulo-estado">Estado:</span> <span id="estado-completado">Completado</span>
+                                    {% else %}
+                                        <h3>{{proyecto.name}}</h3> <span id="estado-completado">En Proceso.</span>
+                                    {% endif %}                                    
+                                </br>
+                                    <span id="date">{{proyecto.created_at}}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div> {% endcomment %}
+                </div> 
+
+                {% comment %} Caja de formulario {% endcomment %}
+                <div class="section-form">
+                    <div class="contact-form">                              
+                        <form action="" method="POST">                       
+                            <h3>Regalame tus datos y pronto te llamare<h3>
+                            {% comment %} Mensaje de error {% endcomment %}
+                            {% if form.errors %}
+                                <div class="content-error-form">
+                                    <strong id="error-form">* Errores en el formulario corrigelos!</strong>
+                                </div>
+                            {% endif %} 
+                            {% comment %} Llave Csrf {% endcomment %}
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button id="btn-guardar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Guardar</button>
+                        </form>
+                        {% comment %} Fin {% endcomment %}
+                    </div>
+                </div>
+                {% comment %} Fin de la caja de formulario {% endcomment %}
+
+            {% endfor %} 
                         
-                        <div class="content-perfil-imagen">
-                            <img id="imagen-perfil" src="{{perfil.image.url}}" alt="">
-                            <p id="name"><strong>{{perfil.name}} {{perfil.surname}}</strong></p>
-                            <p id="title"><span>{</span> {{perfil.title}} <span>}</span></p>
-                            <p id="dev">Desarrollador web</p>
-                        </div>
-                        <div class="content-perfil-sobremi">
-                            <div class="content-perfil-sobremi-info">
-                                <p>{{perfil.description|safe}}</p>
-                                <h3>Habilidades y mas</h3>
-                                <ul> <li><p id="skills">{{perfil.skills|safe}}</p></li> </ul>                            
-                            <div>
-                            <div class="content-perfil-sobremi-post">
-                                <h3>Proyectos destacados</h3>
-                                <ul>
-                                {% for proyecto in proyectos %}
-                                    <li>
-                                        {% if proyecto.progress == True %}
-                                            <h3>{{proyecto.name}}</h3> <span id="titulo-estado">Estado:</span> <span id="estado-completado">Completado</span>
-                                        {% else %}
-                                            <h3>{{proyecto.name}}</h3> <span id="estado-completado">En Proceso.</span>
-                                        {% endif %}                                    
-                                    </br>
-                                        <span id="date">{{proyecto.created_at}}</span>
-                                    </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>    
-                </section>
-            {% endif %}
-                {% empty %}
-                <h1>No se encontraron perfiles</h1>
-        {% endfor %}
-        <section class="section-form">
-            <div class="contact-form">                              
-                    <form action="" method="POST">                       
-                        <h3>Regalame tus datos y pronto te llamare<h3>
-                        {% comment %} Mensaje de error {% endcomment %}
-                        {% if form.errors %}
-                            <div class="content-error-form">
-                                <strong id="error-form">* Errores en el formulario corrigelos!</strong>
-                            </div>
-                        {% endif %} 
-                        {% comment %} Llave Csrf {% endcomment %}
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <button id="btn-guardar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Guardar</button>
-                    </form>
-                {% comment %} Fin {% endcomment %}
-            </div>
+            
         </section>
+        
     {% endif %}
 {% comment %} Fin del bloque {% endcomment %}
 {% endblock %}

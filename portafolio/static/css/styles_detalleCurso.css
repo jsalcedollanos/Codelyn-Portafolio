@@ -67,18 +67,53 @@ header{
 }
 
 .detalle-curso .content-detalle .content-titulo{
-    display: block;
+    width: 500px;
     margin-bottom: 40px;
 }
 
 .detalle-curso .content-detalle .content-titulo h1{
-    display: block;
+    display: flex;
     font-size: 30px;
+    margin-bottom: 20px;
 }
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales{
+    background-color: #2b2b2b;
+    padding: 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 550px;
+}
+
+
+.detalle-curso .content-detalle .content-introduccion{
+    width: 500px;
+    position: relative;
+    float: right;
+    bottom: 166px;
+    margin-bottom: 20px;
+}
+
+.detalle-curso .content-detalle .content-introduccion h1{
+    color: #2b2b2b;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.detalle-curso .content-detalle .content-introduccion .content-video{
+    width: 500px;
+    height: 400px;
+    display: block;
+    position: relative;
+    background-color: #2b2b2b;
+}
+
 .detalle-curso .content-detalle .content-titulo span{
     margin-top: 10px;
     display: block;
     font-size: 20px;
+    color: white;
 }
 
 .detalle-curso .content-detalle .content-contenido{

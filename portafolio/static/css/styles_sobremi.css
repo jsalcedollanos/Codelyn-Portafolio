@@ -1,3 +1,8 @@
+.section-sobremi{
+    height: 1200px;
+    margin-bottom: 150px
+}
+
 #terminal-error{
     color: yellow;
     font-size: 22px;
@@ -76,7 +81,7 @@
     position: relative;
     margin-right: 1000px;
     top: 55px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .content-perfil .content-perfil-imagen #title{
@@ -84,7 +89,7 @@
     margin-right: 1000px;
     top: 55px;
     color:rgb(0, 148, 104);
-    font-size: 17px;
+    font-size: 24px;
 }
 
 .content-perfil .content-perfil-imagen #dev{
@@ -93,7 +98,7 @@
     top: 55px;
     font-weight: bold;
     color:rgb(75, 75, 75);
-    font-size: 17px;
+    font-size: 22px;
 }
 
 .content-perfil .content-perfil-imagen span{
@@ -121,12 +126,17 @@
 
 .content-perfil .content-perfil-sobremi p{
     padding-top: 8px;
-    font-size:15px;
-    width: 600px;
+    font-size: 20px;
+    width: 760px;
 } 
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info{
-    width: 100%;
+    text-align: justify;
+    width: 1200px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info h2{
+    margin-top: 20px;
 }
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info ul li{
@@ -136,11 +146,14 @@
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info #skills{
     width: 5px;
+    padding: 12px;
+    list-style: lower-alpha;
 }
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info{
     text-align: justify;
 }
+
 
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-post{
@@ -173,6 +186,10 @@
 /* Contenido de formulario de contacto */
 .section-form{
     padding: 50px 50px;
+    position: relative;
+    min-height: 1200px;
+    left: 400px;
+    bottom: 900px;
 }
 
 .section-form .contact-form h3{
@@ -182,22 +199,22 @@
 }
 
 .errorlist{
-    font-size:12px;
+    font-size: 15px;
     color: red;
     margin-bottom: 10px; 
 }
 
 .section-form .contact-form .content-error-form{
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
 .section-form .contact-form #error-form{
-    font-size:12px;
+    font-size: 20px;
     color: red;
 }
 
 .section-form .contact-form{
-    height: 580px;
+    height: 100%;
     margin-bottom: 50px;
     padding-bottom: 150px;
 }
@@ -223,7 +240,7 @@
     color: white;
     display: flex;
     padding-bottom: 9px;
-    font-size: 12px;
+    font-size: 20px;
 }
 
 .section-form .contact-form input{
@@ -231,7 +248,7 @@
     margin-bottom: 20px;
     width: 260px;
     display: block;
-    font-size: 12px;
+    font-size: 17px;
     color: #009e7c;
     background-color: #2b2b2b;
     border: 1px solid;

@@ -13,17 +13,28 @@
     <div class="content-detalle">
         <div class="content-titulo">
             <h1>Contenido de {{curso.title}}</h1>
-            <span>Total de Contenidos: {{canContenido}}</span>
-            <span>Total de Clases: {{canClases}}</span>
-            <span>Horas de Contenido: ???</span>
+            <div class="detalles-generales">
+              <span>Total de Contenidos: {{canContenido}}</span>
+              <span>Total de Clases: {{canClases}}</span>
+              <span>Horas de Contenido: ???</span>
+              <span>Instructor: {{curso.user}} <a href="/sobre-mi">Ver perfil</a></span>
+            </div>
         </div>
+
+        <div class="content-introduccion">
+            <h1>Introduccion al curso</h1>
+            <div class="content-video">
+
+            </div>
+        </div>
+
             <div class="content-contenido"> 
                 {% for contenido in contenidos %}       
                   <details class="acordeon">
                         <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
                         {% for clase in clases %}
                           {% if clase.contenido.title == contenido.title %}
-                            <a href="#">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}}</div> </a>
+                            <a href="#">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
                           {% endif %}
                         {% endfor %}
                     </details>

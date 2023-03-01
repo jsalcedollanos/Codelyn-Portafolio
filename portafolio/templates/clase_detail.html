@@ -12,43 +12,33 @@
 <section class="detalle-curso">
     <div class="content-detalle">
         <div class="content-titulo">
-            <h1>Contenido de {{curso.title}}</h1> 
+            <h1>Contenido de {{curso.title}}</h1>
             <div class="detalles-generales">
-              {% with  nombreCurso=curso.title  %}
-                {% if nombreCurso == curso.title %}
-                  
-                  <span>Total de Contenidos: {{canContenido}}</span>
-                  <span>Total de Clases: {{canClases}}</span>
-                  <span>Horas de Contenido: ???</span>
-                  <span>Instructor: {{curso.user}} <a href="/sobre-mi">Ver perfil</a></span>
-              
-              {% endif %}
-              {% endwith %}
+              <span>Total de Contenidos: {{canContenido}}</span>
+              <span>Total de Clases: {{canClases}}</span>
+              <span>Horas de Contenido: ???</span>
+              <span>Instructor: {{curso.user}} <a href="/sobre-mi">Ver perfil</a></span>
             </div>
         </div>
 
         <div class="content-introduccion">
-            <h1>Introduccion al curso</h1>
+            <h1>{{claseId.title_class}}</h1>
             <div class="content-video">
-                {{curso.video|safe}}
+                {{claseId.video|safe}}
             </div>
         </div>
 
             <div class="content-contenido"> 
-              {% with cursoIdent=curso.id   %}
-              {% if curso.id %}
                 {% for contenido in contenidos %}       
-                  <details class="acordeon">
+                    <details class="acordeon">
                         <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
                         {% for clase in clases %}
                           {% if clase.contenido.title == contenido.title %}
-                            <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}}</div> </a>
+                            <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
                           {% endif %}
                         {% endfor %}
                     </details>
                 {% endfor %}
-              {% endif %}
-              {% endwith %}
             </div>
 
     </div>

@@ -25,6 +25,10 @@ header{
     color: #ddd;
     font-family: 'Inconsolata', monospace;
     font-size: 27px;
+    width: 990px;
+    margin: 0 auto;
+    border-radius: 15px;
+    align-items: center;
     text-align: justify;
     background-color: #009e7c;
     padding: 15px;
@@ -87,10 +91,12 @@ header{
 
 
 .detalle-curso .content-detalle .content-introduccion{
-    width: 500px;
+    width: 560px; 
+    height: 315px;
     position: relative;
+    right: 90px;
     float: right;
-    bottom: 166px;
+    bottom: 260px;
     margin-bottom: 20px;
 }
 
@@ -102,11 +108,16 @@ header{
 }
 
 .detalle-curso .content-detalle .content-introduccion .content-video{
-    width: 500px;
-    height: 400px;
+    width: 580px;
+    height: 334px;
     display: block;
     position: relative;
     background-color: #2b2b2b;
+    margin: 0 auto;
+}
+
+.detalle-curso .content-detalle .content-introduccion .content-video iframe{
+    padding: 10px;
 }
 
 .detalle-curso .content-detalle .content-titulo span{

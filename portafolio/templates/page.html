@@ -44,16 +44,19 @@
                 {% for articulo in articulos %}  
                     {% if articulo.public == 1 %}
                         <div class="card-articulo">
-                            <h1 id="titulo-articulo">{{articulo.title}}</h1>
-                            <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
-                            <p id="descripcion-articulo">{{articulo.description|safe}}</p>
-                            <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
-                            <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">    
+                            <div class="card-info">
+                                <h1 id="titulo-articulo">{{articulo.title}}</h1>
+                                <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
+                                <p id="descripcion-articulo">{{articulo.description|safe}}</p>
+                                <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
+                            </div>
+                            <div class="card-img">
+                                <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">  
+                            </div>
                         </div>
-                    {% else %}
-                    {% comment %} Validacion personalizada {% endcomment %}
-                    {% endif %}         
-                    
+                    {% endif %}                
+                    {% empty %}
+                    <h2>No se encontraron articulos</h2>
                 {% endfor %}
 
                 {% comment %} Paginacion de articulos {% endcomment %}
@@ -84,7 +87,7 @@
             <div class="section-velocidad-content">
                 <h2>La velocidad es importante</h2>
                 <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
-                <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button>
+                <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button></a>
             </div>
             <div class="section-velocidad-imagen">
                 <img src="../static/images/speed.png" alt="">
@@ -119,12 +122,11 @@
     {% if page.slug == 'portafolio' %}   
     {% include 'paginacion.html' %}
         <div class="portafolio">
-            <p>{{page.content|safe}}</p>
         </div> 
         
         <div class="card_proyect">
             {% for proyecto in proyectos %}
-                <ul>                         
+                                       
                     <div class="card_proyect_content"> 
                         <img src="{{proyecto.image.url}}" alt="{{proyecto.title}}">    
                         <div class="card_proyect_info">
@@ -133,7 +135,7 @@
                                 {% else %}
                                     <div class="content_offline"><span data-tooltip="Servicio Offline" id="offline">Offline</span></div>
                             {% endif %}
-                            <li> {{proyecto.name}}   
+                             <h1>{{proyecto.name}}</h1>   
                                 <span id="card_proyect_lenguage">
                                     {% if proyecto.lenguage == 'Wordpress' %}
                                             CRM: {{lenguaje.Wordpress|safe}}
@@ -147,7 +149,7 @@
                                         Lenguaje: {{lenguaje.Python|safe}}
                                     {% endif %}                                  
                                 </span>
-                            </li>
+                            
                             <p id="card_proyect_description">{{proyecto.description|safe}}</p>
                             {% if proyecto.progress == 1 %}
                                 <p id="progreso">Progreso: <span>Completado</span> </p>
@@ -155,11 +157,15 @@
                                 <p id="progreso">Progreso: <span>En proceso</span> </p>
                             {% endif %}                            
                             <p id="card_proyect_date_dev">Desarrollador: {{proyecto.user}}</p>
-                            <p id="card_proyect_date">Publicado: {{proyecto.created_at}}</p>                          
-                            <a id="btn-visitar" href="{{proyecto.slug}}" target="_blank"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Visitar</a>
+                            <p id="card_proyect_date">Publicado: {{proyecto.created_at}}</p>
+                            {% if proyecto.slug == null %}
+                                <a id="btn-off" href="{{proyecto.slug}}" target="_blank"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Visitarrr</a>
+                            {% else %}
+                                <a id="btn-visitar" href="{{proyecto.slug}}" target="_blank"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Visitar</a>
+                            {% endif %}                                                    
                         </div>                          
                     </div>      
-                </ul>  
+               
             {% endfor %} 
             {% include 'paginacion.html' %}
             

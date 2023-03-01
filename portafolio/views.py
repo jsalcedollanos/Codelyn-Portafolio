@@ -27,7 +27,7 @@ def page(request, slug):
     # Articulos
     articulos = Article.objects.all()
     # Paginar Articulos
-    paginator_articulos = Paginator(articulos, 3)
+    paginator_articulos = Paginator(articulos, 5)
     # Recoger numero pagina
     page_number = request.GET.get('page')
     page_obj = paginator_articulos.get_page(page_number)
@@ -119,18 +119,35 @@ def articulo(request, article_id):
 
 def curso_detail(request, curso_id):
     cursos = get_object_or_404(Curso, id=curso_id)
-    contenidos = Contenido.objects.all()
+    contenidos = Contenido.objects.filter(curso=curso_id)
     #idContenido = Contenido.objects
     idClases = Clases.objects.values_list('id','contenido')
-    clases = Clases.objects.all()
-    canClases = Clases.objects.all().count()
-    canContenido = Contenido.objects.all().count()
+    clases = Clases.objects.filter(curso=curso_id)
+    canClases = Clases.objects.filter(curso=curso_id).count()
+    canContenido = Contenido.objects.filter(curso_id=curso_id).count()
     #idClase = get_object_or_404(Clases, id)
     return render(request, 'curso_detail.html', {
         'curso':cursos,
         'contenidos': contenidos,
         'clases':clases,
         'idClases':idClases,
+        'canClases':canClases,
+        'canContenido':canContenido,
+    })
+
+def clase_curso(request, curso_id, clase_id):
+    cursos = get_object_or_404(Curso, id=curso_id)
+    claseId = get_object_or_404(Clases, id=clase_id)
+    contenidos = Contenido.objects.all()
+    clases = Clases.objects.all()
+    canClases = Clases.objects.all().count()
+    canContenido = Contenido.objects.all().count()
+    return render(request, 'clase_detail.html', {
+        'clase':clases,
+        'claseId':claseId,
+        'curso':cursos,
+        'contenidos': contenidos,
+        'clases':clases,
         'canClases':canClases,
         'canContenido':canContenido,
     })

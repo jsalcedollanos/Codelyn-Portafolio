@@ -50,7 +50,7 @@ class ContenidoAdmin(admin.ModelAdmin):
 
 class ClasesAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
-    list_display = ('curso','contenido','title_class','url','status','created_at')
+    list_display = ('curso','contenido','title_class','status','created_at')
     ordering = ('created_at',)
 
 admin.site.register(Article, ArticleAdmin)

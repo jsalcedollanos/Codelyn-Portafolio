@@ -1,6 +1,6 @@
 .section-sobremi{
     height: 1200px;
-    margin-bottom: 150px
+    margin-bottom: 300px
 }
 
 #terminal-error{
@@ -61,6 +61,7 @@
     width:1250px;
     height: 300px;
     top: 85px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 /* Fin */
 
@@ -133,6 +134,32 @@
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info{
     text-align: justify;
     width: 1200px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info .redes-sociales{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info .redes-sociales .caja-redes{
+    display: flex;
+    margin-top: 10px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info .redes-sociales h2{
+    margin-bottom: 35px;
+    width: 200px;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info .redes-sociales a{
+    margin: 15px;
+    font-size: 18px;
+    color: #020202;
+}
+
+.content-perfil .content-perfil-sobremi .content-perfil-sobremi-info .redes-sociales img{
+    width: 40px;
+    height: 40px;
 }
 
 .content-perfil .content-perfil-sobremi .content-perfil-sobremi-info h2{

@@ -45,7 +45,7 @@
 /* Boton de "Me interesa!" */
 #btn{
     padding: 7px;
-    margin-top: 60px;
+    margin-top: 160px;
     width: 200px;
     height: 40px;
     position: relative;
@@ -73,7 +73,7 @@
 /* Contenido de card de servicio */
 .servicios .content-servicio{
     width: 370px;
-    height: 550px;
+    height: 635px;
     padding-bottom: 20px;
     border-radius: 15px;
     margin-right: 65px;
@@ -102,10 +102,10 @@
 }
 
 .servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
-    padding: 20px;
+    padding: 8px;
     color:black;
     font-size: 22px;
-    text-align: justify;
+    text-align: initial;
     padding-bottom: 20px;
 }
 

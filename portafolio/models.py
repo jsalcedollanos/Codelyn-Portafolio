@@ -41,7 +41,7 @@ class Curso(models.Model):
         return self.title
     
 class Contenido(models.Model):
-    curso = models.ForeignKey(Curso, verbose_name="cursos", on_delete=models.DO_NOTHING)
+    curso = models.ForeignKey(Curso, verbose_name="cursos", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name = "titulo")
     description = RichTextField(verbose_name="descripcion")
     image = models.ImageField(default='null', upload_to="cursos")
@@ -58,7 +58,7 @@ class Contenido(models.Model):
 
 class Clases(models.Model):
     curso = models.ForeignKey(Curso, verbose_name="curso", on_delete=models.CASCADE)
-    contenido = models.ForeignKey(Contenido, verbose_name="contenido", on_delete=models.DO_NOTHING)
+    contenido = models.ForeignKey(Contenido, verbose_name="contenido", on_delete=models.CASCADE)
     title_class = models.CharField(max_length=200, verbose_name = "titulo clase")
     description = models.TextField(max_length=400, verbose_name="descripcion")
     video = models.TextField(default="null" ,max_length=400)

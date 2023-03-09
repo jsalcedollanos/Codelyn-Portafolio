@@ -1,6 +1,7 @@
 .section-cursos{
     display:block;
     height: 100%;
+    width: 100%;
 }
 
 /* Botones */
@@ -191,3 +192,58 @@
     border-radius: 20px;
 }
 /* Fin de seccion de curso no disponible */
+
+
+/* RESPONSIVE CURSOS para pantallas desde 760 PX*/
+
+@media screen and (max-width: 760px) {
+    .section-cursos{
+        margin: 0 auto;
+    }
+    
+    .section-cursos .card-curso #section-curso-img img {
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .section-cursos .card-curso .etiqueta-free{
+        position: relative;
+        right: 45px;
+    }
+}
+
+/* RESPONSIVE CURSOS*/
+
+@media screen and (max-width: 400px) {
+    .section-cursos{
+        margin: 0 auto;
+    }
+
+    .section-cursos .card-curso{
+        width: 85%;
+        height: 270px;
+    }
+
+    .section-cursos .card-curso #content-curso{
+        width: 80%;
+    }
+
+    .section-cursos .card-curso p{
+        font-size: 13px;
+    }
+    
+    .section-cursos .card-curso #section-curso-img img {
+        display: none;
+    }
+
+    #btn-empezar{
+        font-size: 12px;
+        position: relative;
+        padding: 0;
+        bottom: 200px;
+        height: 30px;
+    }
+
+    
+}

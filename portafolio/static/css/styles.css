@@ -188,92 +188,29 @@ header{
     display:none;
 }
 
-/* RESPONSIVE */
-@media screen and (max-width: 760px){
-    /* HEADER */
-    .mostrar-menu,
-    .esconder-menu{
-        font-size: 70px;
-        color: #7fffd4;
-        display: block;
-    }
-    .menu{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: #2b2b2b;
-        right: -100%;
-        top: 0;
-        text-align: center;
-        padding: 100px 0px;
-        z-index: 100;
-        transition: 0.8s;
-    }
-    .menu a{
-        
-        display: block;
-        padding: 20px;
-    }
-    .esconder-menu{
-        position: absolute;
-        top: 40px;
-        right: 40px;        
-    }
-    #check:checked ~ .menu{
-        right: 0;
-    }
-}
 
-@media screen and (max-width: 400px){
-
-    
-
-    .section-social .content-social{
-        width: 100%;
-        justify-content: center;
-    }
-
-
-
-    .logo-redes{
-        width: 75%;
-        position: relative;
-        bottom: 68px;
-        display: flex;
-    }
-
-    .section-social .content-social .logo-redes .link-redes img{
-        height: auto;
-        width: 100%;
-    }
-
-    .section-social .content-social .logo-redes .link-redes a{
-        margin-right: 40px;
-    }
-
-}
 
 /* Estilos contenido de articulos recientes */
 .articulos-recientes{
-    height: 1100px;
-    margin-bottom: 40px;
+    height: 100%;
+    
 }
 
-.articulos-recientes h1{
+.articulos-recientes #title-article{
     font-size: 35px;
     display: flex;
+    margin-left: 30px;
+    margin-top: 100px;
 }
 
 .articulos-recientes .content-articulos{
-    position:absolute;
     text-align: justify;
     width: 980px;
     height: 100%;
 }
 
 .articulos-recientes .content-articulos .paginacion-articulos{
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 40px;
     font-size: 20px ;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 12px;
@@ -301,12 +238,13 @@ header{
 .articulos-recientes .content-articulos .card-articulo #titulo-articulo{
     font-size: 35px;
     color: black;
+    text-align: left;
 }
 
 .articulos-recientes .content-articulos .card-articulo #descripcion-articulo{
     font-size: 18px;
     color: black;
-    width: 540px;
+    width: 100%;
     padding-top: 12px;
 }
 
@@ -329,11 +267,11 @@ header{
     display: flex;
     position: relative;
     float: right;
-    bottom: 227px;
+    bottom: 209px;
     left: 30px;
     border-radius: 20px;
-    height: 257px;
-    width: 301px;
+    height: 239px;
+    width: 301px
 }
 
 .articulos-recientes .content-articulos .card-articulo .card-img #imagen-articulo{
@@ -346,7 +284,7 @@ header{
 .content{
     height: 100%;
     width: 100%;
-    padding: 30px;
+    margin-bottom: 55px;
     justify-content: center;
     text-align: center;
     font-family: 'Inconsolata', monospace;
@@ -474,6 +412,7 @@ header{
 
 /* Sesion de velocidad de sitios web */
 .section-velocidad{
+    width: 100%;
     height: 550px;
     display: flex;
     align-items: center;
@@ -491,20 +430,39 @@ header{
 
 .section-velocidad .section-velocidad-imagen{
     position: relative;
-    top: 20px;
+    top: 75px;
+}
+
+#btn-prueba{
+    padding: 7px;
+    width: 200px;
+    height: 40px;
+    position: relative;
+    top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #ddd;
+    border-radius: 8px;
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.section-velocidad .section-velocidad-imagen img{
+    width: 100%;
 }
 
 /* Fin de sesion de velocida de carga */
 
 .section-3{
     background-color: #2b2b2b;
-    height: 570px;
+    height: 100%;
     box-shadow: rgba(0, 128, 85, 0.8) 0px 13px 27px -5px, rgba(0, 128, 85, 0.5) 0px 8px 16px -8px;
     border-radius: 20px;
     width: 100%;
     font-family: 'Inconsolata', monospace;
     text-align: center;
     margin-bottom: 115px;
+    padding-bottom: 2px;
 }
 
 .section-3 h1{
@@ -514,8 +472,6 @@ header{
 }
 
 .section-3 p{
-    margin-left: 150px;
-    margin-right: 100px;
     font-size: 20px;
     color: #ffffff;
     margin-bottom: 50px;
@@ -706,3 +662,254 @@ footer{
 }
 
 
+/* RESPONSIVE */
+@media screen and (max-width: 760px){
+    /* HEADER */
+    .mostrar-menu,
+    .esconder-menu{
+        font-size: 70px;
+        color: #7fffd4;
+        display: block;
+    }
+    .menu{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #2b2b2b;
+        right: -100%;
+        top: 0;
+        text-align: center;
+        padding: 100px 0px;
+        z-index: 100;
+        transition: 0.8s;
+    }
+    .menu a{
+        
+        display: block;
+        padding: 20px;
+    }
+    .esconder-menu{
+        position: absolute;
+        top: 40px;
+        right: 40px;        
+    }
+    #check:checked ~ .menu{
+        right: 0;
+    }
+
+    /* CONTENIDO PAGINA INICIO */
+
+    .content .content-img .img-service{
+        width: 100%;
+        height: 100%;
+    }
+
+    #title-article{
+        padding: 40px;
+    }
+
+    .articulos-recientes .content-articulos {
+        width: 100%;
+    }
+
+
+    .articulos-recientes .content-articulos .card-articulo .card-img {
+        display: none;
+    }
+
+    .articulos-recientes{
+        margin-bottom: 100px;
+    }
+
+    .section-velocidad{
+        display: block;
+    }
+
+    .section-velocidad .section-velocidad-content{
+        padding: 0;
+        position: relative;
+        bottom: 66px;
+    }
+
+    .section-velocidad .section-velocidad-imagen {
+        width: 100%;
+    }
+
+    #btn-prueba{
+        margin-top: 30px;
+    }
+
+    .section-velocidad .section-velocidad-imagen img{
+        width: 100%;
+        position: relative;
+        bottom: 347px;
+    }
+
+    /* FIN DE CONTENIDO  */
+
+    .section-social .content-social{
+        width: 100%;
+        justify-content: center;
+    }
+
+
+
+    .logo-redes{
+        width: 100%;
+        display: flex;
+    }
+
+    .section-social .content-social .logo-redes .link-redes img{
+        height: auto;
+        width: 45%;
+    }
+
+    .section-social .content-social .logo-redes .link-redes a{
+        margin-right: 40px;
+    }
+
+    .section-3{
+        justify-content: center;
+    }
+
+    .section-3 .parrafo-github{
+        margin-left: 35px;
+        margin-right: 35px;
+        text-align: justify;
+    }
+
+    .icon-whatsapp{
+        position: fixed;
+        z-index: 100;
+        right: 20px;
+        top: 580px;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+
+    /* HEADER */
+    .mostrar-menu,
+    .esconder-menu{
+        font-size: 70px;
+        color: #7fffd4;
+        display: block;
+    }
+    .menu{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #2b2b2b;
+        right: -100%;
+        top: 0;
+        text-align: center;
+        padding: 100px 0px;
+        z-index: 100;
+        transition: 0.8s;
+    }
+    .menu a{
+        
+        display: block;
+        padding: 20px;
+    }
+    .esconder-menu{
+        position: absolute;
+        top: 40px;
+        right: 40px;        
+    }
+    #check:checked ~ .menu{
+        right: 0;
+    }
+    
+    /* CONTENIDO PAGINA INICIO */
+
+    .content .content-img .img-service{
+        width: 100%;
+        height: 100%;
+    }
+
+    #title-article{
+        padding: 40px;
+    }
+
+    .articulos-recientes .content-articulos {
+        width: 100%;
+    }
+
+
+    .articulos-recientes .content-articulos .card-articulo .card-img {
+        display: none;
+    }
+
+    .articulos-recientes{
+        margin-bottom: 100px;
+    }
+
+    .section-velocidad{
+        display: block;
+    }
+
+    .section-velocidad .section-velocidad-content{
+        padding: 0;
+    }
+
+    .section-velocidad .section-velocidad-imagen {
+        width: 100%;
+    }
+
+    #btn-prueba{
+        margin-top: 30px;
+    }
+
+    .section-velocidad .section-velocidad-imagen img{
+        width: 100%;
+        position: relative;
+        bottom: 83px;
+    }
+
+    .section-velocidad .section-velocidad-imagen img{
+        width: 100%;
+    }
+    /* FIN DE CONTENIDO  */
+
+    .section-social .content-social{
+        width: 100%;
+        justify-content: center;
+    }
+
+
+
+    .logo-redes{
+        width: 75%;
+        position: relative;
+        display: flex;
+    }
+
+    .section-social .content-social .logo-redes .link-redes img{
+        height: auto;
+        width: 100%;
+    }
+
+    .section-social .content-social .logo-redes .link-redes a{
+        margin-right: 40px;
+    }
+
+    .section-3{
+        justify-content: center;
+    }
+
+    .section-3 .parrafo-github{
+        margin-left: 35px;
+        margin-right: 35px;
+        text-align: justify;
+    }
+
+    .icon-whatsapp{
+        position: fixed;
+        z-index: 100;
+        right: 20px;
+        top: 580px;
+    }
+
+}

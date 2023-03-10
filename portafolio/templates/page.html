@@ -21,7 +21,7 @@
             </div> 
         {% comment %} Articulos recientes {% endcomment %}
         <section class="articulos-recientes">
-            <h1>Ultimos articulos</h1>
+            <h1 id="title-article">Ultimos articulos</h1>
             <div class="content-articulos"> 
                     {% comment %} Paginacion de articulos {% endcomment %}
                     <div class="paginacion-articulos">
@@ -87,7 +87,7 @@
             <div class="section-velocidad-content">
                 <h2>La velocidad es importante</h2>
                 <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
-                <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button></a>
+                <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn-prueba"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button></a>
             </div>
             <div class="section-velocidad-imagen">
                 <img src="../static/images/speed.png" alt="">
@@ -98,7 +98,7 @@
         {% comment %} Bloque de GITHUB {% endcomment %}
         <section class="section-3">
             <h1>Mis Proyectos</h1>
-            <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
+            <p class="parrafo-github">Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
                 me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
                 sin sobrecargar la web.
             </p>
@@ -285,7 +285,7 @@
                             </div>  
 
                             {% else %}
-                            <div class="card-curso"><div class="etiqueta-free"><span id="etiqueta">Free</span></div>
+                            <div class="card-curso">
                                 <div id="content-curso">
                                     <h3><span id="card-1-titulo">{</span> {{curso.title}} <span id="card-1-titulo">}</span></h3>
                                     {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
@@ -296,7 +296,9 @@
                                 <div id="section-curso-img">
                                     <img src="{{curso.image.url}}" alt="">
                                 </div>  
-                              <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar</button> </a>                                                                
+                                <div class="content-boton">
+                                    <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar</button> </a>        
+                                </div>                                                        
                             </div>
                         {% endif %}
 
@@ -322,6 +324,7 @@
                 {% if message.tags == "error" %}
                     <div class="message-error">                    
                         <p> <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
+
                     </div>
                     {% else %}
                     <div class="message">                        

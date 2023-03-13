@@ -86,7 +86,7 @@ def page(request, slug):
         else:
             messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
         
-        
+    
     return render(request, 'page.html', {
         "page": page,
         "proyectos": page_proyectos,        

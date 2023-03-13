@@ -13,6 +13,7 @@
     bottom: 50px;
     position: relative;
     background-color: #00c78b;
+    color: #2b2b2b;
 }
 
 .min-info .mini-menu{
@@ -21,112 +22,165 @@
 }
 
 .min-info .mini-menu:hover{
-    color: white;
+    color: #00c78b;
     background-color:  #2b2b2b;
 }
+
 
 #min-icon{
     margin-bottom: 15px;
     font-size:40px;
 }
 
+.contenido-servicios{
+    width: 100%;
+    height: 1000px;
+    justify-content: center;
+    display: flex;
+}
 
-/* Etiqueta de carta */
-#etiqueta{
-    background-color: #a50475;
-    padding: 6px;
+.box-servicio{
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 15px;
+}
+
+.box-servicio .content-servicio{
+    margin-right: 35px;
     position: relative;
-    float: right;
-    bottom: 60px;
-    left: 32px;
-    border-radius: 12px;
-    transform: rotate(44deg);
-}
-/* Boton de "Me interesa!" */
-#btn{
-    padding: 7px;
-    width: 200px;
-    height: 40px;
-    position: relative;
-    top: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    background-color: #ddd;
-    border-radius: 8px;
-    cursor:pointer;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    top: 100px;
+    display: block;
+    float: left;
+    padding: 50px 50px;
 }
 
-
-#btn:hover{
-    background:#00c78b;
-    transition: 0.5s;
+.box-servicio .content-servicio h2{
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
-/* Icono del boton */
-#terminal{
-    font-size:18px;
-    margin-right: 5px;
-    color: #a50475;
-}
-/* Contenido de card de servicio */
-.servicios .content-servicio{
-    width: 370px;
-    height: 635px;
-    padding-bottom: 20px;
-    border-radius: 15px;
-    margin-right: 65px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+.box-servicio .content-servicio p{
+    font-size: 25px;
+    width: 700px;
+    padding: 20px;
 }
 
-.servicios .content-servicio:hover{
-    border-radius: 15px;
-    box-shadow: rgba(0, 233, 144, 0.5) 0px 1px 2px 0px, rgba(0, 233, 144, 0.8) 0px 2px 6px 2px;
-    transition: 0.2s;
-}
-
-.servicios .content-servicio .content-servicio-titulo{
-    padding-top: 40px;
-}
-
-.servicios .content-servicio .content-servicio-titulo span{
-    border-right: .11em solid #b6005b;
-    animation: blink 1s steps(1) infinite;
-}
-
-.servicios .content-servicio .content-servicio-info{
-    padding: 10px;
-    margin-bottom: 25px;
-    height: 170px;
-}
-
-.servicios .content-servicio .content-servicio-info .content-servicio-descripcion{
-    padding: 8px;
-    color:black;
-    font-size: 22px;
-    text-align: initial;
-    padding-bottom: 20px;
-}
-
-
-.servicios .content-servicio .content-servicio-info p{
-    text-align: left;
-    color: #a50475;
-    font-size: 22px;
-}
-
-.servicios .content-servicio .content-servicio-info span{
-    padding:10px;
-    color:#a50475 !important;
+.box-servicio .content-servicio .content-servicio-caracteristicas{
+    display: block;
     float: left;
 }
 
-.servicios .content-servicio .space-line{
-    height: 130px;
+.box-servicio .content-servicio .content-servicio-caracteristicas h3{
+    font-size: 37px;
+    margin-bottom: 15px;
+    margin-top: 55px;
+    position: relative;
 }
 
-/* .servicios .space-line{
-    height: 55px;
-    width: 20px;
-    background-color: red;
-} */
+.box-servicio .content-servicio .content-servicio-caracteristicas ul{
+    font-size: 22px;
+    list-style: none;
+    text-align: justify;
+}
+
+.box-servicio .content-servicio .content-servicio-caracteristicas #importante{
+    margin-top: 15px;
+    font-size: 18px;
+    width: 400px;
+}
+
+.box-servicio .content-servicio .content-servicio-caracteristicas span{
+    font-size: 20px;
+    color: #a50475;
+}
+
+.box-servicio .content-servicio .content-servicio-caracteristicas li{
+    padding: 10px;
+}
+
+
+
+.box-servicio .content-servicio-image{
+    float: right;
+    width: 60%;
+    position: relative;
+    bottom: 280px;
+}
+
+.box-servicio .content-servicio-image img{
+    width: 100%;
+}
+/* IMAGENES DE SERVICIOS */
+.contenido-servicios .box-servicio .content-servicio-image .img-servicio-cursos{
+    width: 60%;
+    position: relative;
+    left: 88px;
+}
+
+.contenido-servicios .box-servicio .content-servicio-image .img-servicio-tienda{
+    width: 100%;
+    position: relative;
+    bottom: 120px;
+}
+/* Fin de bloque de imagenes de servicio */
+
+
+.box-servicio .content-servicio .btn-servicio{
+    padding: 7px;
+    width: 250px;
+    height: 65px;
+    position: relative;
+    top: 114px;
+    color: #a50475;
+    font-size: 21px;
+    font-weight: bold;
+    background-color: #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: rgb(0 0 0 / 7%) 0px 1px 1px, rgb(0 0 0 / 7%) 0px 2px 2px, rgb(0 0 0 / 7%) 0px 4px 4px, rgb(0 0 0 / 7%) 0px 8px 8px, rgb(0 0 0 / 7%) 0px 16px 16px;
+    z-index: 100;
+}
+
+.box-servicio .content-servicio .btn-servicio:hover{
+    background: #00c78b;
+}
+
+/* Card de procesos */
+.content-proceso{
+    width: 100%;
+    display: flex;
+}
+
+.content-proceso .card-proceso{
+    width: 400px;
+    padding: 20px 20px;
+    margin: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.content-proceso .card-proceso h2{
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+
+
+
+.content-proceso .card-proceso p{
+    font-size: 20px;
+    text-align: justify;
+}
+
+
+@media screen and (width: 400px) {
+    .min-info{
+        width: 100%;
+    }
+    .min-info .mini-menu{
+        padding: 5px;
+    }
+    .min-info .mini-menu{
+        font-size: 10px;
+    }
+
+}

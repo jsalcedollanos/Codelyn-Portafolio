@@ -16,6 +16,18 @@
     }
   }
 
+  /* LOGO CODELYN */
+  .logo-codelyn{
+    float: left;
+    position: relative;
+    bottom: 55px;
+  }
+
+  .logo-codelyn img{
+    width: 100%;
+    height: auto;
+  }
+
 
 
 /* Mnesajes emergentes */
@@ -910,6 +922,14 @@ footer{
         z-index: 100;
         right: 20px;
         top: 580px;
+    }
+
+    .logo-codelyn{
+        display: contents;
+    }
+
+    .logo-codelyn img{
+        width: 30%;
     }
 
 }

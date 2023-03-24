@@ -7,8 +7,81 @@
 
 {% block content %}
 
-<articlev class="content-articulo">
+{% comment %} Mensaje Flash personalizado {% endcomment %}
+{% if messages %}
+{% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
+{% for message in messages %}
+    {% if message.tags == "error" %}
+        <div class="message-error-registro">                    
+            <p> <i id="terminal-error-registro" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
+        </div>
+        {% else %}
+        <div class="message-success">                        
+            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>{{message}}</p>
+        </div>
+    {% endif %}
+{% endfor %}                   
+{% endif %}
+{% comment %} Cierre de mensaje flash {% endcomment %}
+
+
+<article class="content-articulo">
     {% comment %} <h1>{{articulo.title}}</h1> {% endcomment %}
     <p id="info-articulo">{{articulo.content|safe}}</p>
 </article>
+
+<div class="comentarios">
+    <h2>Comentarios</h2>
+    <a id="btn-add"><i class="fa-solid fa-comments"></i> Agregar Comentario </a>
+    <div class="content-agregar-comentario">
+        <form class="form-comentario" action="" method="POST">
+            <!-- Llave CSRF token -->
+            {% csrf_token %}
+            {% comment %} <span>Comentario</span><textarea class="input-comentario"></textarea> {% endcomment %}
+            {{formComentario.as_p}}
+            {% if request.user.first_name %}
+                <input type="submit" id="btn-sesion-comentario">
+            {% else %}
+                <a href="{% url 'login' %}" id="btn-sesion-comentario"><i class="fa-solid fa-user"></i> Iniciar sesion para publicar </a>
+            {% endif %}
+        </form>
+    </div>
+
+    {% comment %} sesion de comentarios {% endcomment %}
+        {% for comentario in comentarios %}
+            <div class="content-comentario" id="commit">
+                <div class="content-comentario-nombre">
+                    <p>{{comentario.user}}:</p>
+                </div>
+                <div class="content-comentario-comentario">
+                    <p>{{comentario.comentario}}</p>
+                </div>
+                
+                <div class="reaccion-like">
+                    <i id="like" class="fa-solid fa-thumbs-up"></i>
+                    <p>0</p>
+                </div>
+
+                <div class="reaccion-comentar">
+                    <i id="comentar" class="fa-solid fa-comment-dots"></i>
+                    <p>0</p>
+                </div>
+
+                
+            </div>
+        {% endfor %}
+    {% comment %} Fin de sesion {% endcomment %}
+</div>
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+<script>
+    $(document).ready(()=>{
+        $('.content-agregar-comentario').hide();
+        $('label').hide();
+        $('#btn-add').click(function(){
+            $('.content-agregar-comentario').show();
+            $('#btn-add').hide();
+        })
+
+    })
+</script>
 {% endblock %}

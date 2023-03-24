@@ -1,5 +1,28 @@
 from django import forms
 from django.core import validators
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1','password2']
+
+class FormComentario(forms.Form):
+    comentario = forms.CharField(
+        label = "comentario",
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': 'Escribe tu comentario...',
+            }
+        ),
+        validators=[
+            validators.MaxLengthValidator(25,'Texto demasiado largo, Maximo 300 caracteres.'),
+            validators.MinLengthValidator(2,'Verifica tu comentario, esta muy corto'),
+        ]
+    )
+
+
 class FormContact(forms.Form):
     name = forms.CharField(
         label = "Nombre",

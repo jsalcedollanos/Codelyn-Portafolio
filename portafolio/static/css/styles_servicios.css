@@ -26,6 +26,11 @@
     background-color:  #2b2b2b;
 }
 
+.min-info #btn-diseño:focus-within{
+    color: #00c78b;
+    background:  #2b2b2b;
+}
+
 
 #min-icon{
     margin-bottom: 15px;
@@ -33,13 +38,13 @@
 }
 
 .contenido-servicios{
-    width: 100%;
     height: 1000px;
+    text-align: initial;
     justify-content: center;
     display: flex;
 }
 
-.box-servicio{
+.content-servicio .box-servicio{
     justify-content: center;
     width: 100%;
     height: 100%;
@@ -52,7 +57,14 @@
     top: 100px;
     display: block;
     float: left;
-    padding: 50px 50px;
+}
+
+.content-servicio .content-servicio-titulo{
+    margin: 20px;
+}
+
+.box-servicio .content-servicio .content-servicio-caracteristicas{
+    margin: 20px;
 }
 
 .box-servicio .content-servicio h2{
@@ -60,10 +72,10 @@
     margin-bottom: 15px;
 }
 
-.box-servicio .content-servicio p{
+.box-servicio .content-servicio .content-servicio-titulo p{
     font-size: 25px;
-    width: 700px;
-    padding: 20px;
+    width: 50%;
+    text-align: justify;
 }
 
 .box-servicio .content-servicio .content-servicio-caracteristicas{
@@ -87,7 +99,7 @@
 .box-servicio .content-servicio .content-servicio-caracteristicas #importante{
     margin-top: 15px;
     font-size: 18px;
-    width: 400px;
+    width: 100%;
 }
 
 .box-servicio .content-servicio .content-servicio-caracteristicas span{
@@ -113,7 +125,7 @@
 }
 /* IMAGENES DE SERVICIOS */
 .contenido-servicios .box-servicio .content-servicio-image .img-servicio-cursos{
-    width: 60%;
+    width: 80%;
     position: relative;
     left: 88px;
 }
@@ -122,6 +134,18 @@
     width: 100%;
     position: relative;
     bottom: 120px;
+}
+
+.contenido-servicios .box-servicio .content-servicio-image .img-servicio-diseño{
+    width: 100%;
+    position: relative;
+    bottom: 190px;
+}
+
+.contenido-servicios .box-servicio .content-servicio-image .img-servicio-aplicaciones{
+    width: 100%;
+    position: relative;
+    bottom: 190px;
 }
 /* Fin de bloque de imagenes de servicio */
 
@@ -153,15 +177,16 @@
 }
 
 .content-proceso .card-proceso{
-    width: 400px;
     padding: 20px 20px;
     margin: 20px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .content-proceso .card-proceso h2{
     margin-bottom: 20px;
     font-size: 40px;
+    height: 90px;
 }
 
 
@@ -169,6 +194,7 @@
 .content-proceso .card-proceso p{
     font-size: 20px;
     text-align: justify;
+    height: 130px;
 }
 
 
@@ -183,4 +209,54 @@
         font-size: 10px;
     }
 
+    .contenido-servicios{
+        width: 100%;
+    }
+
+    .box-servicio .content-servicio{
+        width: 100%;
+    }
+
+    .box-servicio .content-servicio h2{
+        width: 80%;
+    }
+
+    .box-servicio .content-servicio p{
+        width: 300px;
+    }
+
+    .content-servicio .content-servicio-titulo{
+        width: 100%;
+    }
+
+    .content-servicio .content-servicio-titulo p{
+        text-align: left;
+    }
+
+    .contenido-servicios .box-servicio .content-servicio-image .img-servicio-tienda{
+        position: relative;
+        bottom: 470px;
+    }
+
+    .contenido-servicios .box-servicio .content-servicio-image .img-servicio-diseño{
+        position: relative;
+        bottom: 500px;
+    }
+
+    .contenido-servicios .box-servicio .content-servicio-image .img-servicio-cursos{
+        position: relative;
+        bottom: 450px;
+    }
+
+    .contenido-servicios .box-servicio .content-servicio-image .img-servicio-aplicaciones{
+        position: relative;
+        bottom: 450px;
+    }
+
+    .content-proceso{
+        display: block;
+        width: 100%;
+    }
+
+    
 }

@@ -1,5 +1,6 @@
 .content-articulo{
-    width: 100%;
+    width: 95%;
+    padding: 25px 25px;
     height: 100%;
     margin: 0 auto;
     margin-bottom: 40px;
@@ -22,3 +23,122 @@
     font-size: 20px;
     text-align: left;
 }
+
+.comentarios{
+    display: block;
+    width: 95%;
+    padding: 25px 25px;
+    height: 100%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.comentarios h2{
+    display: flex;
+    justify-content: left;
+}
+
+.comentarios a{
+    margin-top: 20px;
+    display: flex;
+    justify-content: left;
+    height: 100%;
+    width: 200px;
+    background-color: #aaa;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 17px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.comentarios a:hover{
+    background-color: #009e7c;
+    cursor: pointer;
+}
+
+.comentarios .content-agregar-comentario #btn-sesion-comentario{
+    margin-top: 20px;
+    display: block;
+    height: 100%;
+    width: 285px;
+    background-color: #aaa;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 17px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.comentarios .content-agregar-comentario #btn-sesion-comentario:hover{
+    background-color: #009e7c;
+    cursor: pointer;
+}
+
+.comentarios i{
+    margin-right: 15px;
+}
+
+.content-comentario{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 50%;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 15px;
+}
+
+.content-comentario .content-comentario-nombre{
+    padding: 10px;
+}
+
+.content-comentario .content-comentario-nombre p{
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.content-comentario .content-comentario-comentario p{
+    font-size: 13px;
+    padding: 15px;
+    width: 500px;
+    text-align: justify;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border-radius: 15px;
+}
+
+.content-agregar-comentario{
+    margin-top: 15px;
+    font-size: 13px;
+    padding: 15px;
+    width: 695px;
+    height: auto;
+    text-align: justify;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 12px;
+}
+
+.content-agregar-comentario .input-comentario{
+    width: 100%;
+    height: 200px;
+}
+
+.reaccion-like{
+    margin-left: 10px;
+}
+
+.reaccion-like #like{
+    width: 100%;
+    font-size: 23px;
+    color: #009e7c;
+}
+
+
+.reaccion-comentar #comentar{
+    width: 100%;
+    font-size: 23px;
+    color: #009e7c;
+}
+

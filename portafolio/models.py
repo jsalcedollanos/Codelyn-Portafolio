@@ -184,4 +184,18 @@ class Contact(models.Model):
         return self.name
 
 
+class Comment(models.Model):
+    comentario = models.TextField(max_length=300, verbose_name="comentario")
+    article = models.ForeignKey(Article, verbose_name="articulo", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='usuario', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class meta: 
+        verbose_name = "comentario"
+        verbose_name_plural = "comentarios"
+
+    def __str__(self):
+        return self.comentario
+
     

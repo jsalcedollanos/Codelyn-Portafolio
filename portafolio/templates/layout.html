@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static '../static/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_form.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_portafolio.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_cursos.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_sobremi.css' %}">
@@ -44,6 +45,16 @@
                     <a href="{% url 'page' page.2 %}"> {{page.1}} </a> 
                 {% endif %}             
             {% endfor %}
+            {% if request.user.first_name %}
+                <a href="{% url 'registro' %}" style="display:none;"> Registrate </a>
+                <a href="{% url 'login' %}" style="display:none;"> Login </a>
+                <a class="usuario"> Bienvenid@, {{request.user.first_name}} </a>
+                <a href="{% url 'logout' %}"> Cerrar sesion </a>
+                <label for="check" class="esconder-menu">
+            {% else %}
+                <a href="{% url 'registro' %}"> Registrate </a>
+                <a href="{% url 'login' %}"> Login </a>
+            {% endif %}
             <label for="check" class="esconder-menu">
                 &#215
             </label>

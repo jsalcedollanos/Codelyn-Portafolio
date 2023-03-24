@@ -18,7 +18,9 @@
 
   /* LOGO CODELYN */
   .logo-codelyn{
-    float: left;
+    display: flex;
+    width: 100px;
+    justify-content: left;
     position: relative;
     bottom: 55px;
   }
@@ -28,7 +30,13 @@
     height: auto;
   }
 
-
+/* Estilos de usuario identificado */
+.menu .usuario{
+    background-color: #009e7c;
+    color: #a50475;
+    width: 100%;
+    border-radius: 15px;
+}
 
 /* Mnesajes emergentes */
 [data-tooltip]{ 
@@ -122,15 +130,12 @@ header{
 .content-banner .logotipo{
     font-weight: lighter;
     color:#ddd;
-    padding-top: 100px;
-    /* margin-left:50px; */
     font-family: 'Inconsolata', monospace;
     font-size: 70px;
 }
 
 .content-banner .descripcion{
     color: #ddd;
-    font-family: 'Inconsolata', monospace;
     font-size: 27px;
     padding-bottom: 100px;
 }

@@ -1,0 +1,138 @@
+.content-registro{
+    display: flex;
+    margin-bottom: 200px;
+}
+
+.message-error-registro {
+    padding: 20px;
+    position: relative;
+    bottom: 50px;
+    background: red;
+    color: #020202;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+}
+
+.message-error-registro p{
+    font-size: 20px;
+}
+
+
+.message-success{
+    padding: 20px;
+    position: relative;
+    bottom: 50px;
+    background: #00c78b;
+    color: #020202;
+    text-align: center;
+    margin-bottom: 10px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+}
+
+.message-success p{
+    font-size: 20px;
+}
+
+#terminal-error-registro{
+    color: yellow;
+    font-size: 22px;
+}
+
+.content-err{
+    padding: 10px;
+    width: 100%;
+    background-color: #00c78b;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    display: block;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.content-err ul li{
+    margin: 10px;
+    font-size: 17px;
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.content-form{
+    width: 30%;
+    padding: 20px;
+}
+
+.content-form h1{
+    margin-bottom: 15px;
+}
+
+.content-form form{
+    width: 100%;
+}
+
+.content-form .form-login{
+    margin-top: 100px;
+    width: 100%;
+}
+
+.content-form form input,
+.content-form form label{
+    display: flex;
+    padding: 5px;
+    justify-content: left;
+    padding-left: 0px;
+}
+
+.content-form form input[type="text"],
+.content-form form input[type="email"],
+.content-form form input[type="password"],
+.content-form form textarea,
+.content-form form select{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.content-form .btn-registrar{
+    width: 40%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.content-form .btn-volver{
+    width: 40%;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+}
+
+.content-botones{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.content-imagen-register{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.content-registro .content-imagen-register p{
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.content-registro .content-imagen-register span{
+    background-color: #00c78b;
+    padding: 8px;
+    border-radius: 12px;
+    margin-right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

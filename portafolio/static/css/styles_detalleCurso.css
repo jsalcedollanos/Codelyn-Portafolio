@@ -203,6 +203,133 @@ details[open]{
 }
 
 
+@media screen and (width:400px) {
+    .content-banner-curso .descripcion-curso{
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .content-banner-curso{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-titulo{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-titulo h1{
+        width: 100%;
+        margin-top: 20px;
+        font-size: 22px;
+        justify-content: center;
+    }
+    .detalle-curso .content-detalle .content-titulo .detalles-generales{
+        width: 85%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion{
+        width: 70%;
+        left: 50px;
+        float: none;
+        position: relative;
+        bottom: 20px;
+        margin-bottom: 111px;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion h1{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion .content-video{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion .content-video iframe{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .detalle-curso .content-detalle .content-contenido{
+        width: 75%;
+        margin: 20px 20px;
+    }
+
+    .acordeon{
+        width: 100%;
+    }
+
+    .detalle-curso{
+        margin: 0;
+    }
+}
+
+@media screen and (width:600px) {
+    .content-banner-curso .descripcion-curso{
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .content-banner-curso{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-titulo{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-titulo h1{
+        width: 100%;
+        margin-top: 20px;
+        font-size: 22px;
+        justify-content: center;
+    }
+    .detalle-curso .content-detalle .content-titulo .detalles-generales{
+        width: 85%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion{
+        width: 70%;
+        left: 50px;
+        float: none;
+        position: relative;
+        bottom: 20px;
+        margin-bottom: 111px;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion h1{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion .content-video{
+        width: 100%;
+    }
+
+    .detalle-curso .content-detalle .content-introduccion .content-video iframe{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .detalle-curso .content-detalle .content-contenido{
+        width: 75%;
+        margin: 20px 20px;
+    }
+
+    .acordeon{
+        width: 100%;
+    }
+
+    .detalle-curso{
+        margin: 0;
+    }
+}
+
+
 
 
 

@@ -2,8 +2,11 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
 from django.core.paginator import Paginator
 from django.contrib import messages
-from portafolio.forms import FormContact 
+from portafolio.forms import FormContact, RegisterForm, FormComentario
 from django.views.generic import (View, TemplateView, ListView, DetailView)
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+
 def handling_404(request, exception):
     return render(request, 'not-found-404.html', {
 
@@ -113,8 +116,34 @@ def handler404(request, exception):
 
 def articulo(request, article_id):
     articulos = get_object_or_404(Article, id=article_id)
+    comentarios = Comment.objects.filter(article_id = article_id)
+
+    formComentario = FormComentario()
+    if request.method == "POST":
+        formComentario = FormComentario(request.POST)
+        if formComentario.is_valid():
+            data_form = formComentario.cleaned_data
+            comentario = data_form.get('comentario')
+            #user = data_form.get('user')
+            article = data_form.get('article')
+
+            comentario = Comment(
+                comentario = comentario,
+                user = request.user,
+                article = articulos,
+            )
+
+            comentario.save()
+            #Mensaje flash de successful
+            messages.success(request, 'Tu comentario ha sido enviado con exito!')
+            return redirect(f'/articulo/{article_id}')
+        else:
+            messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
+
     return render(request, 'articulo.html', {
         'articulo':articulos,
+        'comentarios':comentarios,
+        'formComentario':formComentario,
     })
 
 def curso_detail(request, curso_id):
@@ -151,5 +180,47 @@ def clase_curso(request, curso_id, clase_id):
         'canClases':canClases,
         'canContenido':canContenido,
     })
+
+def register_page(request):
+
+    register_form = RegisterForm()
+
+    if request.method == 'POST':
+       register_form = RegisterForm(request.POST) 
+
+       if register_form.is_valid():
+           register_form.save()
+           messages.success(request, f'Perfecto has creado tu cuenta con exito! BIENVENIDO =D')
+          
+       else:
+           messages.error(request, 'Error al guardar tu informacion, revisa porfavor!')
+
+    return render(request, 'users/register.html', {
+        'register_form': register_form
+    })
+
+def login_page(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/inicio')
+        else:
+            messages.error(request, 'Algo salio mal, revisa bien los datos ingresados.')
+
+    return render(request, 'users/login.html',{
+        'title': 'Identificate',
+    })
+
+def logout_user(request):
+    logout(request)
+    return redirect('/inicio')
+
+
 
 

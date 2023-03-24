@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{title}} | Codelyn
+{% endblock title %}
+
+{% block content %}
+<section class="banner">
+    <div class="content-banner">
+        <div class="logo-codelyn">
+            <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+        </div>
+        <h1 class="logotipo">Un gusto tenerte por aqui</h1> 
+        <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+    </div>
+    
+</section>
+
+{% comment %} Mensaje Flash personalizado {% endcomment %}
+{% if messages %}
+{% comment %} Mensaje flash que solo dura 1 actualizacion {% endcomment %}
+{% for message in messages %}
+    {% if message.tags == "error" %}
+        <div class="message-error-registro">                    
+            <p> <i id="terminal-error-registro" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> {{message}} <i id="terminal-error" class="fa-solid fa-triangle-exclamation fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i> </p>
+        </div>
+        {% else %}
+        <div class="message-success">                        
+            <p> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>{{message}}</p>
+        </div>
+    {% endif %}
+{% endfor %}                   
+{% endif %}
+{% comment %} Cierre de mensaje flash {% endcomment %}
+
+<div class="content-registro">
+<div class="content-form">
+    <h1>Formulario de Ingreso</h1>
+    <form class="form-login" method="post" action="">
+
+        {% comment %} LLAVE CSRF {% endcomment %}
+        {% csrf_token %}
+        {% comment %} CIERRE LLAVE {% endcomment %}
+  
+        {% comment %} Descripcion de errores {% endcomment %}
+        {% if register_form.errors %}
+        <div class="content-err">
+            {{register_form.errors}}
+        </div>
+        {% else %}
+        <div class="content-err"  style="display:none;">
+            {{register_form.errors}}
+        </div>
+        {% endif %}
+        {% comment %} Fin de la descripcion de errores {% endcomment %}
+
+        <label for="username">Nombre:</label>
+        <input name="username" type="text" placeholder="Tu nombre" />
+
+        <label for="password">Contraseña:</label>
+        <input name="password" type="password" placeholder="Tu contraseña" />
+        
+        <div class="content-botones">
+            <input class="btn-registrar" type="submit" value="Iniciar">
+            <input class="btn-volver" type="submit" value="Volver">
+        </div>
+
+    </form>
+</div>
+
+<div class="content-imagen-register">
+    <img src="../static/images/bots-codelyn.png">
+    <h2>Hola has parte de codelyn y explora todo nuestro contenido.</h2>
+    <p><span>Botlyn</span>: <a href="#">¿Has olvidado tu contraseña?</a> ò <a href="#">¿Ya tienes una cuenta?</a></p>
+</div>
+
+</div>
+{% endblock content %}

@@ -1,3 +1,5 @@
+
+
 .content-articulo{
     width: 95%;
     padding: 25px 25px;
@@ -38,7 +40,7 @@
     justify-content: left;
 }
 
-.comentarios a{
+.comentarios #btn-add{
     margin-top: 20px;
     display: flex;
     justify-content: left;
@@ -57,6 +59,18 @@
 }
 
 .comentarios .content-agregar-comentario #btn-sesion-comentario{
+    margin-top: 20px;
+    display: block;
+    height: 100%;
+    width: 285px;
+    background-color: #aaa;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 17px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+#btn-sesion-comentario-enviar{
     margin-top: 20px;
     display: block;
     height: 100%;
@@ -109,6 +123,7 @@
     border-radius: 15px;
 }
 
+
 .content-agregar-comentario{
     margin-top: 15px;
     font-size: 13px;
@@ -130,6 +145,7 @@
 }
 
 .reaccion-like #like{
+    cursor: pointer;
     width: 100%;
     font-size: 23px;
     color: #009e7c;
@@ -137,8 +153,283 @@
 
 
 .reaccion-comentar #comentar{
+    cursor: pointer;
     width: 100%;
     font-size: 23px;
     color: #009e7c;
 }
 
+.content-comentario .content-comentario-comentario p{
+    margin-bottom: 20px;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas .detalles[open]{
+    background-color: white;
+    transition: 0.2ms;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas .detalles[open]{
+    background-color: white;
+    transition: 0.2ms;
+}
+
+
+.content-comentario .content-comentario-comentario .content-respuestas .detalles:hover{
+    background-color: white;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas #detalle-respuesta{
+    color: black;
+    font-size: 15px;
+    padding-top: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    position: relative;
+    right: 25px;
+    box-shadow: none;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas #detalle-respuesta:hover{
+    background-color: white;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas .content-respuesta-comentario .respuesta{
+    color: black;
+    font-size: 11px;
+    margin-top: 20px;
+    margin-left: 15px;
+    display: flex;
+    position: relative;
+    top: 40px;
+    background-color: #7fffd4;
+    cursor: pointer;
+    text-align: justify;
+}
+
+#usuario-respuesta{
+    font-size: 12px;
+}
+
+.content-comentario .content-comentario-comentario .content-respuestas .content-respuesta-comentario{
+    width: 50%;
+    height: 80px;
+    display: flex;
+    position: relative;
+    bottom: 58px;
+    border-left: 2px solid #009e7c;
+    border-bottom: 2px solid #009e7c;
+
+}
+
+.content-comentario .content-comentario-comentario .content-responder #btn-responder-close{
+    position: relative;
+    display: flex;
+    float: right;
+    bottom: 10px;
+    left: 8px;
+    font-size: 17px;
+    border-radius: 12px;
+    background-color: #009e7c;
+    padding: 10px;
+    margin: 10px 10px;
+}
+
+.content-comentario .content-comentario-comentario .content-responder #btn-responder-close:hover{
+    background-color: #00c298;
+}
+
+.content-comentario .content-comentario-comentario .content-responder #btn-responder{
+    position: relative;
+    display: flex;
+    float: right;
+    bottom: 15px;
+    font-size: 17px;
+}
+
+.content-comentario .content-comentario-comentario .content-responder #btn-responder:hover{
+    background-color: transparent;
+}
+
+.content-comentario .content-comentario-comentario .content-responder #btn-responder h5{
+    width: 100%;
+    position: relative;
+    top: 26px;
+}
+
+
+
+/* RESPONSIVE PARA PANTALLAS 760PX */
+@media screen and (max-width: 760px){
+    .mostrar-menu, .esconder-menu {
+        font-size: 70px;
+        color: #7fffd4;
+        /* display: block !important; */
+    }
+    /* Banner */
+    .content-banner{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .content-banner .descripcion {
+        padding-bottom: 30px;
+        font-size: 26px;
+    }
+
+    .content-banner .logotipo {
+        
+        font-size: 40px;
+    }
+
+    .content-articulo {
+        width: 75%;
+        padding: 25px 25px;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 40px;
+
+    }
+
+    .content-articulo p{
+        width: 100%;
+        text-align: justify;
+    }
+
+    .comentarios{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .comentarios h2 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    
+    .comentarios a{
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content-agregar-comentario {
+        width: 80%;
+        display: block;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .content-agregar-comentario .form-comentario textarea{
+        width: 100%;
+    }
+
+    .content-comentario {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+        margin-top: 40px;
+    }
+
+    .content-comentario .content-comentario-comentario{
+        width: 100%;
+    }
+
+    .content-comentario .content-comentario-comentario p{
+        width: 90%;
+    }
+
+    .content-reaccion{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+/* RESPONSIVE PARA PANTALLAS 400PX */
+@media screen and (max-width: 400px){
+    .mostrar-menu, .esconder-menu {
+        font-size: 70px;
+        color: #7fffd4;
+        /* display: block !important; */
+    }
+    /* Banner */
+    .content-banner{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .content-banner .logotipo {  
+        font-size: 30px;
+    }
+
+    .content-articulo {
+        width: 75%;
+        padding: 25px 25px;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 40px;
+        text-align: initial;
+    }
+
+    .content-articulo p{
+        width: 100%;
+    }
+
+    .comentarios{
+        width: 100%;
+        padding: 0px;
+    }
+
+    .comentarios h2 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    
+    .comentarios a{
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content-agregar-comentario {
+        width: 80%;
+        display: block;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .content-agregar-comentario .form-comentario textarea{
+        width: 100%;
+    }
+
+    .content-comentario {
+        width: 80%;
+        margin: 0 auto;
+        display: block;
+        margin-top: 40px;
+    }
+
+    .content-comentario .content-comentario-comentario{
+        width: 100%;
+    }
+
+    .content-comentario .content-comentario-comentario p{
+        width: 90%;
+    }
+
+    .content-reaccion{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+}

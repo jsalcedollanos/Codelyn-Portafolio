@@ -197,5 +197,19 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comentario
+    
+class CommentToComment(models.Model):
+    respuesta = models.TextField(max_length=300)
+    comment = models.ForeignKey(Comment, null=True, verbose_name="comentario", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='usuario', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class meta: 
+        verbose_name = "respuesta"
+        verbose_name_plural = "respuestas"
+
+    def __str__(self):
+        return self.respuesta
 
     

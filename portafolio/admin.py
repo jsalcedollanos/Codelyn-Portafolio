@@ -55,7 +55,12 @@ class ClasesAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
-    list_display = ('user_id','article_id','comentario','created_at')
+    list_display = ('id','user_id','article_id','comentario','created_at')
+    ordering = ('created_at',)
+
+class CommentToCommentAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at', 'updated_at')
+    list_display = ('id','comment_id','user_id','respuesta','created_at')
     ordering = ('created_at',)
 
 admin.site.register(Article, ArticleAdmin)
@@ -69,6 +74,7 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(Contenido,ContenidoAdmin)
 admin.site.register(Clases,ClasesAdmin)
 admin.site.register(Comment,CommentAdmin)
+admin.site.register(CommentToComment,CommentToCommentAdmin)
 
 
 # Configurar titulo de panel admin

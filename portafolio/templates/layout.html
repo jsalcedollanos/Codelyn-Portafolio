@@ -23,7 +23,7 @@
      <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <title>Jhonny Salcedo |
+    <title>
         {% block title %}
                 
         {% endblock %}
@@ -63,13 +63,16 @@
 
     {% comment %} Banner {% endcomment %}
     {% if page.slug == 'inicio' %}
-        <section class="banner">
+        <section class="banner-inicio">
             <div class="content-banner">
+
                 <div class="logo-codelyn">
                     <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
                 </div>
-                <h1 class="logotipo">Bienvenido, Soy Jhonny Salcedo</h1> 
-                <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+                <div class="content-banner-descripcion-inicio">
+                    <h1 class="logotipo">Sumergete en la tecnologia y los software, El mundo esta cambiando, no te quedes atras. adentrate en la hera digital!</h1> 
+                    <p class="descripcion"><span class="signo1">{</span>Codelyn <span class="full-stack"> Lo hace realidad</span> <span class="signo2">}</span></p>
+                </div>
             </div>
         </section>
     
@@ -80,8 +83,10 @@
                 <div class="logo-codelyn">
                     <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
                 </div>
-                <h1 class="logotipo">Jhonny Salcedo Llanos</h1> 
-                <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+                <div class="content-banner-descripcion">
+                    <h1 class="logotipo">Jhonny Salcedo Llanos</h1> 
+                    <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
+                </div>
             </div>
         </section>
     

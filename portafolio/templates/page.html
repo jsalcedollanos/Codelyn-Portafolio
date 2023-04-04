@@ -11,13 +11,18 @@
 
     {% comment %} Contenido de pagina de inicio {% endcomment %}
     {% if page.slug == "inicio" %}
+        
             <div class="content-img">
-                <h1 class="title">
-                    <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
-                </h1>  
-                <p>te mostrare todo lo que estas buscando.</p>
-                
-                <img src="../static/images/designer.jpg" class="img-service" alt="">              
+                <div class="content-info">
+                    <h1 class="title">
+                        <span class="bienvenido">{ Diseño y desarrollo web }</span>               
+                    </h1>  
+                    <p>Diseño y desarrollo de plataformas y paginas web para tu
+                        negocio, empresa o proyecto.
+                    </p>
+                    <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn-prueba"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Contactame</button></a>
+                </div>
+                <img src="../static/images/dev-programmer.png" class="img-service" alt="">              
             </div> 
         {% comment %} Articulos recientes {% endcomment %}
         <section class="articulos-recientes">

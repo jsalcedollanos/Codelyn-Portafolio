@@ -10,17 +10,40 @@ class RegisterForm(UserCreationForm):
 
 class FormComentario(forms.Form):
     comentario = forms.CharField(
-        label = "comentario",
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Escribe tu comentario...',
             }
         ),
         validators=[
-            validators.MaxLengthValidator(25,'Texto demasiado largo, Maximo 300 caracteres.'),
+            validators.MaxLengthValidator(300,'Texto demasiado largo, Maximo 300 caracteres.'),
             validators.MinLengthValidator(2,'Verifica tu comentario, esta muy corto'),
         ]
     )
+
+class FormRespuesta(forms.Form):
+    respuesta = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': 'Responde algo aqui..',
+            }
+        ),
+        validators=[
+            validators.MaxLengthValidator(300,'Texto demasiado largo, Maximo 300 caracteres.'),
+            validators.MinLengthValidator(2,'Verifica tu comentario, esta muy corto'),
+        ]
+    )
+
+    com = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                'id':'comentarioP',
+                'class':'comentarioP'
+            }
+        ),
+        
+    )
+
 
 
 class FormContact(forms.Form):

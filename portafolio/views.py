@@ -2,10 +2,15 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
 from django.core.paginator import Paginator
 from django.contrib import messages
-from portafolio.forms import FormContact, RegisterForm, FormComentario
+from portafolio.forms import FormContact, RegisterForm, FormComentario, FormRespuesta
 from django.views.generic import (View, TemplateView, ListView, DetailView)
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse
+from django.core.serializers import serialize
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 def handling_404(request, exception):
     return render(request, 'not-found-404.html', {
@@ -117,34 +122,64 @@ def handler404(request, exception):
 def articulo(request, article_id):
     articulos = get_object_or_404(Article, id=article_id)
     comentarios = Comment.objects.filter(article_id = article_id)
+    respuestas = CommentToComment.objects.all()
+    ress = CommentToComment.objects.all()
+    comm = Comment.objects.all()
 
+
+    formRespuesta = FormRespuesta()
+    if request.method == 'POST':
+        formRespuesta = FormRespuesta(request.POST)
+        if formRespuesta.is_valid():
+            data_form = formRespuesta.cleaned_data
+            respuesta = data_form.get('respuesta')
+            resComentario = data_form.get('com')
+            respuesta = CommentToComment(
+                user = request.user,
+                respuesta = respuesta,
+                comment_id = resComentario,
+            )
+
+            respuesta.save()
+            #Mensaje flash de successful
+            messages.success(request, 'Tu Respuesta ha sido enviada con exito!')
+            return redirect(f'/articulo/{article_id}')
+        
+    
     formComentario = FormComentario()
-    if request.method == "POST":
+    if request.method == 'POST':
         formComentario = FormComentario(request.POST)
         if formComentario.is_valid():
             data_form = formComentario.cleaned_data
-            comentario = data_form.get('comentario')
-            #user = data_form.get('user')
-            article = data_form.get('article')
+            com = data_form.get('comentario')
+            
 
-            comentario = Comment(
-                comentario = comentario,
+            com = Comment(
+                comentario = com,
                 user = request.user,
                 article = articulos,
             )
 
-            comentario.save()
+            com.save()
             #Mensaje flash de successful
             messages.success(request, 'Tu comentario ha sido enviado con exito!')
             return redirect(f'/articulo/{article_id}')
         else:
-            messages.error(request, 'Uy... Espera algo salio mal, revisa el formulario :D')
+            messages.error(request, '(Error al comentar) algo salio mal, revisa el formulario :D')
 
+    
+    
+         
     return render(request, 'articulo.html', {
         'articulo':articulos,
         'comentarios':comentarios,
         'formComentario':formComentario,
+        'formRespuesta':formRespuesta,
+        'respuestas':respuestas,
+        'ress':ress,
+        'comm':comm,
     })
+
 
 def curso_detail(request, curso_id):
     cursos = get_object_or_404(Curso, id=curso_id)
@@ -196,7 +231,8 @@ def register_page(request):
            messages.error(request, 'Error al guardar tu informacion, revisa porfavor!')
 
     return render(request, 'users/register.html', {
-        'register_form': register_form
+        'register_form': register_form,
+        'title': 'Registrate'
     })
 
 def login_page(request):

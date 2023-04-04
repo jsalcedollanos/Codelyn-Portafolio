@@ -136,3 +136,50 @@
     margin-right: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+@media screen and (width: 400px) {
+    .content-form h1 {
+        margin-top: 35px;
+    }
+
+    .content-registro{
+        display: block;
+        width: 100%;
+    }
+    .content-form{
+        width: 70%;
+        margin: 0 auto;
+        padding: 0px;
+
+    }
+
+    .content-imagen-register {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .content-imagen-register h2{
+        width: 80%;
+        padding: 20px;
+        margin: 0 auto;
+        display: flex;
+        text-align: center;
+    }
+
+    .content-registro .content-imagen-register span {
+        width: 20%;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .content-registro .content-imagen-register p {
+        display: block;
+    }
+
+    .content-registro .content-imagen-register a {
+        display: block;
+    }
+
+}

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Articulos
+   {{articulo.title}} | Codelyn
 {% endblock %}
 
 {% block content %}
@@ -55,18 +55,53 @@
                 </div>
                 <div class="content-comentario-comentario">
                     <p>{{comentario.comentario}}</p>
+                        <div class="content-respuestas">
+
+                            <div class="content-responder">
+                                <a id="btn-responder" class="btn-responder-{{comentario.id}}"><h5>Responder</h5></a>
+                                <a id="btn-responder-close" class="btn-responder-close-{{comentario.id}}"><h5> Cerrar X</h5></a>
+                                <div class="content-form-responder-{{comentario.id}}">
+                                    <form id="formCreacion" action="" method="POST">
+                                        {% csrf_token %}
+                                        {% for field in formRespuesta %}
+                                            <p id="{{field.label}}-{{comentario.id}}">{{field.label_tag}} {{field}}</p>
+                                        {% endfor %}
+                                        {% if request.user.first_name %}
+                                            <input type="submit" id="btn-sesion-comentario-enviar" value="Enviar" />
+                                        {% else %}
+                                            <a href="{% url 'login' %}" id="btn-sesion-comentario"><i class="fa-solid fa-user"></i> Iniciar sesion para publicar </a>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+
+                            <details class="detalles">
+                                <summary id="detalle-respuesta" class="detalle-respuesta">Comentarios</summary>
+                                {% for respuesta in respuestas %}
+                                {% if respuesta.comment_id == comentario.id %}
+                                    <div class="content-respuesta-comentario">
+                                        <p class="respuesta"><span id="usuario-respuesta">{{respuesta.user.username}}: </span>{{respuesta.respuesta}}</p>
+                                    </div>
+                                {% else %}
+                                {% endif %}
+                                {% endfor %}
+                            </details>
+
+                            
+                        </div>
                 </div>
                 
-                <div class="reaccion-like">
-                    <i id="like" class="fa-solid fa-thumbs-up"></i>
-                    <p>0</p>
-                </div>
+                <div class="content-reaccion">
+                    <div class="reaccion-like">
+                        <i id="like" class="fa-solid fa-thumbs-up"></i>
+                        <p>0</p>
+                    </div>
 
-                <div class="reaccion-comentar">
-                    <i id="comentar" class="fa-solid fa-comment-dots"></i>
-                    <p>0</p>
+                    <div class="reaccion-comentar">
+                        <i id="comentar" class="fa-solid fa-comment-dots"></i>
+                        <p class="num-res-{{comentario.id}}">0</p>
+                    </div>
                 </div>
-
                 
             </div>
         {% endfor %}
@@ -75,13 +110,54 @@
 <script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
 <script>
     $(document).ready(()=>{
+        var cont = 0;
+        var it = 0;
         $('.content-agregar-comentario').hide();
-        $('label').hide();
+        $('.comment').hide();
+        $('#Comentario-label').hide();
+        $('.comentarioP').hide();
+        
+        
+        // Esconder botones de responder, contenido de respuesta y comentarios
+        {% for comentario in comentarios %}
+            $('.btn-responder-close-{{comentario.id}}').hide();
+            $('.content-form-responder-{{comentario.id}}').hide();
+            $('#Comentario-{{comentario.id}}').hide();
+        {% endfor %}
+
+        // Agregar un comentario
         $('#btn-add').click(function(){
+            $('label').hide();
             $('.content-agregar-comentario').show();
             $('#btn-add').hide();
-        })
+        });
 
-    })
+        // Agregar una respuesta
+        {% for comentario in comentarios %}
+            $('.btn-responder-{{comentario.id}}').click(function (){
+                
+                $('.btn-responder-{{comentario.id}}').hide();
+                $('.btn-responder-close-{{comentario.id}}').show();
+                $('.content-form-responder-{{comentario.id}}').fadeIn(400);
+                $('.detalles').hide();
+                $('#Com-{{comentario.id}}').hide();
+                $('.comentarioP').val("{{comentario.id}}")
+                $('label').hide()
+            });
+        {% endfor %}
+        // Accion para cerrar contenedor de respuesta
+        {% for comentario in comentarios %}
+            $('.btn-responder-close-{{comentario.id}}').click(function (){
+                $('.detalles').show();
+                $('.btn-responder-{{comentario.id}}').show();
+                $('.btn-responder-close-{{comentario.id}}').hide();
+                $('.content-form-responder-{{comentario.id}}').hide();
+            });
+        {% endfor %}
+        
+    });
 </script>
+
+
+
 {% endblock %}

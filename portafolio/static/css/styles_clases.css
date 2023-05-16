@@ -1,0 +1,283 @@
+.overlay{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.623);
+    z-index: 2;
+    cursor: pointer;
+}
+.section-clases{
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+.content-clases{
+    display: flex;
+    height: auto;
+    background-color: #3c3c3c;
+}
+
+/* Bloque de menu de clases */
+.panel-funciones{
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #3c3c3c;
+    border-bottom: 1px solid #161616;
+}
+.panel-funciones ul{
+    display: flex;
+    justify-content: right;
+    list-style: none;
+    padding: 10px;
+}
+
+.panel-funciones li{
+    margin-left: 20px;
+    padding: 18px;
+    height: 20px;
+    color: white;
+    cursor: pointer;
+}
+/* Iconos de menu */
+#star-valoration{
+    margin-right: 10px;
+}
+
+#report-error{
+    margin-right: 10px;
+}
+
+#retorn{
+    margin-right: 10px;
+}
+
+/* Etiquetas ID */
+#title-span{
+    color:#00c78b;
+    text-decoration: underline;
+}
+/* Fin del bloque */
+
+
+/* Fin del bloque */
+
+/* Bloque de opciones de usuario desplegable */
+
+.panel-funciones .opc-user{
+    border: 2px solid #00c78b;
+    border-radius: 50%;
+    width: 20px;
+}
+
+.panel-funciones .opc-user:hover{
+    cursor: pointer;
+    background-color: #141414;
+}
+
+.panel-funciones .opc-user .opc-user-menu{
+    margin-top: 30px;
+    background-color: #d6d6d6;
+    display: block;
+    position: absolute;
+    text-align: center;
+    right: 15px;
+    z-index: 3;
+    border-radius: 12px;
+}
+
+.panel-funciones .opc-user .opc-user-menu li{
+    margin-left: 0;
+    color: black;
+}
+
+.panel-funciones .opc-user .opc-user-menu li:hover{
+    background-color: #c3c3c3;
+}
+
+/* Fin del bloque */
+
+#add-valoracion{
+    border: 0.5px solid rgb(255, 217, 0);
+    border-radius: 8px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+#separator{
+    border-left: 1px solid white;
+    height: 3px;
+    margin-top: 8px;
+}
+
+#img-logo{
+    width: 100%;
+    height: auto;
+}
+
+/* Fin del bloque */
+
+/* Bloque de video */
+.content-video{
+    width: 100%;
+    height: 100%;
+    background-color: #3c3c3c;
+}
+/* Fin del bloque */
+
+/* Bloque de temario */
+.content-temario{
+    width: 350px;
+    display: contents;
+    justify-content: right;
+    z-index: 3;
+}
+
+.content-temario-general .panel-temario{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 20px;
+}
+.panel-temario p{
+    width: 350px;
+    font-size: 20px;
+    color: #00c78b;
+}
+
+.panel-temario p:hover{
+    border-bottom: 2px solid #00c78b;
+    cursor: pointer;
+}
+.content-temario .content-temario-general{
+    width: 350px;
+}
+.content-temario .content-temario-general .content-acordeon{
+    width: 350px;
+}
+.content-temario .content-temario-general .content-acordeon details{
+    width: 300px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/* Fin del bloque */
+
+/* Bloque de hacer comentario */
+.content-temario .content-temario-general .content-comentario{
+    width: 100%;
+}
+/* Fin del bloque */
+
+/* Bloque de detalle de clase */
+.content-detalle-clase{
+    width: 100%;
+    text-align: left;
+}
+
+.content-detalle-clase h2{
+    padding-left: 30px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.content-detalle-clase p{
+    padding-left: 30px;
+    font-size: 18px;
+}
+/* Fin del bloque */
+
+/* Bloque de comentarios video */
+
+.comentarios-video{
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 300px;
+}
+
+.comentarios-video h2{
+    padding: 30px;
+    font-size: 20px;
+}
+
+.comentarios-video .content-comentarios-clase{
+    margin-left: 40px;
+    width: 730px;
+    height: 100px;
+    display: flex;
+    padding-top:30px;
+    padding-bottom:50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.comentarios-video .content-comentarios-clase .content-comment-user{
+    width: 510px;
+}
+
+.comentarios-video .content-comentarios-clase .content-comment-user .comment-user{
+    width: 100%;
+    height: 80px;
+    word-break: break-all;
+    overflow: auto;
+    margin-right: 12px;
+}
+
+.comentarios-video .content-comentarios-clase .content-comment-user .comment-user p{
+    color: black;
+    text-align: justify;
+}
+
+.comentarios-video .content-comentarios-clase .content-image-profile{
+    padding: 15px;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+}
+
+.comentarios-video .content-comentarios-clase .content-image-profile img{
+    width: 70px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.comentarios-video .content-comentarios-clase .content-image-profile span{
+    font-size: 12px;
+}
+
+.comentarios-video .content-comentarios-clase .content-comment-user h4{
+    margin-bottom: 10px;
+}
+.comentarios-video .content-comentarios-clase .content-comment-user span{
+    font-size: 10px;
+    color: blueviolet;
+}
+
+.comentarios-video .content-comentarios-clase .content-reacciones{
+    display: grid;
+    width: 30px;
+    margin-left: 22px;
+}
+
+.comentarios-video .content-comentarios-clase .content-reacciones p{
+    margin-bottom: 18px;
+    margin-left: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #6a85fb;
+}
+
+.comentarios-video .content-comentarios-clase .content-reacciones p:hover{
+    color: #172f9b;
+    cursor:pointer;
+}
+
+

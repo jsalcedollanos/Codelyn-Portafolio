@@ -1,0 +1,82 @@
+{% extends 'layout-clases.html' %}
+{% load static %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<section class="section-clases">
+    <div class="content-clases">
+        <div class="content-video">
+            <video src="ejemplo.mp4" width=1090  height=600 controls poster="vistaprevia.jpg">
+                Lo sentimos. Este vídeo no puede ser reproducido en tu navegador.<br>
+                La versión descargable está disponible en <a href="">Enlace</a>. 
+            </video>
+        </div>
+        <div class="content-temario">
+            <div class="content-temario-general">
+                <div class="content-acordeon">
+                    {% for contenido in contenidos %}       
+                        <details class="acordeon">
+                            <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
+                            {% for clase in clases %}
+                                {% if clase.contenido.title == contenido.title %}
+                                <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
+                                {% endif %}
+                            {% endfor %}
+                        </details>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-detalle-clase">
+        <h2>Introduccion</h2>
+        <p>{{curso.title}} | <span>Completado 0%</span></p>
+        <p>Categoria del curso | <span id="title-span">{{curso.category}}</span> </p>
+    </div>
+
+    <div class="comentarios-video">
+        <h2>Comentarios</h2>
+        {% for commentClase in commentClases %}
+        <div class="content-comentarios-clase">
+            <div class="content-image-profile">
+                <img src="{% static '../static/images/github.png' %}">
+                <span class="lvl-user">Level: Silver</span>
+            </div>
+            <div class="content-comment-user">
+                <h4>{{commentClase.perfil.name}} <span class="profetion-user">| Desarrollador web</span></h4>
+                <div class="comment-user">
+                    <p></p>
+                </div>
+            </div>
+            <div class="content-reacciones">
+                <a><p><i class="fa-regular fa-thumbs-up"></i>2</p></a>
+                <a><p><i class="fa-solid fa-comment-dots"></i>50</p></a>
+                <a><p><i class="fa-solid fa-trash-can"></i></p></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+<script>
+    $(document).ready(()=>{
+        $('.content-comentario').hide()
+    });
+
+    $('#comentarios').click(function(){
+        $('.content-comentario').show()
+        $('.content-acordeon').hide()
+    });
+
+    $('#clases').click(function(){
+        $('.content-comentario').hide()
+        $('.content-acordeon').show()
+    });
+</script>
+{% endblock %}
+
+

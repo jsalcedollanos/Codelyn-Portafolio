@@ -26,9 +26,123 @@
   }
 
   .logo-codelyn img{
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 130px;
   }
+
+  .nav-menu{
+    position: relative;
+    right: 50px;
+  }
+
+  /* bloque de nav bar de usuarios logeados */
+  .nav-menu-user{
+    width: 100%;
+    border-top:1px solid #373737;
+  }
+
+  .nav-menu-user ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .nav-menu-user li{
+    color: #009e7c;
+    padding: 20px;
+  }
+
+  .nav-menu-user i{
+    color: yellow;
+  }
+
+  .nav-menu-user .opc-user{
+    cursor: pointer;
+  }
+
+  .nav-menu-user .opc-user-menu{
+    background-color: #999898;
+    display:block;
+    position: absolute;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .nav-menu-user .opc-user-menu li{
+    color: black;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .nav-menu-user .opc-user-menu i{
+    color: black;
+
+  }
+
+  .nav-menu-user .opc-user-menu .title-username{
+    font-size: 18px;
+    background-color: #009e7c;
+  }
+
+  .nav-menu-user .opc-user-menu .title-username:hover{
+    cursor:help;
+  }
+
+
+  #title-level{
+    color: #a50475;
+    font-size: 14px;
+  }
+
+  #level{
+    font-size: 14px;
+  }
+  
+  /* Fin del bloque */
+
+/* Carrusel */
+.carrousel{
+    margin-top: 18px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+.container-carrousel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container-carrousel .carrousel-item img{
+    width: 100px;
+    height: auto;
+}
+
+#btn-item{
+    margin-top: 15px;
+    background-color: #808282;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border-style: none;
+    cursor: pointer;
+}
+
+#btn-item:hover{
+    margin-top: 15px;
+    background-color: #595959;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border-style: none;
+    cursor: pointer;
+}
+
+/* Fin de carrusel */
 
 /* Estilos de usuario identificado */
 .menu .usuario{
@@ -80,6 +194,7 @@
     margin: 0px;
     padding: 0px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 p{
@@ -98,7 +213,7 @@ p{
     position:fixed;
     z-index: 100;
     right: 20px;
-    top:370px;
+    top: 600px;
 }
 
 .icon-whatsapp img{
@@ -125,7 +240,7 @@ header{
     background-image: url(../images/banner-codelyn.png);
     background-size: cover;
     background-attachment:fixed;
-    height: 500px;
+    height: 775px;
     text-align: center;
     background-position: center;
 }
@@ -139,11 +254,126 @@ header{
     background-position: center;
 }
 
+.banner-registro{
+    background-image: url(../images/banner-registro.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
+.banner-portafolio{
+    background-image: url(../images/banner-registro.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
+.banner-login{
+    background-image: url(../images/banner-registro.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
+.banner-servicios{
+    background-image: url(../images/banner-servicios.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
+.banner-cursos{
+    background-image: url(../images/banner-cursos.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
+.banner-articulo{
+    background-image: url(../images/banner-cursos.png);
+    background-size: cover;
+    height: 500px;
+    background-attachment:fixed;
+    text-align: center;
+    background-position: center;
+}
+
 .content-banner{
     padding: 15px;
 }
 
 .content-banner .content-banner-descripcion-inicio{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    height: auto;
+    width: 600px;
+}
+.content-banner .content-banner-descripcion-inicio h1{
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: #009e7c;
+}
+.content-banner .content-banner-descripcion-inicio h4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+}
+
+.content-banner .content-banner-descripcion-portafolio{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    height: auto;
+}
+.content-banner .content-banner-descripcion-portafolio h1{
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    color: #009e7c;
+    font-size: 37px;
+    font-weight: 300;
+}
+.content-banner .content-banner-descripcion-portafolio h4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+    color: white;
+}
+
+.content-banner .content-banner-descripcion-registro{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    height: auto;
+}
+
+.content-banner .content-banner-descripcion-servicios{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    height: auto;
+}
+
+.content-banner .content-banner-descripcion-articulo{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    height: auto;
+}
+
+.content-banner .content-banner-descripcion-login{
+    background-color: rgb(43, 43, 43, 0.8);
+    padding: 20px;
+    height: auto;
+}
+
+.content-banner .content-banner-descripcion-cursos{
     background-color: rgb(43, 43, 43, 0.8);
     padding: 20px;
     height: auto;
@@ -159,12 +389,97 @@ header{
     font-weight: lighter;
     color:#ddd;
     font-family: 'Inconsolata', monospace;
-    font-size: 50px;
+    font-size: 35px;
     display: flex;
 }
 
 .content-banner .descripcion{
     color: #ddd;
+    font-size: 35px;
+    padding-bottom: 100px;
+    margin-top: 15px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.content-banner .logotipo-registro{
+    font-weight: lighter;
+    color:#ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-banner .logotipo-cursos{
+    font-weight: lighter;
+    color:#ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-banner .logotipo-articulo{
+    font-weight: lighter;
+    color:#ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-banner .logotipo-login{
+    font-weight: lighter;
+    color:#ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-banner .logotipo-servicios{
+    font-weight: lighter;
+    color:#ddd;
+    font-family: 'Inconsolata', monospace;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-banner .descripcion-registro{
+    color: #a50475;
+    font-size: 50px;
+    padding-bottom: 100px;
+    margin-top: 15px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.content-banner .descripcion-cursos{
+    color: #a50475;
+    font-size: 50px;
+    padding-bottom: 100px;
+    margin-top: 15px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.content-banner .descripcion-articulo{
+    color: #009e7c;
+    font-size: 25px;
+    padding-bottom: 100px;
+    margin-top: 15px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.content-banner .descripcion-login{
+    color: #a50475;
+    font-size: 50px;
+    padding-bottom: 100px;
+    margin-top: 15px;
+    font-family: 'Inconsolata', monospace;
+}
+
+.content-banner .descripcion-servicios{
+    color: #a50475;
     font-size: 50px;
     padding-bottom: 100px;
     margin-top: 15px;
@@ -194,12 +509,13 @@ header{
 .menu{
     text-align: center;
     width: 100%;
-    height: 30px;
-    padding-top: 15px;
-    padding-bottom: 8px;
+    height: 20px;
+    padding: 50px;
     background-color: #2b2b2b;
-    
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .menu a{
     font-family: 'Inconsolata', monospace;
@@ -241,16 +557,47 @@ header{
 
 
 /* Estilos contenido de articulos recientes */
-.articulos-recientes{
-    height: 100%;
-    
+.image-article{
+    display: flex;
+    position: relative;
+    float: right;
+    bottom: 250px;
 }
 
-.articulos-recientes #title-article{
-    font-size: 35px;
-    display: flex;
-    margin-left: 30px;
-    margin-top: 100px;
+.articulos-recientes{
+    margin-top: 400px;
+    height: 100%;
+    background-color: #009e7c;
+    padding: 16px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.articulos-recientes .articulos-recientes-titulo{
+    background-color: rgb(43, 43, 43, 0.9);
+    display: block;
+    position: relative;
+    bottom: 120px;
+    width: 50%;
+    border-radius: 20px;
+    justify-content: center;
+}
+
+.articulos-recientes .articulos-recientes-titulo h1{
+    width: 100%;
+    font-size: 37px;
+    color: #009e7c;
+}
+.articulos-recientes .articulos-recientes-titulo span{
+    font-size: 25px;
+    border-right: .1em solid #18BDEC;
+    animation: blink 1s steps(1) infinite;
+}
+.articulos-recientes .articulos-recientes-titulo p{
+    font-size: 20px;
+    color: white;
+    font-weight: 100;
+    text-align: justify;
+    padding: 10px;
 }
 
 .articulos-recientes .content-articulos{
@@ -262,14 +609,14 @@ header{
 .articulos-recientes .content-articulos .paginacion-articulos{
     margin: 40px;
     font-size: 20px ;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 12px;
 }
 
 
 .articulos-recientes .content-articulos .card-articulo{
     padding: 20px;
-    margin: 50px;
+    background: floralwhite;
+    margin-top: 45px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 20px;
     padding: 30px;
@@ -337,7 +684,7 @@ header{
     margin-bottom: 55px;
     justify-content: center;
     text-align: center;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .content .content-inicio{
@@ -350,29 +697,31 @@ header{
     height: 100%;
     padding-top: 40px;
     padding-bottom: 60px;
+    margin-bottom: 100px;
     display: flex;
     justify-content: space-between;
 }
 
 .content .content-info{
     margin-left: 100px;
-    margin-top: 100px;
+    margin-top: 195px;
     font-size: 23px;
 }
 
 .content .content-info p{
-    margin-bottom: 20px;
+
 }
 
 
 .content .content-img .img-service{
     padding-top: 20px;
-    height: 700px;
-    width: 700px;
+    height: 600px;
+    width: 600px;
 }
 
 .content .content-img p{
-    font-size: 24px;
+    font-size: 19px;
+    width: 600px;
     font-family: 'Inconsolata', monospace;
     
 }
@@ -383,7 +732,8 @@ header{
 }
 
 .content .bienvenido{
-    color:#a50475
+    color:#a50475;
+    font-size: 30px;
 }
 
 .section-2{    
@@ -469,6 +819,49 @@ header{
     text-transform: capitalize;
     font-family: 'Inconsolata', monospace;
 }
+
+/* sesion de PORQUE ELEGIRNOS */
+.titulo-elegirnos{
+    margin-bottom: 40px;
+}
+.content-elegirnos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.content-elegirnos .content-elegirnos-box{
+    width: 300px;
+    margin: 10px;
+    padding: 60px;
+    text-align: initial;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 20px;
+}
+
+.content-elegirnos .content-elegirnos-box:hover{
+    background-color: #eeeeee;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.content-elegirnos .content-elegirnos-box h3{
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.content-elegirnos .content-elegirnos-box p{
+    font-size: 17px;
+}
+
+.content-elegirnos .content-elegirnos-box img{
+    width: 100%;
+    margin-top: 10px;
+}
+/* Fin de sesion de PORQUE ELEGIRNOS */
+
 
 /* Linea blanca */
 .line-blank{
@@ -730,131 +1123,9 @@ footer{
 
 
 /* RESPONSIVE */
-@media screen and (max-width: 760px){
-    /* HEADER */
-    .mostrar-menu,
-    .esconder-menu{
-        font-size: 70px;
-        color: #7fffd4;
-        display: block;
-    }
-    .menu{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: #2b2b2b;
-        right: -100%;
-        top: 0;
-        text-align: center;
-        padding: 100px 0px;
-        z-index: 100;
-        transition: 0.8s;
-    }
-    .menu a{
-        
-        display: block;
-        padding: 20px;
-    }
-    .esconder-menu{
-        position: absolute;
-        top: 40px;
-        right: 40px;        
-    }
-    #check:checked ~ .menu{
-        right: 0;
-    }
-
-    /* CONTENIDO PAGINA INICIO */
-
-    .content .content-img .img-service{
-        width: 100%;
-        height: 100%;
-    }
-
-    #title-article{
-        padding: 40px;
-    }
-
-    .articulos-recientes .content-articulos {
-        width: 100%;
-    }
 
 
-    .articulos-recientes .content-articulos .card-articulo .card-img {
-        display: none;
-    }
-
-    .articulos-recientes{
-        margin-bottom: 100px;
-    }
-
-    .section-velocidad{
-        display: block;
-    }
-
-    .section-velocidad .section-velocidad-content{
-        padding: 0;
-        position: relative;
-        bottom: 66px;
-    }
-
-    .section-velocidad .section-velocidad-imagen {
-        width: 100%;
-    }
-
-    #btn-prueba{
-        margin-top: 30px;
-    }
-
-    .section-velocidad .section-velocidad-imagen img{
-        width: 100%;
-        position: relative;
-        bottom: 347px;
-    }
-
-    /* FIN DE CONTENIDO  */
-
-    .section-social .content-social{
-        width: 100%;
-        justify-content: center;
-    }
-
-
-
-    .logo-redes{
-        width: 100%;
-        display: flex;
-    }
-
-    .section-social .content-social .logo-redes .link-redes img{
-        height: auto;
-        width: 45%;
-    }
-
-    .section-social .content-social .logo-redes .link-redes a{
-        margin-right: 40px;
-    }
-
-    .section-3{
-        justify-content: center;
-    }
-
-    .section-3 .parrafo-github{
-        margin-left: 35px;
-        margin-right: 35px;
-        text-align: justify;
-    }
-
-    .icon-whatsapp{
-        position: fixed;
-        z-index: 100;
-        right: 20px;
-        top: 580px;
-    }
-
-}
-
-@media screen and (max-width: 400px){
+@media only screen and (min-width: 400px) and (max-width: 760px){
 
     /* HEADER */
     .mostrar-menu,
@@ -889,7 +1160,89 @@ footer{
         right: 0;
     }
     
+    /* Banner */
+    .banner-articulo {
+        width: 100%;
+    }
+
+    .banner-registro{
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+    }
+
+    .content-banner .content-banner-descripcion-articulo {
+        background-color: transparent;
+    }
+
+    .content-banner .content-banner-descripcion-inicio {
+        width: 90%;
+    }
+    /* Banner Articulo */
+    .content-banner .descripcion-articulo{
+        font-size: 15px;
+    }
+
+    .content-banner .logotipo-registro {
+        font-size: 30px ;
+    }
+
+    .content-banner .descripcion-registro {
+        font-size: 30px;
+    }
+
+    /* Info inicial */
+    .content .content-img {
+        display: block;
+    }
+    .content .content-info {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 65px;
+        font-size: 20px;
+    }
+    .content .content-img p {
+        width: 100%;
+    }
+    /* Fin de sesion */
+
+    /* Sesion Por que elegirnos */
+    .content-elegirnos {
+        display: block;
+    }
+
+    .content-elegirnos .content-elegirnos-box {
+        width: 65%;
+        margin: 0 auto;
+        margin-bottom: 35px;
+        padding: 60px;
+    }
+    /* Fin de sesion */
+
     /* CONTENIDO PAGINA INICIO */
+
+    /* sesion de articulos */
+    .image-article {
+        float: none;
+    }
+    .image-article img{
+        display: block;
+    }
+    .image-article img{
+        width: 100%;
+    }
+    .articulos-recientes .articulos-recientes-titulo{
+        width: 100%;
+        display: block;
+    }
+
+    .articulos-recientes .articulos-recientes-titulo h1{
+        padding: 0;
+    }
+
+    .articulos-recientes .articulos-recientes-titulo p{
+        padding: 20px;
+    }
 
     .content .content-img .img-service{
         width: 100%;
@@ -940,26 +1293,25 @@ footer{
     }
     /* FIN DE CONTENIDO  */
 
-    .section-social .content-social{
+    /* Contenido Social */
+    .section-social{
         width: 100%;
-        justify-content: center;
+        margin: 0 auto;
     }
 
+    .section-social .content-social{
+        width: 100%;
+        display: block;
+    }
 
-
-    .logo-redes{
-        width: 75%;
-        position: relative;
+    .section-social .content-social .logo-redes{
         display: flex;
+        justify-content: center;
     }
 
     .section-social .content-social .logo-redes .link-redes img{
         height: auto;
-        width: 100%;
-    }
-
-    .section-social .content-social .logo-redes .link-redes a{
-        margin-right: 40px;
+        margin: 15px;
     }
 
     .section-3{
@@ -986,5 +1338,7 @@ footer{
     .logo-codelyn img{
         width: 30%;
     }
+
+
 
 }

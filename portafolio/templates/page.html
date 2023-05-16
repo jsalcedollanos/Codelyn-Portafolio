@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    {{page.title}}
+    {{page.metaTitle}} | Codelyn
 {% endblock %}
 
 
@@ -15,18 +15,74 @@
             <div class="content-img">
                 <div class="content-info">
                     <h1 class="title">
-                        <span class="bienvenido">{ Diseño y desarrollo web }</span>               
+                        <span class="bienvenido"> Diseño y desarrollo web </span>               
                     </h1>  
-                    <p>Diseño y desarrollo de plataformas y paginas web para tu
+                    <p>
+                        Diseño y desarrollo de plataformas y paginas web para tu
                         negocio, empresa o proyecto.
                     </p>
+                    <br>
+                    <h5>Plataforma con las que trabajamos:</h5>
+                    {% comment %} Carrousel {% endcomment %}
+                    <div class="carrousel">
+                        <div class="container-carrousel" id="container-carrousel">
+                           
+                            <div class="carrousel-item" id="carrousel-item1">
+                                <img id="item1" src="../static/images/wordpress.png" />
+                            </div>
+                            <div class="carrousel-item" id="carrousel-item2">
+                                <img id="item2" src="../static/images/woo.png" />
+                            </div>
+                            <div class="carrousel-item" id="carrousel-item3">
+                                <img id="item3" src="../static/images/google.png" />
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <input class="btn-item1" id="btn-item" type="button">
+                            <input class="btn-item2" id="btn-item" type="button">
+                            <input class="btn-item3" id="btn-item" type="button">
+                        </div>
+                    </div>
+
+
                     <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn-prueba"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Contactame</button></a>
                 </div>
                 <img src="../static/images/dev-programmer.png" class="img-service" alt="">              
             </div> 
+
+        {% comment %} Por que Elerginos {% endcomment %}
+            <h1 class="titulo-elegirnos">¿Por que Elegirnos?</h1>
+            <div class="content-elegirnos">
+                <div class="content-elegirnos-box">
+                    <h3>Diseño y desarrollo segun lo conversado</h3>
+                    <p>Recolectamos muchas ideas para enfocarnos en un diseño optimo y agradable, desarrollando toda la funcionalidad segun lo conversado.</p>
+                    <img src="../static/images/conversacion.png">
+                </div>
+
+                <div class="content-elegirnos-box">
+                    <h3>Tecnologias y herramientas que se ajustan a tu presupuesto</h3>
+                    <p>Nos ajustamos a tu necesidad, tiempo y presupuesto por lo tanto conversamos y te brindamos el mejor servicio que se ajustara a tus necesidades.</p>
+                    <img src="../static/images/costo.png">
+                </div>
+
+                <div class="content-elegirnos-box">
+                    <h3>Proceso de diseño y desarrollo organizado</h3>
+                    <p>Garantizamos que nuestros proyectos se entregaran el los tiempos pactados dando un constante reporte de las etapas del proyecto.</p>
+                    <img src="../static/images/presupuesto.png">
+                </div>
+            </div>
+        {% comment %} Fin del bloque Porque elegirnos {% endcomment %}
+
         {% comment %} Articulos recientes {% endcomment %}
         <section class="articulos-recientes">
-            <h1 id="title-article">Ultimos articulos</h1>
+            <div class="image-article">
+                <img src="../static/images/cursos.png" />
+            </div>
+            <div class="articulos-recientes-titulo">
+                <h1>Diversidad de cursos<span></span></h1>
+                <p>Le invertimos tiempo y presupuesto a tus habilidades como desarrollador y otras areas, por eso Codelyn tambien te ofrece cursos y articulos para que aprendas con los mejores profesores de la industria</p>
+            </div>
             <div class="content-articulos"> 
                     {% comment %} Paginacion de articulos {% endcomment %}
                     <div class="paginacion-articulos">
@@ -86,31 +142,6 @@
             
         </section>
         {% comment %} Fin del bloque de articulos recientes {% endcomment %}
-
-        {% comment %} Bloque de Velocidad de carga {% endcomment %}
-        <section class="section-velocidad">
-            <div class="section-velocidad-content">
-                <h2>La velocidad es importante</h2>
-                <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
-                <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn-prueba"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button></a>
-            </div>
-            <div class="section-velocidad-imagen">
-                <img src="../static/images/speed.png" alt="">
-            </div>
-        </section>
-        {% comment %} Fin del bloque de velocidad de carga {% endcomment %}
-
-        {% comment %} Bloque de GITHUB {% endcomment %}
-        <section class="section-3">
-            <h1>Mis Proyectos</h1>
-            <p class="parrafo-github">Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
-                me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
-                sin sobrecargar la web.
-            </p>
-            <img id="section-3-perfil" src="../static/images/github.png" alt="">
-            <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
-        </section>
-        {% comment %} Fin del bloque de GITHUB {% endcomment %}
 
         <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
             <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
@@ -348,8 +379,13 @@
                                 <div id="section-curso-img">
                                     <img src="{{curso.image.url}}" alt="">
                                 </div>  
+                                
                                 <div class="content-boton">
-                                    <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar</button> </a>        
+                                    {% if request.user.first_name %}
+                                        <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas</button> </a>
+                                        {% else %}
+                                        <a href="{% url 'login' %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas</button> </a>
+                                    {% endif %}               
                                 </div>                                                        
                             </div>
                         {% endif %}
@@ -552,5 +588,41 @@
         });
     </script>
 
+    {% comment %} Carrousel {% endcomment %}
+    <script>
+        $(document).ready(()=>{
+            $('#carrousel-item2').hide(); 
+            $('#carrousel-item3').hide(); 
+            $('.btn-item1').css("background","#009e7c");
+        });
+        
+        $('.btn-item1').click(function (){
+            $('#carrousel-item1').fadeIn("slow").show(); 
+            $('#carrousel-item2').hide();      
+            $('#carrousel-item3').hide(); 
+            $('.btn-item3').css("background","#808282");
+            $('.btn-item2').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item1').css("background","#009e7c");       
+        });
+        $('.btn-item2').click(function (){
+            $('#carrousel-item2').fadeIn("slow").show();      
+            $('#carrousel-item1').hide();      
+            $('#carrousel-item3').hide();      
+            $('.btn-item3').css("background","#808282");
+            $('.btn-item1').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item2').css("background","#009e7c");    
+        });
+        $('.btn-item3').click(function (){
+            $('#carrousel-item3').fadeIn("slow").show(); 
+            $('#carrousel-item1').hide();      
+            $('#carrousel-item2').hide(); 
+            $('.btn-item1').css("background","#808282");
+            $('.btn-item2').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item3').css("background","#009e7c");     
+        });
+    </script>
 {% endblock %}
 

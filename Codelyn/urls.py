@@ -28,6 +28,7 @@ urlpatterns = [
     path('articulo/<int:article_id>', views.articulo, name="articulo"),
     path('curso/<int:curso_id>', views.curso_detail, name="curso_detail"),
     path('curso/<int:curso_id>/<int:clase_id>', views.clase_curso, name="clase_detail"),
+    path('curso/clases/<int:curso_id>', views.clases_curso, name="clases"),
     path('registro/', views.register_page, name="registro"),
     path('login/', views.login_page, name="login"),
     path('logout/', views.logout_user, name="logout"),

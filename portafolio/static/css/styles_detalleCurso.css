@@ -60,34 +60,140 @@ header{
     margin-bottom: 200px;
 }
 
+/* Card de introduccion curso */
+.card-curso-intro{
+    position: fixed;
+    right: 50px;
+    top: 200px;
+    width: 440px;
+    text-align: left;
+    z-index: 100;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-curso-intro .content-video-intro{
+    width: 100%;
+    height: auto;
+    border-top: 10px;
+}
+
+.card-curso-intro .content-video-intro iframe{
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.card-curso-intro .content-info-curso{
+    padding: 20px;
+}
+
+.card-curso-intro .content-info-curso h4{
+    font-size: 21px;
+    color: black;
+    margin-bottom: 10px;
+    font-weight: bold !important; 
+}
+
+.card-curso-intro .content-info-curso p{
+    margin: 5px;
+    font-size: 18px;
+    color: #2b2b2b;
+}
+
+/* Boton de compra de curso */
+.detalle-curso .content-detalle .content-titulo .detalles-generales .box-bottom-sell{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#btn-comprar{
+    margin: 15px;
+    padding: 12px;
+    width: 90%;
+    height: auto;
+    border-radius: 6px;
+    background-color: #009e7c;
+    font-size: 20px;
+}
+
+#btn-comprar:hover{
+    background-color: #78004a;
+    color: #009e7c;
+    cursor: pointer;
+}
+
+/* Fin del bloque */
 
 
 .detalle-curso .content-detalle{
-    display: block;
+    display: flex;
     height: 100%;
     width: 100%;
-    padding-bottom: 90px;
     text-align: left;
 }
 
 .detalle-curso .content-detalle .content-titulo{
-    width: 500px;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 .detalle-curso .content-detalle .content-titulo h1{
     display: flex;
     font-size: 30px;
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .detalle-curso .content-detalle .content-titulo .detalles-generales{
     background-color: #2b2b2b;
-    padding: 20px;
-    margin-left: 10px;
-    border-radius: 10px;
-    width: 550px;
+    width: 100%;
+    display: block;
 }
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales .descripcion-curso{
+    padding-left: 80px;
+    padding-top: 30px;
+    width: 48%;
+    padding-bottom: 20px;
+}
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales .descripcion-curso h1{
+    font-size: 50px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales .descripcion-curso p{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales .descripcion-curso h4{
+    font-size: 18px;
+    color: white;
+}
+
+.detalle-curso .content-detalle .content-titulo .detalles-generales .descripcion-curso a{
+    font-size: 18px;
+    color: #009e7c;
+    text-decoration: underline;
+}
+
+#star-value{
+    font-size: 22px;
+    margin-top: 5px;
+    color: rgb(232, 205, 1);
+}
+
+#star-estadistica{
+    font-size: 22px;
+    margin-top: 1px;
+    color: rgb(232, 205, 1);
+}
+
 
 
 .detalle-curso .content-detalle .content-introduccion{
@@ -120,22 +226,25 @@ header{
     padding: 10px;
 }
 
-.detalle-curso .content-detalle .content-titulo span{
-    margin-top: 10px;
+/* Contenido de temario */
+.detalle-curso .content-contenido{
     display: block;
-    font-size: 20px;
-    color: white;
-}
-
-.detalle-curso .content-detalle .content-contenido{
-    display: block;
+    margin: 50px;
+    text-align: left;
     width: 500px;
     height: 100%;
 }
 
-.detalle-curso .content-detalle .content-contenido p{
+.detalle-curso .content-contenido p{
     margin-top: 20px;
     font-size: 20px;
+}
+
+.detalle-curso .content-contenido h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #2b2b2b;
+    text-align: left;
 }
 
 .detalle-curso .content-detalle .content-contenido{
@@ -153,6 +262,11 @@ header{
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     cursor: pointer;
+}
+
+.acordeon h4{
+    margin-top: 12px;
+    color: #009e7c;
 }
 
 .h2{
@@ -202,6 +316,116 @@ details[open]{
     background-color: #2b2b2b;
 }
 
+/* Fin de contenido temario */
+
+/* Bloque de QUE APRENDERAS */
+.content-aprenderas{
+    width: 50%;
+    margin-top: 170px;
+    margin-left: 50px;
+}
+
+.content-aprenderas h2{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.content-aprenderas p{
+    font-size: 20px;
+    text-align: left;
+}
+/* Fin del bloque */
+
+/* Bloque de valoracion  */
+
+.content-valoracion{
+    width: 50%;
+    margin: 50px;
+    display: flex;
+}
+#title-valoracion{
+    width: 50%;
+    margin-top: 170px;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.content-valoracion .content-valoracion-detalle{
+    padding: 20px;
+    border-radius: 12px;
+    width: 160px;
+    height: 190px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.content-valoracion .content-valoracion-detalle .val-total{
+    font-size: 80px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.content-valoracion .content-valoracion-detalle .val-detalle{
+    font-size: 17px;
+    text-align: center;
+}
+
+.content-valoracion .content-estrellas{
+    margin-left: 18px;
+    text-align: end;
+}
+
+
+.content-valoracion .content-estadistica{
+    margin-left: 18px;
+    text-align: right;
+}
+
+.content-valoracion .content-estadistica p{
+    margin-top: 3px;
+    font-size: 22px;
+}
+
+#title-teacher{
+    width: 50%;
+    margin-top: 170px;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.content-teacher{
+    margin-top: 17px;
+    margin-left: 50px;
+    width: 50%;
+    height: 300px;
+    display: flex;
+    text-align: left;
+}
+
+#image-profile{
+    border-radius: 50%;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.content-teacher .name-teacher{
+    font-size: 28px;
+}
+
+.content-teacher .title-profetional{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.content-teacher .content-teacher-description{
+    text-align: left;
+}
+
+.content-teacher .content-teacher-description .teacher-info{
+    font-size: 20px;
+    color: #2b2b2b;
+}
+
+
+/* Fin del bloque */
 
 @media screen and (width:400px) {
     .content-banner-curso .descripcion-curso{

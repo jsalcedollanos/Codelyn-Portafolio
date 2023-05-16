@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{% static '../static/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_clases.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/styles_detalleCurso.css' %}">
+    <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    {% block title %}
+        <title>| Codelyn</title>
+    {% endblock %}
+    
+
+</head>
+<body>
+<div class="overlay"></div>
+    <div>
+        <nav class="panel-funciones">
+            <ul>
+                <a href="/cursos"><li><i id="retorn" class="fa-solid fa-right-from-bracket" style="color: #f5e000;"></i>Ir al inicio</li></a>
+                <li><i id="report-error" class="fa-regular fa-triangle-exclamation" style="color: #f5e000;"></i>Reportar fallas</li>
+                <li id="add-valoracion"><i id="star-valoration" class="fa-solid fa-star" style="color: #f5e000;"></i>Valorar curso</li>
+                <li id="separator"></li>
+                <li class="opc-user"><img id="img-logo" src="/static/images/logo-codelyn1.png" alt="logo-codelyn">
+                    <ul class="opc-user-menu">
+                        <li>¡Hola {{request.user.username}}, ¿Que deseas hacer?</li>
+                        <a><li>Mi progreso</li></a>
+                        <a><li>Mi cuenta</li></a>
+                        <a href="{% url 'logout' %}"><li>Cerrar sesion</li></a>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {% block content %}
+        
+    {% endblock %}
+{% comment %} Script para menu de usuario {% endcomment %}
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+<script>
+    $(document).ready(()=>{
+        $('.opc-user-menu').hide()
+    })
+    $('.opc-user').click(function(){
+        $('.opc-user-menu').fadeTo("fast" , 1).show();
+        $('.overlay').css('display','block')
+    })
+
+    $('.overlay').click(function(){
+        $('.overlay').hide()
+        $('.opc-user-menu').fadeTo('slow', 1).hide()
+    })
+</script>
+</body>
+</html>

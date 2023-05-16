@@ -6,8 +6,8 @@ from portafolio.forms import FormContact, RegisterForm, FormComentario, FormResp
 from django.views.generic import (View, TemplateView, ListView, DetailView)
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-from django.http import JsonResponse
 from django.core.serializers import serialize
+from django.db.models import Avg, Count, Sum
 
 def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
@@ -182,6 +182,27 @@ def articulo(request, article_id):
 
 
 def curso_detail(request, curso_id):
+    try:
+        valor = ValorationCourse.objects.all().aggregate(promVal=Avg('valoracion'))
+        contValoracion = ValorationCourse.objects.filter(curso=curso_id).count()
+        # Cinco estrellas
+        fiveStar = ValorationCourse.objects.filter(star=5).count()
+        fivePorcent = fiveStar/contValoracion
+        # Cuatro Estrellas
+        fourStar = ValorationCourse.objects.filter(star=4).count()
+        fourPorcent = fourStar/contValoracion
+        # Tres Estrellas
+        threeStar = ValorationCourse.objects.filter(star=3).count()
+        threePorcent = threeStar/contValoracion
+        # Dos Estrellas
+        twoStar = ValorationCourse.objects.filter(star=2).count()
+        twoPorcent = twoStar/contValoracion
+        # Una Estrella
+        oneStar = ValorationCourse.objects.filter(star=1).count()
+        onePorcent = oneStar/contValoracion
+    except ValorationCourse.DoesNotExist:
+        valor = None
+    
     cursos = get_object_or_404(Curso, id=curso_id)
     contenidos = Contenido.objects.filter(curso=curso_id)
     #idContenido = Contenido.objects
@@ -192,11 +213,20 @@ def curso_detail(request, curso_id):
     #idClase = get_object_or_404(Clases, id)
     return render(request, 'curso_detail.html', {
         'curso':cursos,
+        'val':valor,
         'contenidos': contenidos,
         'clases':clases,
         'idClases':idClases,
         'canClases':canClases,
         'canContenido':canContenido,
+        'contVal': contValoracion,
+        
+        #Diccionario de valoraciones --->
+        'five': fiveStar, 'fivePorcent':fivePorcent,
+        'four': fourStar, 'fourPorcent':fourPorcent,
+        'three': threeStar, 'threePorcent':threePorcent,
+        'two': twoStar,  'twoPorcent': twoPorcent,
+        'one': oneStar, 'onePorcent':onePorcent,
     })
 
 def clase_curso(request, curso_id, clase_id):
@@ -212,6 +242,25 @@ def clase_curso(request, curso_id, clase_id):
         'curso':cursos,
         'contenidos': contenidos,
         'clases':clases,
+        'canClases':canClases,
+        'canContenido':canContenido,
+    })
+
+def clases_curso(request, curso_id):
+    cursos = get_object_or_404(Curso, id=curso_id)
+    contenidos = Contenido.objects.all()
+    idClases = Clases.objects.values_list('id','contenido')
+    commentClase = CommentClase.objects.filter(id=curso_id)
+    clases = Clases.objects.filter(curso=curso_id)
+    canClases = Clases.objects.filter(curso=curso_id).count()
+    canContenido = Contenido.objects.filter(curso_id=curso_id).count()
+    return render(request, 'clases.html', {
+        'clase':clases,
+        'commentClases':commentClase,
+        'curso':cursos,
+        'contenidos': contenidos,
+        'clases':clases,
+        'idClases':idClases,
         'canClases':canClases,
         'canContenido':canContenido,
     })
@@ -258,5 +307,8 @@ def logout_user(request):
     return redirect('/inicio')
 
 
-
-
+def commentClass(request, id):
+    commentClase = CommentClase.objects.filter(id=id)
+    return render(request, 'clases.html', {
+        'commentClases':commentClase
+    })

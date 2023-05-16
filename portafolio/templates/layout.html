@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static '../static/css/styles.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_form.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_portafolio.css' %}">
@@ -17,11 +23,11 @@
     <link rel="stylesheet" href="{% static '../static/css/styles_error.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_articulo.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/styles_detalleCurso.css' %}">
+
      <!-- Our project just needs Font Awesome Free's Solid and Brand files -->
      <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
      <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
      <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>
         {% block title %}
@@ -39,39 +45,54 @@
         </label>
         <input type="checkbox" id="check">
         <!-- Nav bar -->            
-        <nav class="menu">     
+        <nav class="menu">  
+            
+            <div class="logo-codelyn">
+                <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+            </div>  
+            <div class="nav-menu"> 
             {% for page  in pages reversed %} 
                 {% if page.3 == True %}         
                     <a href="{% url 'page' page.2 %}"> {{page.1}} </a> 
                 {% endif %}             
             {% endfor %}
-            {% if request.user.first_name %}
-                <a href="{% url 'registro' %}" style="display:none;"> Registrate </a>
-                <a href="{% url 'login' %}" style="display:none;"> Login </a>
-                <a class="usuario"> Bienvenid@, {{request.user.first_name}} </a>
-                <a href="{% url 'logout' %}"> Cerrar sesion </a>
-                <label for="check" class="esconder-menu">
+            {% if request.user.username %}
             {% else %}
                 <a href="{% url 'registro' %}"> Registrate </a>
                 <a href="{% url 'login' %}"> Login </a>
             {% endif %}
+                <label for="check" class="esconder-menu">
             <label for="check" class="esconder-menu">
                 &#215
             </label>
-        </nav>            
+            </div>
+        </nav> 
+        {% comment %} Bloque de validacion de usuario logeado {% endcomment %}
+        {% if request.user.username %}
+            <nav class="nav-menu-user">
+                <ul>
+                    <a href=""><li> <i class="fa-solid fa-person-chalkboard"></i> Mis Cursos</li></a>
+                    <a href=""><li> <i class="fa-solid fa-heart-circle-check"></i> Mis Favoritos</li></a>
+                    <a href=""><li> <i class="fa-solid fa-certificate"></i> Mis Certificados</li></a>
+                        <a class="opc-user"> <li><i class="fa-solid fa-gears"> <i class="fa-solid fa-list"></i></i>
+                            <ul class="opc-user-menu">
+                                <a><li class="title-username">Hola! {{request.user.username}} <br> <span id="title-level">Tu nivel:</span> <span id="level">Plate</span></li></a>
+                                <a href=""><li> <i class="fa-solid fa-id-card-clip"></i> Ver perfil</li></a>
+                                <a href="{% url 'logout' %}"><li> <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesion</li></a>
+                            </ul>
+                        </li></a>
+                </ul>
+            </nav> 
+        {% endif %}          
     </header>
 
     {% comment %} Banner {% endcomment %}
     {% if page.slug == 'inicio' %}
         <section class="banner-inicio">
             <div class="content-banner">
-
-                <div class="logo-codelyn">
-                    <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
-                </div>
                 <div class="content-banner-descripcion-inicio">
-                    <h1 class="logotipo">Sumergete en la tecnologia y los software, El mundo esta cambiando, no te quedes atras. adentrate en la hera digital!</h1> 
-                    <p class="descripcion"><span class="signo1">{</span>Codelyn <span class="full-stack"> Lo hace realidad</span> <span class="signo2">}</span></p>
+                    <h1 class="logotipo">Desarrollo de paginas web y aplicaciones web.</h1>
+                    <h4 class="logotipo">Sumergete en la tecnologia y los software, El mundo esta cambiando, no te quedes atras. adentrate en la hera digital!</h4> 
                 </div>
             </div>
         </section>
@@ -80,11 +101,8 @@
     {% elif page.slug == 'sobre-mi' %}
         <section class="banner">
             <div class="content-banner">
-                <div class="logo-codelyn">
-                    <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
-                </div>
                 <div class="content-banner-descripcion">
-                    <h1 class="logotipo">Jhonny Salcedo Llanos</h1> 
+                    <h1 class="logotipo">Jhonny Salcedo Llanos</h1>
                     <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
                 </div>
             </div>
@@ -92,49 +110,45 @@
     
 
     {% elif page.slug == 'cursos' %}
-        <section class="banner">
+        <section class="banner-cursos">
             <div class="content-banner">
-                <div class="logo-codelyn">
-                    <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+                <div class="content-banner-descripcion-cursos">
+                    <h1 class="logotipo-cursos">Cursos de programacion</h1> 
+                    <p class="descripcion-cursos"><span class="signo1">{</span>De la mejor calidad solo en codelyn <span class="signo2">}</span></p>
                 </div>
-                <h1 class="logotipo">Desarrollo web</h1> 
-                <p class="descripcion"><span class="signo1">{</span>Cursos de desarrollo web  <span class="full-stack">HTML,CSS,JS,PYTHON</span> front-end y Backend<span class="signo2">}</span></p>
             </div>
         </section>
     
 
     {% elif page.slug == 'portafolio' %}
-        <section class="banner">
+        <section class="banner-portafolio">
             <div class="content-banner">
-                <div class="logo-codelyn">
-                    <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+                <div class="content-banner-descripcion-portafolio">
+                    <h1>Portafolio de proyectos.</h1>
+                    <h4>Aplicativos web y paginas web desarrollados por nosotros</h4> 
                 </div>
-                <h1 class="logotipo">Portafolio de proyectos</h1> 
-                <p class="descripcion"><span class="signo1">{</span>Diversos proyectos: <span class="full-stack">Django-Python , Laravel-PHP , WordPress</span> Web a medida y CMR<span class="signo2">}</span></p>
             </div>
         </section>
     
 
     {% elif page.slug == 'servicios' %}
-        <section class="banner">
+        <section class="banner-servicios">
             <div class="content-banner">
-                <div class="logo-codelyn">
-                    <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+                <div class="content-banner-descripcion-servicios">
+                    <h1 class="logotipo-servicios">Servicios Codelyn</h1> 
+                    <p class="descripcion-servicios"><span class="signo1">{</span>Especialistas en el desarrollo de entornos web <span class="signo2">}</span></p>
                 </div>
-                <h1 class="logotipo">Servicios en desarrollo web</h1> 
-                <p class="descripcion"><span class="signo1">{</span>Potentes aplicaciones web <span class="full-stack">Diseños, Estructuras y mas</span> <span class="signo2">}</span></p>
             </div>
         </section>
     {% endif %}
 
     {% if articulo.id > 0 %}
-    <section class="banner">
+    <section class="banner-articulo">
         <div class="content-banner">
-            <div class="logo-codelyn">
-                <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
+            <div class="content-banner-descripcion-articulo">
+                <h1 class="logotipo-articulo">{{articulo.title}}</h1> 
+                <p class="descripcion-articulo"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
             </div>
-            <h1 class="logotipo">{{articulo.title}}</h1> 
-            <p class="descripcion"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
         </div>
     </section>
     {% endif %}
@@ -142,11 +156,6 @@
     {% if curso.id > 0 %}
     <section class="banner-curso">
         <div class="content-banner-curso">
-            <div class="logo-codelyn">
-                <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
-            </div>
-            <h1 class="logotipo-curso">{{curso.title}}</h1> 
-            <p class="descripcion-curso"><span class="signo1"></span><span class="full-stack">{{curso.description}}</span><span class="signo2">{{articulo.created_at}}</span></p>
         </div>
     </section>
     {% endif %}
@@ -168,7 +177,7 @@
         <section class="section-social"> 
             <div class="content-social">
                 <div id="content-social-sigueme">
-                    <h3>Sigueme en mis redes sociales</h3>
+                    <h3>Siguenos en nuestras redes sociales</h3>
                 </div> 
                 <div class="logo-redes">           
                     <div class="link-redes"><a href="https://www.facebook.com/profile.php?id=100085207243161" target="_blank"> <img id="logo-facebook" src="../static/images/facebook.png" alt=""> </a> </div>
@@ -187,6 +196,36 @@
             Desarrollado por: </br><span class="copyRight"> Codelyn&copy; </span>
         </p> 
     </footer>
-    
+
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+<script>
+    $(document).ready(()=>{
+        $('.opc-user-menu').hide();
+    });
+
+    $('.opc-user').click(function(){
+        $('.opc-user-menu').show()
+    });
+    $('html').click(function(){
+        $('.opc-user-menu').hide();
+    });
+    $('.opc-user').click(function (e) {
+        e.stopPropagation();
+    });
+
+    //Bloque colores por niveles
+    var levelColor = $('#level').text();
+        if (levelColor == 'Silver') {
+            $('#level').css('color','#B87333');// Level Silver
+        }else if(levelColor == 'Plate'){
+            $('#level').css('color','#C0C0C0');// Level Plate
+        }else if(levelColor == 'Gold'){
+            $('#level').css('color','#b99d46');// Level Gold
+        }else if(levelColor == 'Diamont'){
+            $('#level').css('color','#a8f0e2');// Level Diamont
+        }
+    // Fin del bloque
+</script>   
+
 </body>
 </html>

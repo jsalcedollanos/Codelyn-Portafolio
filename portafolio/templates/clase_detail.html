@@ -9,39 +9,19 @@
 
 {% block content %}
 
-<section class="detalle-curso">
-    <div class="content-detalle">
-        <div class="content-titulo">
-            <h1>Contenido de {{curso.title}}</h1>
-            <div class="detalles-generales">
-              <span>Total de Contenidos: {{canContenido}}</span>
-              <span>Total de Clases: {{canClases}}</span>
-              <span>Horas de Contenido: ???</span>
-              <span>Instructor: {{curso.user}} <a href="/sobre-mi">Ver perfil</a></span>
-            </div>
+<section class="content-clases">
+        <div class="content-temario"> 
+            {% for contenido in contenidos %}       
+                <details class="acordeon">
+                    <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
+                    {% for clase in clases %}
+                        {% if clase.contenido.title == contenido.title %}
+                        <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
+                        {% endif %}
+                    {% endfor %}
+                </details>
+            {% endfor %}
         </div>
-
-        <div class="content-introduccion">
-            <h1>{{claseId.title_class}}</h1>
-            <div class="content-video">
-                {{claseId.video|safe}}
-            </div>
-        </div>
-
-            <div class="content-contenido"> 
-                {% for contenido in contenidos %}       
-                    <details class="acordeon">
-                        <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
-                        {% for clase in clases %}
-                          {% if clase.contenido.title == contenido.title %}
-                            <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
-                          {% endif %}
-                        {% endfor %}
-                    </details>
-                {% endfor %}
-            </div>
-
-    </div>
 </section>
 
 {% endblock %}

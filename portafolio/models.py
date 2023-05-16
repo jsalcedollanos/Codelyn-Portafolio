@@ -2,6 +2,32 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 # Create your models here.
+class Perfil(models.Model):
+    user = models.OneToOneField(User, verbose_name="usuario", null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, verbose_name="Nombre Completo")
+    level = models.CharField(default="Silver", max_length=10, verbose_name="nivel")
+    lastname = models.CharField(max_length=50, verbose_name="Apellidos")
+    title = models.CharField(max_length=50, verbose_name="Titulo")
+    email = models.EmailField(max_length=100, verbose_name="Correo")
+    telephone = models.IntegerField()
+    description = models.TextField(max_length=400 ,verbose_name="Descripcion")
+    diplomas = models.TextField(verbose_name="Diplomas")
+    facebook = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    whatsapp = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    skills = models.TextField(max_length=255, verbose_name="Habilidades") 
+    image = models.ImageField(upload_to="perfil", verbose_name="Imagen perfil")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfiles"
+
+    def __str__(self):
+        return self.name
 
 class Proyect(models.Model):
     _id = models.BigAutoField(primary_key=True)
@@ -22,13 +48,28 @@ class Proyect(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name} - {self.created_at}"
+    
+class Category(models.Model):
+    name = models.CharField(max_length=200, verbose_name = "Nombre")
+    description = RichTextField(verbose_name="descripcion")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class Meta:
+        verbose_name = "Categoria"
+        verbose_name_plural = "Categorias"
+    
+    def __str__(self):
+        return self.name
 
 class Curso(models.Model):
+    perfil = models.ForeignKey(Perfil, null=True, verbose_name="perfil", on_delete=models.CASCADE)
     title = models.CharField(max_length=200, verbose_name = "titulo")
+    category = models.ForeignKey(Category, null=True ,verbose_name="Categoria", on_delete=models.CASCADE)
     description = models.TextField(max_length=200,verbose_name="descripcion")
+    aprenderas = models.TextField(verbose_name="aprenderas", max_length=400, null=True)
     image = models.ImageField(default='null', upload_to="cursos")
     video = models.TextField(default="null" ,max_length=400)
-    user = models.ForeignKey(User, verbose_name="Desarrollador", on_delete=models.CASCADE)
     status = models.BooleanField(default=True, verbose_name="estado")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
@@ -39,6 +80,7 @@ class Curso(models.Model):
 
     def __str__(self):
         return self.title
+
     
 class Contenido(models.Model):
     curso = models.ForeignKey(Curso, verbose_name="cursos", on_delete=models.CASCADE)
@@ -72,21 +114,34 @@ class Clases(models.Model):
 
     def __str__(self):
         return self.title_class
-
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=200, verbose_name = "Nombre")
-    description = RichTextField(verbose_name="descripcion")
+    
+class CommentClase(models.Model):
+    classVideo = models.ForeignKey(Clases, verbose_name="clase", on_delete=models.CASCADE)
+    perfil = models.ForeignKey(Perfil, verbose_name="usuario", on_delete=models.CASCADE)
+    comment = models.TextField(verbose_name="comentario")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
 
-    class Meta:
-        verbose_name = "Categoria"
-        verbose_name_plural = "Categorias"
-    
+    class meta: 
+        verbose_name = "comentario"
+        verbose_name_plural = "comentarios"
+
     def __str__(self):
-        return self.name
+        return self.comment
+
+class ValorationCourse(models.Model):
+    curso = models.ForeignKey(Curso, verbose_name="curso", on_delete=models.CASCADE)
+    valoracion = models.CharField(max_length=3, verbose_name="valoracion")
+    star = models.IntegerField(verbose_name="estrellas", null=True)
+    user = models.ForeignKey(User, verbose_name="usuario", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+    class Meta:
+        verbose_name = "Valoracion"
+        verbose_name_plural = "Valoracion"
+
+    def __str__(self):
+        return self.valoracion
     
 
 class Article(models.Model):
@@ -115,6 +170,7 @@ class Article(models.Model):
 class Page(models.Model):
     title = models.CharField(max_length=100, verbose_name="titulo")
     content = RichTextField(verbose_name="contenido")
+    metaTitle = models.CharField(max_length=100, null=True, verbose_name="titulo-meta")
     slug = models.CharField(unique=True, max_length=100, verbose_name="slug")
     visible = models.BooleanField(verbose_name="¿visible?")
     created_at = models.DateTimeField(auto_now=True, verbose_name="Creado el")
@@ -127,30 +183,7 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-class Perfil(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Nombre Completo")
-    lastname = models.CharField(max_length=50, verbose_name="Apellidos")
-    title = models.CharField(max_length=50, verbose_name="Titulo")
-    email = models.EmailField(max_length=100, verbose_name="Correo")
-    telephone = models.IntegerField()
-    description = RichTextField(verbose_name="Descripcion")
-    diplomas = RichTextField(verbose_name="Diplomas")
-    facebook = models.URLField(blank=True, null=True)
-    linkedin = models.URLField(blank=True, null=True)
-    github = models.URLField(blank=True, null=True)
-    whatsapp = models.URLField(blank=True, null=True)
-    instagram = models.URLField(blank=True, null=True)
-    skills = models.TextField(max_length=255, verbose_name="Habilidades") 
-    image = models.ImageField(upload_to="perfil", verbose_name="Imagen perfil")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
 
-    class Meta:
-        verbose_name = "Perfil"
-        verbose_name_plural = "Perfiles"
-
-    def __str__(self):
-        return self.name
 
 class Service(models.Model):
     name = models.CharField(max_length=30, verbose_name="nombre")

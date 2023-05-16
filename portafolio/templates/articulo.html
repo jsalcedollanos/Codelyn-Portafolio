@@ -76,7 +76,7 @@
                             </div>
 
                             <details class="detalles">
-                                <summary id="detalle-respuesta" class="detalle-respuesta">Comentarios</summary>
+                                <summary id="detalle-respuesta" class="detalle-respuesta-{{comentario.id}}">Comentarios</summary>
                                 {% for respuesta in respuestas %}
                                 {% if respuesta.comment_id == comentario.id %}
                                     <div class="content-respuesta-comentario">
@@ -154,6 +154,20 @@
                 $('.content-form-responder-{{comentario.id}}').hide();
             });
         {% endfor %}
+
+        
+        {% for comentario in comentarios %}
+        $('.detalle-respuesta-{{comentario.id}}').click(function (){  
+            if ($('.btn-responder-{{comentario.id}}').is(':visible')){
+            $('.btn-responder-{{comentario.id}}').hide();
+            }else{
+                $('.btn-responder-{{comentario.id}}').show(); 
+            }
+        })
+        {% endfor %}
+
+        
+        
         
     });
 </script>

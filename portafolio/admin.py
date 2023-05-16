@@ -21,13 +21,13 @@ class PageAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at') # Colocar campos solo visibles
     search_fields = ('title', 'content') # Añadir un buscador a mi listado
     list_filter = ('visible',) # Añadir filtro a mi listado
-    list_display = ('title','visible','created_at') # Añadir campos en mi listado
+    list_display = ('title','metaTitle','visible','created_at') # Añadir campos en mi listado
     ordering = ('created_at',) # Ordenar listado desde el campo 'created_at'
 class CursoAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
     search_fields = ('title', 'description') # Añadir un buscador a mi listado
     list_filter = ('status',) # Añadir filtro a mi listado
-    list_display = ('title','status','user','created_at') # Añadir campos en mi listado
+    list_display = ('id','title','status','perfil','created_at') # Añadir campos en mi listado
     ordering = ('created_at',) # Ordenar listado desde el campo 'created_at'
 class PerfilAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
@@ -63,6 +63,15 @@ class CommentToCommentAdmin(admin.ModelAdmin):
     list_display = ('id','comment_id','user_id','respuesta','created_at')
     ordering = ('created_at',)
 
+class ValoracionCursoAdmin(admin.ModelAdmin):
+    list_display = ('id','curso','user','valoracion','star','created_at')
+    readonly_fields = ('created_at', 'updated_at')
+
+class ComentarioClaseAdmin(admin.ModelAdmin):
+    list_display = ('id','perfil','comment')
+    readonly_fields = ('created_at', 'updated_at')
+
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Proyect, ProyectAdmin)
@@ -74,7 +83,9 @@ admin.site.register(Contact, ContactAdmin)
 admin.site.register(Contenido,ContenidoAdmin)
 admin.site.register(Clases,ClasesAdmin)
 admin.site.register(Comment,CommentAdmin)
+admin.site.register(ValorationCourse, ValoracionCursoAdmin)
 admin.site.register(CommentToComment,CommentToCommentAdmin)
+admin.site.register(CommentClase, ComentarioClaseAdmin)
 
 
 # Configurar titulo de panel admin

@@ -1,9 +1,9 @@
 
 
 .content-articulo{
-    width: 95%;
-    padding: 25px 25px;
+    width: 90%;
     height: 100%;
+    padding: 72px;
     margin: 0 auto;
     margin-bottom: 40px;
     text-align: justify;
@@ -259,99 +259,8 @@
 
 
 
-/* RESPONSIVE PARA PANTALLAS 760PX */
-@media screen and (max-width: 760px){
-    .mostrar-menu, .esconder-menu {
-        font-size: 70px;
-        color: #7fffd4;
-        /* display: block !important; */
-    }
-    /* Banner */
-    .content-banner{
-        width: 100%;
-        padding: 0px;
-    }
-
-    .content-banner .descripcion {
-        padding-bottom: 30px;
-        font-size: 26px;
-    }
-
-    .content-banner .logotipo {
-        
-        font-size: 40px;
-    }
-
-    .content-articulo {
-        width: 75%;
-        padding: 25px 25px;
-        height: auto;
-        margin: 0 auto;
-        margin-bottom: 40px;
-
-    }
-
-    .content-articulo p{
-        width: 100%;
-        text-align: justify;
-    }
-
-    .comentarios{
-        width: 100%;
-        padding: 0px;
-    }
-
-    .comentarios h2 {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 30px;
-    }
-    
-    .comentarios a{
-        width: 80%;
-        padding: 20px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-    }
-
-    .content-agregar-comentario {
-        width: 80%;
-        display: block;
-        padding: 20px;
-        margin: 0 auto;
-    }
-
-    .content-agregar-comentario .form-comentario textarea{
-        width: 100%;
-    }
-
-    .content-comentario {
-        width: 80%;
-        margin: 0 auto;
-        display: block;
-        margin-top: 40px;
-    }
-
-    .content-comentario .content-comentario-comentario{
-        width: 100%;
-    }
-
-    .content-comentario .content-comentario-comentario p{
-        width: 90%;
-    }
-
-    .content-reaccion{
-        margin-top: 10px;
-        display: flex;
-        justify-content: center;
-    }
-
-}
-
 /* RESPONSIVE PARA PANTALLAS 400PX */
-@media screen and (max-width: 400px){
+@media screen and (min-width: 400px) and (max-width: 760px){
     .mostrar-menu, .esconder-menu {
         font-size: 70px;
         color: #7fffd4;
@@ -368,16 +277,42 @@
     }
 
     .content-articulo {
-        width: 75%;
-        padding: 25px 25px;
-        height: auto;
-        margin: 0 auto;
-        margin-bottom: 40px;
-        text-align: initial;
+        width: 90%;
+        display: block;
     }
 
     .content-articulo p{
         width: 100%;
+    }
+    /* Contenido de cpmentarios */
+
+    .content-comentario-comentario .content-respuestas  {
+        display: block;
+    }
+
+    .content-comentario-comentario .content-respuestas .detalles{
+        margin: 0 auto;
+    }
+
+    .content-comentario .content-comentario-comentario .content-responder #btn-responder {
+        display: block;
+        float: none;
+        margin-bottom: 20px;
+        bottom: 15px;
+        font-size: 17px;
+    }
+
+    .content-comentario .content-comentario-comentario .content-respuestas #detalle-respuesta:hover {
+        background-color: transparent;
+    }
+
+    .content-comentario .content-comentario-comentario .content-respuestas #detalle-respuesta {
+        color: black;
+        font-size: 15px;
+        padding-top: 0;
+        list-style: none;
+        display: block;
+        justify-content: center;
     }
 
     .comentarios{

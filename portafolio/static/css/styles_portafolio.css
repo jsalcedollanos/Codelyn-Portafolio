@@ -178,7 +178,7 @@ p{
 
 /* Responsive para tamaño de 400px */
 
-@media screen and (max-width: 400px) {
+@media only screen and (min-width: 400px) and (max-width:760px) {
     .card_proyect{
         width: 90%;
         margin: 0 auto;
@@ -213,7 +213,7 @@ p{
     }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     .card_proyect{
         width: 90%;
         margin: 0 auto;
@@ -234,7 +234,7 @@ p{
 
     .card_proyect .card_proyect_content .card_proyect_info{
         width: 90%;
-        height: 800px;
+        height: auto;
         padding: 10px;
     }
 
@@ -247,3 +247,4 @@ p{
         margin-top: 15px;
     }
 }
+ */

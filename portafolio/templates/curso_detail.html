@@ -4,7 +4,7 @@
 
 
 {% block title %}
-
+  | Codelyn
 {% endblock %}
 
 {% block content %}
@@ -12,46 +12,116 @@
 <section class="detalle-curso">
     <div class="content-detalle">
         <div class="content-titulo">
-            <h1>Contenido de {{curso.title}}</h1> 
             <div class="detalles-generales">
-              {% with  nombreCurso=curso.title  %}
-                {% if nombreCurso == curso.title %}
-                  
-                  <span>Total de Contenidos: {{canContenido}}</span>
-                  <span>Total de Clases: {{canClases}}</span>
-                  <span>Horas de Contenido: ???</span>
-                  <span>Instructor: {{curso.user}} <a href="/sobre-mi">Ver perfil</a></span>
-              
-              {% endif %}
-              {% endwith %}
+              <div class="descripcion-curso">
+                <h1>{{curso.title}}</h1>
+                <p>{{curso.description}}</p>
+                {% if val %}
+                    <h4 >Valoracion: {{val.promVal|floatformat:2}} <span id="star-value">★★★★★★</span> {{contVal}} Estudiantes</h4>   
+                {% else %}
+                    <p>Sin valoracion</p>
+                {% endif %}                    
+                <h4>Profesor: <a href="/sobre-mi">{{curso.perfil}}</a> | {{curso.perfil.title}} </h4>
+              </div> 
             </div>
-        </div>
-
-        <div class="content-introduccion">
-            <h1>Introduccion al curso</h1>
-            <div class="content-video">
-                {{curso.video|safe}}
-            </div>
-        </div>
-
-            <div class="content-contenido"> 
-              {% with cursoIdent=curso.id   %}
-              {% if curso.id %}
-                {% for contenido in contenidos %}       
-                  <details class="acordeon">
-                        <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
-                        {% for clase in clases %}
-                          {% if clase.contenido.title == contenido.title %}
-                            <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}}</div> </a>
-                          {% endif %}
-                        {% endfor %}
-                    </details>
-                {% endfor %}
-              {% endif %}
-              {% endwith %}
-            </div>
-
+        </div>          
+            
     </div>
+
+    <div class="card-curso-intro">
+      <div class="content-video-intro">
+        <p>{{curso.video|safe}}</p>
+      </div>
+
+      {% comment %} Confirmar sesion activa {% endcomment %}
+      <div class="box-bottom-sell">
+        {% if auth.user.first_name %}
+        <a href="{% url 'login' %}">  <button id="btn-comprar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar curso</button> </a>
+        {% else %}
+        <a href="{% url 'clases' curso.id %}">  <button id="btn-comprar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar curso</button> </a>
+        {% endif %}
+      </div>
+      {% comment %} Fin del bloque {% endcomment %}
+
+      {% comment %} Especificaciones {% endcomment %}
+      <div class="content-info-curso">
+        <h4><strong>Este curso contiene</strong></h4>
+        {% with  nombreCurso=curso.title  %}
+        {% if nombreCurso == curso.title %}
+          <p>{{canContenido}} contenido del curso</p>
+          <p>{{canClases}} clases del curso</p>
+          <p>??? horas de contenido</p>
+          <p>Recursos descargables</p>
+        {% endif %}
+        {% endwith %}
+      </div>
+      {% comment %} Fin de bloque {% endcomment %}
+    </div>
+
+    {% comment %} Bloque de temario del curso {% endcomment %}
+    <div class="content-contenido"> 
+      <h2>Temario</h2>
+      {% with cursoIdent=curso.id   %}
+      {% if curso.id %}
+        {% for contenido in contenidos %}       
+          <details class="acordeon">
+                <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
+                {% for clase in clases %}
+                  {% if clase.contenido.title == contenido.title %}
+                    <h4>Clase {{clase.id}}</h4>
+                    <a>  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}}</div> </a>
+                  {% endif %}
+                {% endfor %}
+            </details>
+        {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    {% comment %} Fin del bloque temario {% endcomment %}
+
+    {% comment %} Sesion que parenderas {% endcomment %}
+    <div class="content-aprenderas">
+      <h2>Que Aprenderas</h2>
+      <p>{{curso.aprenderas|safe}}</p>
+    </div>
+    {% comment %} Fin del bloque {% endcomment %}
+
+    {% comment %} Sesion de valoraciones {% endcomment %}
+    <h2 id="title-valoracion">Valoraciones del curso</h2>
+    <div class="content-valoracion">
+      <div class="content-valoracion-detalle">
+        <p class="val-total">{{val.promVal|floatformat}}</p>
+        <span id="star-value">★★★★★</span>
+        <p class="val-detalle">{{contVal}} Valoraciones</p>
+      </div>
+      <div class="content-estrellas">
+        <p id="star-estadistica">★★★★★</p><br>
+        <p id="star-estadistica">★★★★</p><br>
+        <p id="star-estadistica">★★★</p><br>
+        <p id="star-estadistica">★★</p><br>
+        <p id="star-estadistica">★</p><br>
+      </div>
+      <div class="content-estadistica">
+        <p id="info">{{five}} ({{fivePorcent|floatformat:2|cut:"0,"}}%)</p><br>
+        <p id="info">{{four}} ({{fourPorcent|floatformat:2|cut:"0,"}}%)</p><br>
+        <p id="info">{{three}} ({{threePorcent|floatformat:2|cut:"0,"}}%)</p><br>
+        <p id="info">{{two}} ({{twoPorcent|floatformat:2|cut:"0,"}}%)</p><br>
+        <p id="info">{{one}} ({{onePorcent|floatformat:2|cut:"0,"}}%)</p><br>
+      </div>
+    </div>
+
+    <h2 id="title-teacher">Profesor</h2>
+    <div class="content-teacher">
+      <div class="content-teacher-image">
+        <img id="image-profile" src="{{curso.perfil.image.url}}" alt="">
+      </div>
+      <div class="content-teacher-description">
+        <p class="name-teacher">{{curso.perfil.name}}</p>
+        <p class="title-profetional">{{curso.perfil.title}}</p>
+        <p class="teacher-info">{{curso.perfil.description}}</p>
+      </div>
+    </div>
+
 </section>
 
 {% endblock %}

@@ -24,11 +24,15 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:slug>', views.page, name="page"),
+
+    path('', views.index, name="index"),
+    path('servicios/', views.servicios, name="servicios"),
+    path('explorar-cursos/', views.cursos, name="cursos"),
     path('articulo/<int:article_id>', views.articulo, name="articulo"),
     path('curso/<int:curso_id>', views.curso_detail, name="curso_detail"),
-    path('curso/<int:curso_id>/<int:clase_id>', views.clase_curso, name="clase_detail"),
-    path('curso/clases/<int:curso_id>', views.clases_curso, name="clases"),
+    path('comentario/<int:id>', views.delete_commentClase, name="deleteComment"),
+    path('respuesta/<int:id>', views.delete_respuesta, name="deleteRes"),
+    path('curso/<int:curso_id>/<int:clase_id>', views.clases_curso, name="clases"),
     path('registro/', views.register_page, name="registro"),
     path('login/', views.login_page, name="login"),
     path('logout/', views.logout_user, name="logout"),

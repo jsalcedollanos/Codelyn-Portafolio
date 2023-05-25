@@ -1,8 +1,10 @@
+from audioop import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from portafolio.models import *
 from django.core.paginator import Paginator
 from django.contrib import messages
-from portafolio.forms import FormContact, RegisterForm, FormComentario, FormRespuesta
+from portafolio.forms import *
 from django.views.generic import (View, TemplateView, ListView, DetailView)
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -17,11 +19,69 @@ def handling_404(request, exception):
 
     })
 
+def index(request):
+
+     # Articulos
+    articulos = Article.objects.all()
+    # Paginar Articulos
+    paginator_articulos = Paginator(articulos, 5)
+    # Recoger numero pagina
+    page_number = request.GET.get('page')
+    page_obj = paginator_articulos.get_page(page_number)
+
+
+    # Obtener proyectos  
+    proyectos = Proyect.objects.all()
+    # Paginar Proyectos
+    paginator = Paginator(proyectos, 2)
+
+    # Recoger numero pagina
+    page = request.GET.get('page')
+    page_proyectos = paginator.get_page(page)
+
+    return render(request, 'index.html', {
+        "page": page,
+        "proyectos": page_proyectos,        
+        "articulos": page_obj,
+    })
+
+def servicios(request):
+    
+    return render(request, 'servicios.html', {
+
+    })
+
+def cursos(request):
+
+    # listar Cursos
+    cursos = Curso.objects.all()
+
+    # Añadir favorito
+    formularioFa = FavoriteForm()
+
+    if request.method == "POST":
+        formularioFa = FavoriteForm(request.POST)
+        if formularioFa.is_valid():
+            data_form = formularioFa.cleaned_data
+            curso = data_form.get('curso')
+
+            favorito = Favorite(
+                user_id = request.user.id,
+                curso_id = curso,
+            )
+            favorito.save()
+            messages.success(request, f'{request.user.first_name}, se ha agregado el curso a tu lista de favoritos!!!')
+            
+            return redirect('/explorar-cursos')
+        else:
+            messages.error(request,'No se pudo añadir a la lista...')
+
+    return render(request, 'explorarCursos.html', {
+        'cursos':cursos,
+        'formularioFa':formularioFa,
+    })
 
 def page(request, slug):
-
-     
-
     lenguaje = {
         'Python': '<i class="bi bi-filetype-py"></i>',
         'Wordpress': '<i class="bi bi-wordpress"></i>',
@@ -66,6 +126,24 @@ def page(request, slug):
 
     # Listar servicios
     servicios = Service.objects.all()
+    
+    # añadir favorito
+    formularioFa = FavoriteForm()
+    if request.method == "POST":
+        formularioFa = FavoriteForm(request.POST)
+        if formularioFa.is_valid():
+            data_form = formularioFa.cleaned_data
+            curso = data_form.get('curso')
+
+            favorito = Favorite(
+                user_id = request.user.id,
+                curso_id = curso,
+            )
+            favorito.save()
+            messages.success(request, 'Se ha agregado el curso a tu lista de favoritos!!!')
+            return redirect('/cursos')
+        else:
+            messages.error(request,'No se pudo añadir a la lista...')
 
     # formulario
     formulario = FormContact()
@@ -96,6 +174,7 @@ def page(request, slug):
         
     
     return render(request, 'page.html', {
+        "formularioFa": formularioFa,
         "page": page,
         "proyectos": page_proyectos,        
         "lenguaje": lenguaje,
@@ -107,14 +186,13 @@ def page(request, slug):
     })
         
 
+
 def redes(request):
     sociales = Perfil.objects.all()
     return render(request, 'layout.html', {
         'sociales':sociales
     })
 
-""" class Error404View(TemplateView):
-    templante_name = "404.html" """
     
 def handler404(request, exception):
     return render(request, '404.html')
@@ -152,24 +230,18 @@ def articulo(request, article_id):
         if formComentario.is_valid():
             data_form = formComentario.cleaned_data
             com = data_form.get('comentario')
-            
-
             com = Comment(
                 comentario = com,
                 user = request.user,
                 article = articulos,
             )
-
             com.save()
             #Mensaje flash de successful
             messages.success(request, 'Tu comentario ha sido enviado con exito!')
             return redirect(f'/articulo/{article_id}')
         else:
             messages.error(request, '(Error al comentar) algo salio mal, revisa el formulario :D')
-
     
-    
-         
     return render(request, 'articulo.html', {
         'articulo':articulos,
         'comentarios':comentarios,
@@ -229,32 +301,65 @@ def curso_detail(request, curso_id):
         'one': oneStar, 'onePorcent':onePorcent,
     })
 
-def clase_curso(request, curso_id, clase_id):
-    cursos = get_object_or_404(Curso, id=curso_id)
-    claseId = get_object_or_404(Clases, id=clase_id)
-    contenidos = Contenido.objects.all()
-    clases = Clases.objects.all()
-    canClases = Clases.objects.all().count()
-    canContenido = Contenido.objects.all().count()
-    return render(request, 'clase_detail.html', {
-        'clase':clases,
-        'claseId':claseId,
-        'curso':cursos,
-        'contenidos': contenidos,
-        'clases':clases,
-        'canClases':canClases,
-        'canContenido':canContenido,
-    })
 
-def clases_curso(request, curso_id):
+def clases_curso(request, curso_id, clase_id):
     cursos = get_object_or_404(Curso, id=curso_id)
     contenidos = Contenido.objects.all()
     idClases = Clases.objects.values_list('id','contenido')
-    commentClase = CommentClase.objects.filter(id=curso_id)
+    commentClase = CommentClase.objects.filter(classVideo_id=clase_id)
     clases = Clases.objects.filter(curso=curso_id)
+    className = Clases.objects.get(id=clase_id)
     canClases = Clases.objects.filter(curso=curso_id).count()
     canContenido = Contenido.objects.filter(curso_id=curso_id).count()
+    perfilId = request.user.id
+    perfil = Perfil.objects.get(user_id=perfilId)
+
+    respuestas = ResComClase.objects.all()
+    contResp = ResComClase.objects.get(id=clase_id)
+
+
+    # FORMULARIO DE RESPUESTA
+    formRespuestaClase = FormResClass()
+    if request.method == 'POST':
+        formRespuestaClase = FormResClass(request.POST)
+        if formRespuestaClase.is_valid():
+            data_form = formRespuestaClase.cleaned_data
+            res = data_form.get('respuesta')
+            com = data_form.get('comentario')
+            res = ResComClase(
+                respuesta = res,
+                comment_id = com,
+                perfil = perfil,
+            )
+            res.save()
+            return redirect(f'/curso/{curso_id}/{clase_id}')
+            
+
+    # FORMULARIO DE COMENTARIO
+    formComentarioClase = FormComentarioClase()
+    if request.method == 'POST':
+        formComentarioClase = FormComentarioClase(request.POST)
+        if formComentarioClase.is_valid():
+            data_form = formComentarioClase.cleaned_data
+            com = data_form.get('comentario')
+            com = CommentClase(
+                comment = com,
+                classVideo = className,
+                perfil = perfil
+            )
+            com.save()
+            #Mensaje flash de successful
+            messages.success(request, f'{request.user.username} tu comentario ha sido enviado con exito!')
+            return redirect(f'/curso/{curso_id}/{clase_id}')
+        else:
+            messages.error(request, '(Error al comentar) algo salio mal, revisa el formulario :D')
+
     return render(request, 'clases.html', {
+        'contResp':contResp,
+        'respuestas':respuestas,
+        'formComentarioClase':formComentarioClase,
+        'formRespuestaClase':formRespuestaClase,
+        'className':className,
         'clase':clases,
         'commentClases':commentClase,
         'curso':cursos,
@@ -264,6 +369,18 @@ def clases_curso(request, curso_id):
         'canClases':canClases,
         'canContenido':canContenido,
     })
+
+def delete_commentClase(request, id):
+    commentClase = CommentClase.objects.get(id=id)
+    commentClase.delete()
+    pre_url = request.META.get('HTTP_REFERER') # Here
+    return redirect(pre_url)
+
+def delete_respuesta(request, id):
+    respuestaComent = ResComClase.objects.get(id=id)
+    respuestaComent.delete()
+    pre_url = request.META.get('HTTP_REFERER') # Here
+    return redirect(pre_url)
 
 def register_page(request):
 
@@ -294,7 +411,7 @@ def login_page(request):
 
         if user is not None:
             login(request, user)
-            return redirect('/inicio')
+            return redirect('/')
         else:
             messages.error(request, 'Algo salio mal, revisa bien los datos ingresados.')
 
@@ -304,7 +421,7 @@ def login_page(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('/inicio')
+    return redirect('/')
 
 
 def commentClass(request, id):

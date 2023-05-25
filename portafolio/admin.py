@@ -71,6 +71,9 @@ class ComentarioClaseAdmin(admin.ModelAdmin):
     list_display = ('id','perfil','comment')
     readonly_fields = ('created_at', 'updated_at')
 
+class RespuestaComentarioClaseAdmin(admin.ModelAdmin):
+    list_display = ('id','perfil','respuesta','comment')
+    readonly_fields = ('created_at', 'updated_at')
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Category, CategoryAdmin)
@@ -86,6 +89,7 @@ admin.site.register(Comment,CommentAdmin)
 admin.site.register(ValorationCourse, ValoracionCursoAdmin)
 admin.site.register(CommentToComment,CommentToCommentAdmin)
 admin.site.register(CommentClase, ComentarioClaseAdmin)
+admin.site.register(ResComClase, RespuestaComentarioClaseAdmin)
 
 
 # Configurar titulo de panel admin

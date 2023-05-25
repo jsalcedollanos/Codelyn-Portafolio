@@ -8,6 +8,7 @@
 
 {% block content %}
 <section class="section-clases">
+        
     <div class="content-clases">
         <div class="content-video">
             <video src="ejemplo.mp4" width=1090  height=600 controls poster="vistaprevia.jpg">
@@ -23,7 +24,7 @@
                             <summary class="h2" value="{{clase.contenido}}">{{contenido.title}}</summary>    
                             {% for clase in clases %}
                                 {% if clase.contenido.title == contenido.title %}
-                                <a href="{% url 'clase_detail' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
+                                <a href="{% url 'clases' curso.id clase.id %}">  <div class="contenido" value="{{clase.contenido}}">{{clase.title_class}} - Duracion: ???</div> </a>
                                 {% endif %}
                             {% endfor %}
                         </details>
@@ -32,50 +33,238 @@
             </div>
         </div>
     </div>
+<div class="content-detalle-general">
     <div class="content-detalle-clase">
-        <h2>Introduccion</h2>
+        <h2>{{className.title_class}}</h2>
         <p>{{curso.title}} | <span>Completado 0%</span></p>
         <p>Categoria del curso | <span id="title-span">{{curso.category}}</span> </p>
     </div>
 
     <div class="comentarios-video">
         <h2>Comentarios</h2>
+        <div class="add-comment-class">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{formComentarioClase.as_p}}
+                <div class="add-comment-class-controller">
+                    <a id="cancelar">Cancelar</a>
+                    <button id="comentar-res"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
         {% for commentClase in commentClases %}
-        <div class="content-comentarios-clase">
-            <div class="content-image-profile">
+        {% if commentClase.perfil.level == 'Docente' %}
+        <div id="box-teacher" class="content-comentarios-clase">
+            <div id="img-teacher" class="content-image-profile">
                 <img src="{% static '../static/images/github.png' %}">
-                <span class="lvl-user">Level: Silver</span>
             </div>
             <div class="content-comment-user">
-                <h4>{{commentClase.perfil.name}} <span class="profetion-user">| Desarrollador web</span></h4>
+                <h4>{{commentClase.perfil.name}} <span style="color:red">docente</span> <span class="profetion-user"> | {{commentClase.perfil.title}}</span></h4>
                 <div class="comment-user">
-                    <p></p>
+                    <p>{{commentClase.comment}}</p>
+                </div>
+                {% comment %} Formulario de respuesta {% endcomment %}
+                <form class="form-respuesta" id="form-respuesta-{{commentClase.id}}" action="" method="POST">
+                    {% csrf_token %}
+                    {{formRespuestaClase.as_p}}
+                    <div class="add-res-class-controller">
+                        <a class="cancelar-res" id="cancelar-res-{{commentClase.id}}">Cancelar</a>
+                        <button id="comentar-res"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+                    {% comment %} respuesta de comentario {% endcomment %}
+                <div class="content-general-respuesta" id="content-general-respuesta-{{commentClase.id}}">
+                    {% for respuesta in respuestas %}
+                    {% if respuesta.comment_id == commentClase.id %}
+                    <div class="content-respuesta-users" id="content-respuesta-comentario-{{commentClase.id}}">
+                        <div class="content-respuesta-users-box">
+                            <div class="content-respuesta-users-box-image-profile">
+                                <img src="{% static '../static/images/github.png' %}">
+                                <span class="lvl-users">Rango: {{respuesta.perfil.level}}</span>
+                            </div>
+                            <div class="content-respuesta-users-box-comment">
+                                <h4>{{respuesta.perfil.name}} <span> | {{respuesta.perfil.title}} <span></h4>
+                                <p id="fecha-creacion">publicado el {{respuesta.created_at}}</p> 
+                                <p class="respuesta-comentario">{{respuesta.respuesta}}</p>
+                            </div>
+                        </div>
+                        {% comment %} Bloque para validar si la respuesta es nuestra para borrarla si es nuestra {% endcomment %}
+                        <div class="content-eliminar-respuesta">
+                            {% if request.user.id == respuesta.perfil.user_id %} 
+                            <a  href="{% url 'deleteRes' respuesta.id %}"><i id="eliminar-respuesta" class="fa-solid fa-xmark"></i></a>
+                            {% else %}
+                            {% endif %}
+                        </div>
+                        {% comment %} Fin del bloque {% endcomment %}
+                    </div>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             <div class="content-reacciones">
-                <a><p><i class="fa-regular fa-thumbs-up"></i>2</p></a>
-                <a><p><i class="fa-solid fa-comment-dots"></i>50</p></a>
-                <a><p><i class="fa-solid fa-trash-can"></i></p></a>
+                <a><p><i class="fa-regular fa-thumbs-up"></i>?</p></a>{% comment %} ICON LIKE {% endcomment %}
+                <a><p id="cant-resp-{{commentClase.id}}"><i class="fa-solid fa-comment-dots"></i>?</p></a>{% comment %} ICON COMMENT {% endcomment %}
+                
+
+                {% if commentClase.perfil.user_id == request.user.id %}   
+                <a href="{% url 'deleteComment' commentClase.id %}"><p><i class="fa-solid fa-trash-can"></i></p></a>{% comment %} ICON DELETE {% endcomment %}
+                {% else %}
+                {% endif %}
+                <a class="responder-comentario" id="responder-comentario-{{commentClase.id}}"><p>Responder</p></a>
             </div>
+        </div>
+
+        {% else %}
+        {% comment %} Si no es profesor {% endcomment %}
+        <div class="content-comentarios-clase">
+            <div class="content-image-profile">
+                <img src="{% static '../static/images/github.png' %}">
+                <span class="lvl-user">Rango: {{commentClase.perfil.level}}</span>
+            </div>
+            <div class="content-comment-user">
+                <h4>{{commentClase.perfil.name}} <span class="profetion-user"> | {{commentClase.perfil.title}}</span></h4>
+                <div class="comment-user">
+                    <p>{{commentClase.comment}}</p>
+                </div>
+                {% comment %} Formulario de respuesta {% endcomment %}
+                <form class="form-respuesta" id="form-respuesta-{{commentClase.id}}" action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in formRespuestaClase %}
+                    <p id="{{field.label}}-{{commentClase.id}}">{{field.label_tag}} {{field}} </p>
+                    {% endfor %}
+                    <div class="add-res-class-controller">
+                        <a class="cancelar-res" id="cancelar-res-{{commentClase.id}}">Cancelar</a>
+                        <button id="comentar-res"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+
+                
+            {% comment %} respuesta de comentario {% endcomment %}
+                <div class="content-general-respuesta" id="content-general-respuesta-{{commentClase.id}}">
+                    {% for respuesta in respuestas %}
+                    {% if respuesta.comment_id == commentClase.id %}
+                    <div class="content-respuesta-users" id="content-respuesta-comentario-{{commentClase.id}}">
+                        <div class="content-respuesta-users-box">
+                            <div class="content-respuesta-users-box-image-profile">
+                                <img src="{% static '../static/images/github.png' %}">
+                                <span class="lvl-users">Rango: {{respuesta.perfil.level}}</span>
+                            </div>
+                            <div class="content-respuesta-users-box-comment">
+                                <h4>{{respuesta.perfil.name}} <span> | {{respuesta.perfil.title}} <span></h4>
+                                 <p id="fecha-creacion">publicado el {{respuesta.created_at}}</p>   
+                                <p class="respuesta-comentario">{{respuesta.respuesta}}</p>
+                            </div>
+                        </div>
+                        {% comment %} Bloque para validar si la respuesta es nuestra para borrarla si es nuestra {% endcomment %}
+                        <div class="content-eliminar-respuesta">
+                            {% if request.user.id == respuesta.perfil.user_id %} 
+                            <a  href="{% url 'deleteRes' respuesta.id %}"><i id="eliminar-respuesta" class="fa-solid fa-xmark"></i></a>
+                            {% else %}
+                            {% endif %}
+                        </div>
+                        {% comment %} Fin del bloque {% endcomment %}
+                    </div>
+                    {% else %}
+                    {% endif %}
+                    {% empty %}
+                        <p>Aun no hay comentarios, se el primero</p>
+                    {% endfor %}
+                    
+                </div>
+                
+            </div>
+            <div class="content-reacciones">
+                <a><p><i class="fa-regular fa-thumbs-up"></i>?</p></a>{% comment %} ICON LIKE {% endcomment %}
+                <a><p><i id="cant-resp-{{commentClase.id}}" class="fa-solid fa-comment-dots"></i>?</p></a>{% comment %} ICON COMMENT {% endcomment %}
+                {% if commentClase.perfil.user_id == request.user.id %}   
+                <a href="{% url 'deleteComment' commentClase.id %}"><p><i class="fa-solid fa-trash-can"></i></p></a>{% comment %} ICON DELETE {% endcomment %}
+                {% else %}
+                {% endif %}
+                <a class="responder-comentario" id="responder-comentario-{{commentClase.id}}"><p>Responder</p></a>       
+            </div>
+        </div>
+        {% endif %}
+        {% empty %}
+        <div class="comment-empty">
+            <p>Esta clase aun no tiene comentarios</p>
         </div>
         {% endfor %}
     </div>
+</div>
 </section>
 <script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
 <script>
     $(document).ready(()=>{
-        $('.content-comentario').hide()
+        $('.content-comentario').hide();
+        $('label').hide();
+        $('.add-comment-class-controller').hide();
+        $('.comentarioP').hide();
+        {% for commentClase in commentClases %}
+            $('#comentarioP').attr('id','comentarioP-{{commentClase.id}}');
+        {% endfor %}
+
+        // Esconder formulario de respuesta
+        {% for commentClase in commentClases %}
+            $('#form-respuesta-{{commentClase.id}}').hide();
+        {% endfor %}
+        // fin del bloque 
+
+        // Esconder respuestas de comentarios
+            {% for commentClase in commentClases %}
+                $('#content-general-respuesta-{{commentClase.id}}').hide();
+            {% endfor %}
+  
     });
 
     $('#comentarios').click(function(){
-        $('.content-comentario').show()
-        $('.content-acordeon').hide()
+        $('.content-comentario').show();
+        $('.content-acordeon').hide();
     });
 
     $('#clases').click(function(){
-        $('.content-comentario').hide()
-        $('.content-acordeon').show()
+        $('.content-comentario').hide();
+        $('.content-acordeon').show();
     });
+
+    $('#id_comentario').click(function(){
+        $('.add-comment-class-controller').show();
+    });
+    // Esconder botones de cancelar y comentar
+    $('#cancelar').click(function(){
+        $('.add-comment-class-controller').hide();
+    });
+
+    // Bloque de respuesta
+    // Mostrar input para respuesta
+    {% for commentClase in commentClases %}
+    $('#responder-comentario-{{commentClase.id}}').click(function(){
+
+        
+
+        $('#form-respuesta-{{commentClase.id}}').show();
+        $('#comentarioP-{{commentClase.id}}').val({{commentClase.id}});
+        // Ocultar formularios
+        $('#cancelar-res-{{commentClase.id}}').click(function(){
+            $('#form-respuesta-{{commentClase.id}}').hide();
+        });
+
+    });
+    {% endfor %}
+    // Fin del bloque
+
+    // Bloque para mostrar y ocultar respuestas
+    {% for commentClase in commentClases %}
+        $('#cant-resp-{{commentClase.id}}').click(function (){
+                $('#content-general-respuesta-{{commentClase.id}}').show();
+        })
+    {% endfor %}
+
+    
+
+
+
+
 </script>
 {% endblock %}
 

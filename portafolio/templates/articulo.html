@@ -6,6 +6,16 @@
 {% endblock %}
 
 {% block content %}
+{% comment %} Banner de articulo {% endcomment %}
+<section class="banner-articulo">
+    <div class="content-banner">
+        <div class="content-banner-descripcion-articulo">
+            <h1 class="logotipo-articulo">{{articulo.title}}</h1> 
+            <p class="descripcion-articulo"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
+        </div>
+    </div>
+</section>
+{% comment %} fin del banner {% endcomment %}
 
 {% comment %} Mensaje Flash personalizado {% endcomment %}
 {% if messages %}

@@ -115,9 +115,37 @@ class Clases(models.Model):
     def __str__(self):
         return self.title_class
     
+class Favorite(models.Model):
+    user = models.ForeignKey(User,verbose_name='usuario', on_delete=models.CASCADE)
+    curso = models.OneToOneField(Curso, verbose_name='curso', on_delete=models.CASCADE)
+    status = models.CharField(verbose_name='estado', default="Active", max_length=8)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+    
+    class Meta:
+        verbose_name = "user"
+        verbose_name_plural = "user"
+
+    def __str__(self):
+        return self.user
+    
+class MyCourse(models.Model):
+    user = models.OneToOneField(User, unique=True ,verbose_name='usuario', on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso, verbose_name='curso', on_delete=models.CASCADE)
+    status = models.CharField(verbose_name='estado', default="Active", max_length=8)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class Meta:
+            verbose_name = "user"
+            verbose_name_plural = "user"
+
+    def __str__(self):
+        return self.user
+    
 class CommentClase(models.Model):
     classVideo = models.ForeignKey(Clases, verbose_name="clase", on_delete=models.CASCADE)
-    perfil = models.ForeignKey(Perfil, verbose_name="usuario", on_delete=models.CASCADE)
+    perfil = models.ForeignKey(Perfil, verbose_name="perfil", null=True, on_delete=models.CASCADE)
     comment = models.TextField(verbose_name="comentario")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
@@ -245,4 +273,16 @@ class CommentToComment(models.Model):
     def __str__(self):
         return self.respuesta
 
-    
+class ResComClase(models.Model):
+    respuesta = models.TextField(max_length=300)
+    comment = models.ForeignKey(CommentClase, null=True, verbose_name="comentario", on_delete=models.CASCADE)
+    perfil = models.ForeignKey(Perfil, verbose_name='usuario', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="fecha creacion")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="fecha actualizacion")
+
+    class meta: 
+        verbose_name = "respuesta"
+        verbose_name_plural = "respuestas"
+
+    def __str__(self):
+        return self.respuesta

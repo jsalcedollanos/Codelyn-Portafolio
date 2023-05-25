@@ -1,0 +1,117 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+{% comment %} Banner de curso {% endcomment %}
+    <section class="banner-cursos">
+        <div class="content-banner">
+            <div class="content-banner-descripcion-cursos">
+                <h1 class="logotipo-cursos">Cursos de programacion</h1> 
+                <p class="descripcion-cursos"><span class="signo1">{</span>De la mejor calidad solo en codelyn <span class="signo2">}</span></p>
+            </div>
+        </div>
+    </section>
+{% comment %} Fin del banner {% endcomment %}
+
+    {% comment %} Message {% endcomment %}
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div class="message-error">
+                {{message}}
+            </div>
+            {% else %}
+            <div class="message">
+                {{message}}
+            </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+    {% comment %} Bloque de cursos {% endcomment %}
+    <section class="section-cursos">
+        <h2>Explora los cursos mas top de nuestra plataforma</h2>
+            {% comment %} Card de curso {% endcomment %}
+            {% for curso in cursos %}
+                {% if curso.status == 0 %}
+                    <div class="card-curso-agotado" style="display:block;"><span id="etiqueta">Agotado</span>
+                        <div id="content-curso">
+                            <h3><span id="card-1-titulo">{</span> {{curso.title}} <span id="card-1-titulo">}</span></h3>
+                            {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
+                            <h4>Descripcion</h4>
+                            <p>{{curso.description|safe}}</p>
+                        </div>
+                        
+                        <div id="section-curso-img">
+                            <img src="{{curso.image.url}}" alt="">
+                        </div>                                                                      
+                    </div>  
+
+                    {% else %}
+                    <div class="card-curso">
+                        <div class="content-general-curso">
+                            <div id="content-curso">
+                                <h3><span id="card-1-titulo">{</span> {{curso.title}} <span id="card-1-titulo">}</span></h3>
+                                {% comment %} <img src="../static/images/www.jpg" alt=""> {% endcomment %}
+                                <h4>Descripcion</h4>
+                                <p>{{curso.description|safe}}</p>
+                                
+                            </div>                                
+                            <div id="section-curso-img">
+                                <img src="{{curso.image.url}}" alt="">
+                            </div>  
+                        </div>
+                        <div class="content-boton">
+                            {% if request.user.first_name %}
+                                <a href="{% url 'curso_detail' curso.id %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas</button> </a>
+                                {% else %}
+                                <a href="{% url 'login' %}">  <button id="btn-empezar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas</button> </a>
+                            {% endif %} 
+                            {% if request.user.first_name %}
+                                <form class="form-favorite" action="" method="POST">   
+                                    {% csrf_token %} 
+                                    {{formularioFa.as_p}}
+                                    <button class="btn-favorito"><i id="btn-favorito-{{curso.id}}" class="fa-solid fa-heart-circle-check"></i></button>      
+                                </form>
+                            {% else %}
+                            <a href="{% url 'login' %}"><button class="btn-favorito-nouser"><i class="fa-solid fa-heart-circle-check"></i></button></a>
+                            {% endif %}
+                            
+                        </div>                                                        
+                    </div>
+                {% endif %}
+
+                {% comment %} Validacion de lista vacia {% endcomment %}
+                {% empty %}
+                <div class="error-cursos">
+                    <p>Upps... Lo siento, en el momento me encuentro desarrollando cursos de forma gratuita para tu formacion...</p>
+                </div> 
+                <img src="../static/images/construccion2.png">
+                {% comment %} Fin de validacion {% endcomment %}
+            {% endfor %} 
+                     
+        </section>
+
+{% comment %} Fin de bloque de cursos {% endcomment %}
+
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+    <script>
+        $(document).ready(()=> {
+            // Bloque de formulario de favorito
+            {% for curso in cursos %}
+                $('#id_curso').attr('id','id_curso-{{curso.id}}');
+                $('#id_curso-{{curso.id}}').val('{{curso.id}}');
+            {% endfor %}
+        });
+    </script>
+
+   
+
+
+{% endblock content %}
+

@@ -28,6 +28,17 @@
     <div>
         <nav class="panel-funciones">
             <ul>
+                <li>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'erros' %}
+                            <p id="message-comment-error">{{message}}</p>
+                            {% else %}
+                            <p id="message-comment-success">{{message}}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </li>
                 <a href="/cursos"><li><i id="retorn" class="fa-solid fa-right-from-bracket" style="color: #f5e000;"></i>Ir al inicio</li></a>
                 <li><i id="report-error" class="fa-regular fa-triangle-exclamation" style="color: #f5e000;"></i>Reportar fallas</li>
                 <li id="add-valoracion"><i id="star-valoration" class="fa-solid fa-star" style="color: #f5e000;"></i>Valorar curso</li>

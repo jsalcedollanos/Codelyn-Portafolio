@@ -1,0 +1,239 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+    Servicios
+{% endblock title %}
+
+{% block content %}
+{% comment %} Banner de servicio {% endcomment %}
+<section class="banner-servicios">
+    <div class="content-banner">
+        <div class="content-banner-descripcion-servicios">
+            <h1 class="logotipo-servicios">Servicios Codelyn</h1> 
+            <p class="descripcion-servicios"><span class="signo1">{</span>Especialistas en el desarrollo de entornos web <span class="signo2">}</span></p>
+        </div>
+    </div>
+</section>
+{% comment %} Fin del banner {% endcomment %}
+
+    {% comment %} Bloque de servicios {% endcomment %}
+    <section class="min-info">
+        <div class="mini-menu" id="box-cursos">
+            <a id="btn-cursos"><i id="min-icon" class="fa-sharp fa-solid fa-shield-halved fa-beat" style="--fa-animation-duration: 0.5s;"></i>
+            <h3>Cursos de desarrollo web<h3></a>
+        </div>
+        <div class="mini-menu" id="box-aplicaciones">
+            <a id="btn-aplicaciones"><i id="min-icon" class="fa-solid fa-cog fa-spin" style="--fa-animation-duration: 2s;"></i>
+            <h3>Aplicaciones web<h3></a>
+        </div>
+        <div class="mini-menu" id="box-tienda">
+            <a id="btn-tienda"><i id="min-icon" class="fa-sharp fa-solid fa-shop fa-flip" style="--fa-animation-duration: 2s;"></i>
+            <h3>Tienda virtual moderna<h3></a>
+        </div>
+        <div class="mini-menu" id="box-diseño">
+            <a id="btn-diseño"><i id="min-icon" class="fa-sharp fa-solid fa-palette fa-flip" style="--fa-animation-duration: 2s;"></i>
+            <h3>Diseños modernos<h3></a>
+        </div>
+    </section>
+
+    <div class="contenido-servicios">
+        {% comment %} Contenido de Tienda Virtual {% endcomment %}
+        <div id="servicio-tienda" class="box-servicio">
+            <div class="content-servicio">
+                <div class="content-servicio-titulo">
+                    <h2>E-Commerce</h2>
+                    <p>Expande tu negocio con la mejor tecnologia, brindale soporte y atencion personalizada a tus clientes.</p>
+                </div>
+                <div class="content-servicio-caracteristicas">
+                    <h3>Caracteristicas</h3>
+                    <ul>
+                        <li>Pasarella de pagos.</li>
+                        <li>Factura Electronica.</li>
+                        <li>Carrito de compras.</li>
+                        <li>Galeria de articulos.</li>
+                        <li>Diseño moderno.</li>
+                    </ul>
+                    <a href="https://pagespeed.web.dev/" target="_blank"> <button class="btn-servicio"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button></a>
+                </div>
+            </div>
+            <div class="content-servicio-image">
+                <img class="img-servicio-tienda" src="{% static '../static/images/tienda.png' %}" alt="tienda">
+            </div>
+        </div>
+
+        <div id="servicio-diseño" class="box-servicio">
+            <div class="content-servicio">
+                <div class="content-servicio-titulo">
+                    <h2>Sorprendentes diseños</h2>
+                    <p>Sorprende a tus clientes y luce profesional en tus servicios o productos.</p>
+                </div>
+                <div class="content-servicio-caracteristicas">
+                    <h3>Caracteristicas</h3>
+                    <ul>
+                        <li>Diseños modernos y esclusivos.</li>
+                        <li>Diseños responsivos.</li>
+                        <li>Pallet Color.</li>
+                        <li>Efectos Visuales.</li>
+                        <li id="importante"><span>Importante:</span> La velocidad de carga es muy importante, nos enfocamos en que tu web sea veloz.</li>
+                    </ul>
+                    <a href="https://pagespeed.web.dev/" target="_blank"> <button class="btn-servicio"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button></a>
+                </div>
+            </div>
+            <div class="content-servicio-image">
+                <img class="img-servicio-diseño" src="{% static '../static/images/diseño.png' %}" alt="tienda">
+            </div>
+        </div>
+
+        <div id="servicio-aplicaciones" class="box-servicio">
+            <div class="content-servicio">
+                <div class="content-servicio-titulo">
+                    <h2>Aplicaciones Web</h2>
+                    <p>Controla y administra tu propia plataforma sistematizando tu negocio o empresa.</p>
+                </div>
+                <div class="content-servicio-caracteristicas">
+                    <h3>Caracteristicas</h3>
+                    <ul>
+                        <li>Pasarella de pagos.</li>
+                        <li>Factura Electronica.</li>
+                        <li>Carrito de compras.</li>
+                        <li>Galeria de articulos.</li>
+                        <li>Diseño moderno.</li>
+                    </ul>
+                    <a href="https://pagespeed.web.dev/" target="_blank"> <button class="btn-servicio"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button></a>
+                </div>
+            </div>
+            <div class="content-servicio-image">
+                <img class="img-servicio-aplicaciones" src="{% static '../static/images/diseño.png' %}" alt="tienda">
+            </div>
+        </div>
+        <div id="servicio-cursos" class="box-servicio">
+            <div class="content-servicio">
+                <div class="content-servicio-titulo">
+                    <h2>Cursos de desarrollo web</h2>
+                    <p>Aprende a desarrollar de la mejor manera, por el camino correcto y de manera profesional</p>
+                </div>
+                <div class="content-servicio-caracteristicas">
+                    <h3>Caracteristicas</h3>
+                    <ul>
+                        <li>Cursos de programacion.</li>
+                        <li>Articulos de desarrollo web.</li>
+                        <li>Comunidad de desarrollo.</li>
+                    </ul>
+                    <a href="https://pagespeed.web.dev/" target="_blank"> <button class="btn-servicio"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Solicitar</button></a>
+                </div>
+            </div>
+            <div class="content-servicio-image">
+                <img class="img-servicio-cursos" src="{% static '../static/images/cursos.png' %}" alt="tienda">
+            </div>
+        </div>
+    </div> 
+    {% comment %} sesion Como lo hago {% endcomment %}
+    
+        <div class="content-proceso">
+            {% for servicio in servicios %}
+            <div class="card-proceso">
+                <h2>{{servicio.name}}</h2>
+                <p>{{servicio.description}}</p>
+                <img src="{{servicio.image.url}}">
+            </div>
+            {% endfor %}
+        </div>
+    
+{% comment %} Bloque de diseño web {% endcomment %}
+
+
+<div class="line-blank"></div>
+
+
+{% comment %} Fin del Bloque de servicios {% endcomment %}
+
+
+<script type="text/javascript" src="{% static '../static/js/jquery-3.6.4.js' %}"></script>
+    <script>
+        $(document).ready(()=> {
+
+            // Bloque de formulario de favorito
+            {% for curso in cursos %}
+                $('#id_curso').attr('id','id_curso-{{curso.id}}');
+                $('#id_curso-{{curso.id}}').val('{{curso.id}}');
+            {% endfor %}
+
+            $('#servicio-tienda').show();
+            $('#servicio-aplicaciones').hide();
+            $('#servicio-diseño').hide();
+            $('#servicio-cursos').hide();
+
+            $('#btn-tienda').click(function(){
+                $('#servicio-tienda').show();
+                $('#servicio-aplicaciones').hide();
+                $('#servicio-diseño').hide();
+                $('#servicio-cursos').hide();
+            })
+
+            $('#btn-diseño').click(function(){
+                $('#servicio-diseño').show();
+                $('#servicio-configuracion').hide();
+                $('#servicio-tienda').hide();
+                $('#servicio-aplicaciones').hide();
+                $('#servicio-cursos').hide();
+            })
+
+            $('#btn-cursos').click(function(){
+                $('#servicio-cursos').show();
+                $('#servicio-diseño').hide();
+                $('#servicio-tienda').hide();
+                $('#servicio-aplicaciones').hide();
+            })
+
+            $('#btn-aplicaciones').click(function(){
+                $('#servicio-aplicaciones').show();
+                $('#servicio-diseño').hide();
+                $('#servicio-tienda').hide();
+                $('#servicio-cursos').hide();
+            })
+
+        });
+    </script>
+
+    {% comment %} Carrousel {% endcomment %}
+    <script>
+        $(document).ready(()=>{
+            $('#carrousel-item2').hide(); 
+            $('#carrousel-item3').hide(); 
+            $('.btn-item1').css("background","#009e7c");
+        });
+        
+        $('.btn-item1').click(function (){
+            $('#carrousel-item1').fadeIn("slow").show(); 
+            $('#carrousel-item2').hide();      
+            $('#carrousel-item3').hide(); 
+            $('.btn-item3').css("background","#808282");
+            $('.btn-item2').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item1').css("background","#009e7c");       
+        });
+        $('.btn-item2').click(function (){
+            $('#carrousel-item2').fadeIn("slow").show();      
+            $('#carrousel-item1').hide();      
+            $('#carrousel-item3').hide();      
+            $('.btn-item3').css("background","#808282");
+            $('.btn-item1').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item2').css("background","#009e7c");    
+        });
+        $('.btn-item3').click(function (){
+            $('#carrousel-item3').fadeIn("slow").show(); 
+            $('#carrousel-item1').hide();      
+            $('#carrousel-item2').hide(); 
+            $('.btn-item1').css("background","#808282");
+            $('.btn-item2').css("background","#808282");
+            //Color del boton activo
+            $('.btn-item3').css("background","#009e7c");     
+        });
+
+        
+
+    </script>
+{% endblock content %}
+

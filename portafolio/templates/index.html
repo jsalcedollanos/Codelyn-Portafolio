@@ -2,90 +2,158 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Home
+    Inicio
 {% endblock %}
 
 
 {% block content %}
-    {% if page.slug == "inicio" %}
-        <div class="content-img">
+    {% comment %} Banner de inicio {% endcomment %}
+    <section class="banner-inicio">
+        <div class="content-banner">
+            <div class="content-banner-descripcion-inicio">
+                <h1 class="logotipo">Desarrollo de paginas web y aplicaciones web.</h1>
+                <h4 class="logotipo">Sumergete en la tecnologia y los software, El mundo esta cambiando, no te quedes atras. adentrate en la hera digital!</h4> 
+            </div>
+        </div>
+    </section>
+    {% comment %} Fin del Banner {% endcomment %}
+    
+    {% comment %} Contenido de pagina de inicio {% endcomment %}
+    <div class="content-img">
+        <div class="content-info">
             <h1 class="title">
-                <span class="bienvenido">{Es un honor tenerte por mi web}</span>               
+                <span class="bienvenido"> Diseño y desarrollo web </span>               
             </h1>  
-            <p>te mostrare todo lo que estas buscando.</p>
-            
-            <img src="../static/images/designer.jpg" class="img-service" alt="">
-                
-        </div>     
-
-        <h2 class="sub-titulo">Desarrollos web<h2>
-            
-        <section class="section-2">
-                {% comment %} <img src="../static/images/post2.jpg" class="img-service" alt=""> {% endcomment %}
-                <div id="card-1">
-                    <h3><span id="card-1-titulo">{</span> Alojamientos y URL <span id="card-1-titulo">}</span></h3>
-                    <img src="../static/images/www.jpg" alt="">
-                    <h4>Hosting y Dominios</h4>
-                    <p>Optimizacion e indexacion del sitio web con la mejor calidad</p>
-                    <img src="../static/images/Hostinger_Logotype.png"  id="img-hosting" alt="">                                            
-            </div>  
-            <div id="card-1">
-                    <h3><span id="card-1-titulo">{</span> Web a medidas <span id="card-1-titulo">}</span></h3>
-                    <img src="../static/images/optimizacion.jpg"  alt="">
-                    <h4>Lenguajes</h4>
-                    <ul class="list-unstyled">
-                        <li>Html</li>
-                        <li>Css</li>
-                        <li>JavaScript</li>
-                        <li>PHP</li>
-                        <span><li>Python</li></span>
-                    </ul>
-            </div>  
-
-            <div id="card-1">
-                    <h3><span id="card-1-titulo">{</span> Interacciones Cliente <span id="card-1-titulo">}</span></h3>
-                    <img src="../static/images/cliente.jpg" alt="">
-                    <h4>Chat directo</h4>
-                    <p>Reuniones, chat directos con el cliente abarcando todas las ideas y requerimientos sin moverte de tu comodidad.</p>
-                </div> 
-                
-                <div id="card-1">
-                    <h3><span id="card-1-titulo">{</span> Diseño <span id="card-1-titulo">}</span></h3>
-                    <img src="../static/images/cliente.jpg" alt="">
-                    <h4>Diseños modernos</h4>
-                    <p>Valoro la estructura de contenido simple, los patrones de diseño limpios y las interacciones bien pensadas..</p>
-                    <strong>Herramientas:</strong>
-                    <p>Font Awesome, Figma</p>
-                </div> 
-        </section>
-
-        <section class="section-velocidad">
-            <div class="section-velocidad-content">
-                <h2>La velocidad es importante</h2>
-                <p>la experiencia obtenida en tu sitio web en gran parte la hace la velocidad de carga entre contenidos.</p>
-                <button id="btn"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Has tu prueba...</button>
-            </div>
-            <div class="section-velocidad-imagen">
-                <img src="../static/images/speed.png" alt="">
-            </div>
-
-        </section>
-
-        <section class="section-3">
-            <h1>Mis Proyectos</h1>
-            <p>Suelo desarrollar web de manera que el cliente logre comprender todo lo que observa,
-                me gusta desarrollar aplicaciones minimalistas con codigo limpio y entornos dinamicos
-                sin sobrecargar la web.
+            <p>
+                Diseño y desarrollo de plataformas y paginas web para tu
+                negocio, empresa o proyecto.
             </p>
-            <img id="section-3-perfil" src="../static/images/github.png" alt="">
-            <p>Mira mis proyectos en mi perfil de GitHub : <span id="section-3-visitar">{</span> <a href="https://github.com/Jsalcedollanos" target="_blank">  Visitar <span id="section-3-visitar">}</span></a></p>
-        </section>
+            <br>
+            <h5>Plataforma con las que trabajamos:</h5>
+            {% comment %} Carrousel {% endcomment %}
+            <div class="carrousel">
+                <div class="container-carrousel" id="container-carrousel">
+                   
+                    <div class="carrousel-item" id="carrousel-item1">
+                        <img id="item1" src="../static/images/wordpress.png" />
+                    </div>
+                    <div class="carrousel-item" id="carrousel-item2">
+                        <img id="item2" src="../static/images/woo.png" />
+                    </div>
+                    <div class="carrousel-item" id="carrousel-item3">
+                        <img id="item3" src="../static/images/google.png" />
+                    </div>
+                    
+                </div>
+                <div>
+                    <input class="btn-item1" id="btn-item" type="button">
+                    <input class="btn-item2" id="btn-item" type="button">
+                    <input class="btn-item3" id="btn-item" type="button">
+                </div>
+            </div>
 
-        <a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
-            <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
-        </a>
 
-    {% endif %}
-        {% comment %} fin del contenido de pagina de inicio {% endcomment %}
+            <a href="https://pagespeed.web.dev/" target="_blank"> <button id="btn-prueba"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Contactame</button></a>
+        </div>
+        <img src="../static/images/dev-programmer.png" class="img-service" alt="">              
+    </div> 
 
+{% comment %} Por que Elerginos {% endcomment %}
+    <h1 class="titulo-elegirnos">¿Por que Elegirnos?</h1>
+    <div class="content-elegirnos">
+        <div class="content-elegirnos-box">
+            <h3>Diseño y desarrollo segun lo conversado</h3>
+            <p>Recolectamos muchas ideas para enfocarnos en un diseño optimo y agradable, desarrollando toda la funcionalidad segun lo conversado.</p>
+            <img src="../static/images/conversacion.png">
+        </div>
+
+        <div class="content-elegirnos-box">
+            <h3>Tecnologias y herramientas que se ajustan a tu presupuesto</h3>
+            <p>Nos ajustamos a tu necesidad, tiempo y presupuesto por lo tanto conversamos y te brindamos el mejor servicio que se ajustara a tus necesidades.</p>
+            <img src="../static/images/costo.png">
+        </div>
+
+        <div class="content-elegirnos-box">
+            <h3>Proceso de diseño y desarrollo organizado</h3>
+            <p>Garantizamos que nuestros proyectos se entregaran el los tiempos pactados dando un constante reporte de las etapas del proyecto.</p>
+            <img src="../static/images/presupuesto.png">
+        </div>
+    </div>
+{% comment %} Fin del bloque Porque elegirnos {% endcomment %}
+
+{% comment %} Articulos recientes {% endcomment %}
+<section class="articulos-recientes">
+    <div class="image-article">
+        <img src="../static/images/cursos.png" />
+    </div>
+    <div class="articulos-recientes-titulo">
+        <h1>Diversidad de cursos<span></span></h1>
+        <p>Le invertimos tiempo y presupuesto a tus habilidades como desarrollador y otras areas, por eso Codelyn tambien te ofrece cursos y articulos para que aprendas con los mejores profesores de la industria</p>
+    </div>
+    <div class="content-articulos"> 
+            {% comment %} Paginacion de articulos {% endcomment %}
+            <div class="paginacion-articulos">
+                <span>
+                    {% if  articulos.has_previous %}
+                        <a href="?page=1">&laquo; Primero</a>
+                        <a href="?page{{  articulos.previous_page_number }}">Anterior</a>
+                    {% endif %}
+                    <span class="current">
+                        Pagina {{  articulos.number }} de {{  articulos.paginator.num_pages }}.
+                    </span>
+                    {% if  articulos.has_next %}
+                        <a href="?page={{  articulos.next_page_number }}">Siguiente</a>
+                        <a href="?page={{  articulos.paginator.num_pages }}">Ultima &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+            {% comment %} Fin de paginacion de articulos {% endcomment %}
+
+        {% for articulo in articulos %}  
+            {% if articulo.public == 1 %}
+                <div class="card-articulo">
+                    <div class="card-info">
+                        <h1 id="titulo-articulo">{{articulo.title}}</h1>
+                        <p><span id="fecha-publicado"><strong>Publicado:</strong> {{articulo.created_at}}</span></p>
+                        <p id="descripcion-articulo">{{articulo.description|safe}}</p>
+                        <a href="{% url 'articulo' articulo.id %}"> <button id="btn-vermas"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Ver mas...</button></a>
+                    </div>
+                    <div class="card-img">
+                        <img id="imagen-articulo" src="{{articulo.image.url}}" alt="{{articulo.title}}">  
+                    </div>
+                </div>
+            {% endif %}                
+            {% empty %}
+            <h2>No se encontraron articulos</h2>
+        {% endfor %}
+
+        {% comment %} Paginacion de articulos {% endcomment %}
+        <div class="paginacion-articulos">
+            <span>
+                {% if  articulos.has_previous %}
+                    <a href="?page=1">&laquo; Primero</a>
+                    <a href="?page{{  articulos.previous_page_number }}">Anterior</a>
+                {% endif %}
+                <span class="current">
+                    Pagina {{  articulos.number }} de {{  articulos.paginator.num_pages }}.
+                </span>
+                {% if  articulos.has_next %}
+                    <a href="?page={{  articulos.next_page_number }}">Siguiente</a>
+                    <a href="?page={{  articulos.paginator.num_pages }}">Ultima &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        {% comment %} Fin de paginacion de articulos {% endcomment %}
+    </div>
+    
+    
+</section>
+{% comment %} Fin del bloque de articulos recientes {% endcomment %}
+
+<a class="icon-whatsapp" href="https://wa.me/qr/4THERHW3LVIBE1" target="_blank">
+    <img src="../static/images/chat-whatsapp.png" id="logo-whatsapp">
+</a>
+
+{% comment %} fin del contenido de pagina de inicio {% endcomment %}
+             
 {% endblock %}

@@ -7,15 +7,14 @@
 
 /* Botones */
 #btn-empezar{
-    float: left;
-    position: relative;
-    bottom: 20px;
     padding: 10px;
     width: 200px;
-    margin-top: 9px;
-    margin-left: 40px;
+    margin-left: 20px;
     border-radius: 20px;
 }
+
+/* Boton favorito */
+
 
 #btn-empezar:hover{
     background: #009e7c;
@@ -44,11 +43,15 @@
 
 /* Seccion de curso disponible */
 .section-cursos  .card-curso{
-    height: 240px;
-    width: 700px;
+    height: 300px;
+    width: 740px;
     margin: 30px;
     border-radius: 20px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.section-cursos .card-curso .content-general-curso{
+    display: flex;
 }
 
 
@@ -70,12 +73,12 @@
 }
 
 .section-cursos .card-curso #content-curso{
-    height: 170px;
-    width: 455px;
+    height: 200px;
+    width: 440px;
     text-align: justify;
-    float: left;
-    padding-top: 30px;
     margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 22px;
     border-radius: 30px;
 }
 
@@ -102,17 +105,15 @@
 }
 
 .section-cursos .card-curso #section-curso-img{
-    width: 195px;
+    width: 260px;
     height: 195px;
-    float: right;
-    position: relative;
     border-radius: 20px;
     /* background-color: #009e7c; */
 }
 
 .section-cursos .card-curso img{
-    width: 240px;
-    height: 240px;
+    width: 260px;
+    height: 300px;
     border-radius: 20px;
 }
 /* Fin de seccion de curso disponible */
@@ -258,4 +259,37 @@
         top: 200px;
     }
     
+}
+
+/* Bloque de botones de cursos VER MAS - FAVORITO*/
+.card-curso .content-boton{
+    display: flex;
+    margin: 0 auto;
+}
+
+.card-curso .content-boton a{
+    padding: 15px;
+}
+
+/* Boton favorito */
+
+
+.btn-favorito{
+    margin-top: 22px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.btn-favorito-nouser{
+    margin-top: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.form-favorite ul{
+    display: none;
 }

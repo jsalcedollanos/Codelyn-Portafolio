@@ -38,7 +38,7 @@
         {% if auth.user.first_name %}
         <a href="{% url 'login' %}">  <button id="btn-comprar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar curso</button> </a>
         {% else %}
-        <a href="{% url 'clases' curso.id %}">  <button id="btn-comprar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar curso</button> </a>
+        <a href="{% url 'clases' curso.id 1 %}">  <button id="btn-comprar"> <i id="terminal" class="fa-solid fa-terminal fa-fade"  style="--fa-animation-duration: 1s; --fa-fade-opacity: 0.2;"></i>Empezar curso</button> </a>
         {% endif %}
       </div>
       {% comment %} Fin del bloque {% endcomment %}

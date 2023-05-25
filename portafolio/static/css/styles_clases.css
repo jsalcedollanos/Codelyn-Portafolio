@@ -63,10 +63,43 @@
     color:#00c78b;
     text-decoration: underline;
 }
+
+/* Fin del bloque */
+
+/* Mensajes flash */
+#message-comment-success{
+    color: #00c78b;
+    font-size: 16px;
+}
+#message-comment-error{
+    color: red;
+    font-size: 16px;
+}
+/* comentarios de autor del curso */
+#img-teacher{
+    padding: 15px;
+    margin-top: 12px;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+}
+
+#box-teacher{
+    margin-left: 40px;
+    margin-bottom: 30px;
+    width: 730px;
+    height: auto;
+    display: flex;
+    padding-top:30px;
+    padding-bottom:50px;
+    background: linear-gradient(#00c78b2d, #3c3c3c14);
+    box-shadow: rgba(0, 186, 115, 0.628) 0px 1px 4px;
+}
+
 /* Fin del bloque */
 
 
-/* Fin del bloque */
 
 /* Bloque de opciones de usuario desplegable */
 
@@ -120,6 +153,17 @@
     height: auto;
 }
 
+/* Formulario de respuesta de comentario */
+#id_respuesta{
+    height: 20px;
+    width: 100%;
+    overflow: auto;
+}
+
+#cancelar-res{
+    cursor: pointer;
+}
+/* Fin del bloque */
 /* Fin del bloque */
 
 /* Bloque de video */
@@ -176,6 +220,13 @@
 }
 /* Fin del bloque */
 
+/* Bloque de contenido detalle general de la clase */
+.content-detalle-general{
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
 /* Bloque de detalle de clase */
 .content-detalle-clase{
     width: 100%;
@@ -185,6 +236,7 @@
 .content-detalle-clase h2{
     padding-left: 30px;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
 }
 
@@ -207,13 +259,63 @@
     font-size: 20px;
 }
 
+.comentarios-video .comment-empty p{
+    padding-left: 30px;
+    font-size: 17px;
+}
+
+.comentarios-video .add-comment-class{
+    padding-left: 30px;
+    width: 90%;
+    margin-bottom: 40px;
+    display: block;
+}
+
+
+.comentarios-video .add-comment-class #id_comentario{
+    width: 1200px;
+    height: 20px;
+    overflow: auto;
+    border-top:none;
+    border-bottom: 1px solid #8e8e8e;
+    border-left:none;
+    border-right:none;
+}
+
+.comentarios-video .add-comment-class #id_comentario:focus{
+   outline: none;
+}
+
+.comentarios-video .add-comment-class .add-comment-class-controller{
+    display: flex;
+    justify-content: right;
+}
+
+.comentarios-video .add-comment-class .add-comment-class-controller button{
+    margin-left: 15px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.comentarios-video .add-comment-class .add-comment-class-controller a{
+    margin-left: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
 .comentarios-video .content-comentarios-clase{
     margin-left: 40px;
+    margin-bottom: 30px;
     width: 730px;
-    height: 100px;
+    height: auto;
     display: flex;
     padding-top:30px;
-    padding-bottom:50px;
+    padding-bottom:10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
@@ -253,9 +355,7 @@
     font-size: 12px;
 }
 
-.comentarios-video .content-comentarios-clase .content-comment-user h4{
-    margin-bottom: 10px;
-}
+
 .comentarios-video .content-comentarios-clase .content-comment-user span{
     font-size: 10px;
     color: blueviolet;
@@ -264,7 +364,7 @@
 .comentarios-video .content-comentarios-clase .content-reacciones{
     display: grid;
     width: 30px;
-    margin-left: 22px;
+    height: 30px;
 }
 
 .comentarios-video .content-comentarios-clase .content-reacciones p{
@@ -281,3 +381,95 @@
 }
 
 
+/* Bloque de respuesta */
+
+
+/* Bloque de respuesta de comentarios */
+
+.content-general-respuesta{
+    display: block;
+}
+
+.content-general-respuesta .content-respuesta-users{
+    width: 100%;
+    background-color: #f1f1f1;
+    height: auto;
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-left: 3px solid #00c78b;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; 
+}
+
+#eliminar-respuesta{
+    color: blueviolet;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#eliminar-respuesta:hover{
+    outline: auto;
+}
+
+.content-respuesta-users .content-respuesta-users-box{
+    width: 100%;
+    display: flex;
+}
+
+.content-respuesta-users .content-respuesta-users-box-image-profile{
+    width: 80px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.content-respuesta-users .content-respuesta-users-box-image-profile img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.content-respuesta-users .content-respuesta-users-box-comment{
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    margin-left:20px;
+}
+
+.content-respuesta-users .content-respuesta-users-box .content-respuesta-users-box-comment .respuesta-comentario{
+    margin-bottom: 20px;
+}
+
+#fecha-creacion{
+    color: blueviolet;
+    font-size: 9px;
+    margin-bottom: 10px;
+}
+
+#id_respuesta{
+    border: none;
+    border-bottom: 1px solid #141414;
+    background-color: transparent;
+}
+#id_respuesta:focus{
+    outline: none;
+}
+
+#comentar-res{
+    margin-left: 12px;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.add-res-class-controller .cancelar-res{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.add-res-class-controller{
+    display: flex;
+    justify-content: right;
+}

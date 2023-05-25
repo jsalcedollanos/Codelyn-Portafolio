@@ -2,11 +2,36 @@ from django import forms
 from django.core import validators
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from portafolio.models import *
+from portafolio.views import *
+
+class FavoriteForm(forms.Form):
+    curso = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'id':'id_curso',
+                'type':'hidden',
+            }
+        )
+    )
 
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'password1','password2']
+
+class FormComentarioClase(forms.Form):
+    comentario = forms.CharField(
+        widget=forms.Textarea(
+            attrs={
+                'placeholder':'Añade un comentario...'
+            }   
+        ), 
+        validators=[
+            validators.MaxLengthValidator(300,'Texto demasiado largo, Maximo 300 caracteres.'),
+            validators.MinLengthValidator(2,'Verifica tu comentario, esta muy corto'),
+        ] 
+    )
 
 class FormComentario(forms.Form):
     comentario = forms.CharField(
@@ -19,6 +44,26 @@ class FormComentario(forms.Form):
             validators.MaxLengthValidator(300,'Texto demasiado largo, Maximo 300 caracteres.'),
             validators.MinLengthValidator(2,'Verifica tu comentario, esta muy corto'),
         ]
+    )
+
+class FormResClass(forms.Form):
+    respuesta = forms.CharField(
+        widget=forms.Textarea(
+        attrs={
+            'placeholder': 'Responde algo aqui..',
+        }
+        )
+    )
+
+    comentario = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                'display':'none',
+                'id':'comentarioP',
+                'class':'comentarioP'
+            }
+        ),
+        
     )
 
 class FormRespuesta(forms.Form):

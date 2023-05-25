@@ -50,21 +50,19 @@
             <div class="logo-codelyn">
                 <img src="../static/images/logo-codelyn1.png" alt="logo-codelyn">
             </div>  
-            <div class="nav-menu"> 
-            {% for page  in pages reversed %} 
-                {% if page.3 == True %}         
-                    <a href="{% url 'page' page.2 %}"> {{page.1}} </a> 
-                {% endif %}             
-            {% endfor %}
-            {% if request.user.username %}
-            {% else %}
-                <a href="{% url 'registro' %}"> Registrate </a>
-                <a href="{% url 'login' %}"> Login </a>
-            {% endif %}
+            <div class="nav-menu">      
+                <a href="{% url 'index' %}"> Inicio </a>
+                <a href="{% url 'cursos' %}"> Explorar cursos </a>
+                <a href="{% url 'servicios' %}"> Servicios </a>
+                {% if request.user.username %}
+                {% else %}
+                    <a href="{% url 'registro' %}"> Registrate </a>
+                    <a href="{% url 'login' %}"> Login </a>
+                {% endif %}
                 <label for="check" class="esconder-menu">
-            <label for="check" class="esconder-menu">
-                &#215
-            </label>
+                <label for="check" class="esconder-menu">
+                    &#215
+                </label>
             </div>
         </nav> 
         {% comment %} Bloque de validacion de usuario logeado {% endcomment %}
@@ -87,81 +85,7 @@
     </header>
 
     {% comment %} Banner {% endcomment %}
-    {% if page.slug == 'inicio' %}
-        <section class="banner-inicio">
-            <div class="content-banner">
-                <div class="content-banner-descripcion-inicio">
-                    <h1 class="logotipo">Desarrollo de paginas web y aplicaciones web.</h1>
-                    <h4 class="logotipo">Sumergete en la tecnologia y los software, El mundo esta cambiando, no te quedes atras. adentrate en la hera digital!</h4> 
-                </div>
-            </div>
-        </section>
-    
-    
-    {% elif page.slug == 'sobre-mi' %}
-        <section class="banner">
-            <div class="content-banner">
-                <div class="content-banner-descripcion">
-                    <h1 class="logotipo">Jhonny Salcedo Llanos</h1>
-                    <p class="descripcion"><span class="signo1">{</span>Ingeniero de sistemas <span class="full-stack">Desarrollador web</span> front-end <span class="signo2">}</span></p>
-                </div>
-            </div>
-        </section>
-    
 
-    {% elif page.slug == 'cursos' %}
-        <section class="banner-cursos">
-            <div class="content-banner">
-                <div class="content-banner-descripcion-cursos">
-                    <h1 class="logotipo-cursos">Cursos de programacion</h1> 
-                    <p class="descripcion-cursos"><span class="signo1">{</span>De la mejor calidad solo en codelyn <span class="signo2">}</span></p>
-                </div>
-            </div>
-        </section>
-    
-
-    {% elif page.slug == 'portafolio' %}
-        <section class="banner-portafolio">
-            <div class="content-banner">
-                <div class="content-banner-descripcion-portafolio">
-                    <h1>Portafolio de proyectos.</h1>
-                    <h4>Aplicativos web y paginas web desarrollados por nosotros</h4> 
-                </div>
-            </div>
-        </section>
-    
-
-    {% elif page.slug == 'servicios' %}
-        <section class="banner-servicios">
-            <div class="content-banner">
-                <div class="content-banner-descripcion-servicios">
-                    <h1 class="logotipo-servicios">Servicios Codelyn</h1> 
-                    <p class="descripcion-servicios"><span class="signo1">{</span>Especialistas en el desarrollo de entornos web <span class="signo2">}</span></p>
-                </div>
-            </div>
-        </section>
-    {% endif %}
-
-    {% if articulo.id > 0 %}
-    <section class="banner-articulo">
-        <div class="content-banner">
-            <div class="content-banner-descripcion-articulo">
-                <h1 class="logotipo-articulo">{{articulo.title}}</h1> 
-                <p class="descripcion-articulo"><span class="signo1">{</span>Posteado por: <span class="full-stack">{{articulo.user}}</span> el <span class="signo2">{{articulo.created_at}} }</span></p>
-            </div>
-        </div>
-    </section>
-    {% endif %}
-
-    {% if curso.id > 0 %}
-    <section class="banner-curso">
-        <div class="content-banner-curso">
-        </div>
-    </section>
-    {% endif %}
-
-        
-    
     {% comment %} Fin del banner {% endcomment %}
    
 
